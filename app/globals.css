@@ -1,26 +1,390 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-montserrat);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Custom colors for Scageon site */
+  --color-dark-bg: #0e0e12;
+  --color-card-bg: #1a1a1f;
+  --color-accent-green: #bbd363;
+  --color-text-light: #ffffff;
+  --color-text-muted: #a1a1a1;
+  --color-gradient-start: rgba(187, 211, 99, 0.2);
+  --color-gradient-end: rgba(14, 14, 18, 0.95);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
   }
+
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+
+  @keyframes moveHorizontal {
+    0% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+      transform: translateX(50%) translateY(10%);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+  }
+
+  @keyframes moveInCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes moveVertical {
+    0% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
+;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);}
+  to {
+    transform: translateX(calc(-100% - var(--gap)));}}
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);}
+  to {
+    transform: translateY(calc(-100% - var(--gap)));}}}
+
+:root {
+  --radius: 0.3rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  --background: oklch(0.24 0.01 259.93);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold;
+  }
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  .gradient-bg {
+    background: linear-gradient(
+      to bottom,
+      var(--color-gradient-start),
+      var(--color-gradient-end)
+    );
+  }
+  @keyframes rotateGradient {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+
+  .aurora-container {
+    --gradient-center-x-1: 20%;
+    --gradient-center-y-1: 60%;
+    --gradient-center-x-2: 70%;
+    --gradient-center-y-2: 30%;
+    --gradient-center-x-3: 40%;
+    --gradient-center-y-3: 70%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aurora-container::before,
+  .aurora-container::after,
+  .aurora-container .aurora-layer {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .aurora-container::before {
+    background: radial-gradient(
+      circle at var(--gradient-center-x-1) var(--gradient-center-y-1),
+      rgba(226, 205, 105, 0.8) 0%,
+      rgba(226, 205, 105, 0) 50%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+
+  .aurora-container::after {
+    background: radial-gradient(
+      circle at var(--gradient-center-x-2) var(--gradient-center-y-2),
+      rgba(148, 198, 122, 0.8) 0%,
+      rgba(148, 198, 122, 0) 50%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+
+  .aurora-container .aurora-layer {
+    background: radial-gradient(
+      circle at var(--gradient-center-x-3) var(--gradient-center-y-3),
+      rgba(226, 205, 105, 0.8) 0%,
+      rgba(120, 180, 230, 0) 50%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+
+  /* Add this to your existing styles to create a glowing effect */
+  .aurora-container {
+    filter: blur(60px);
+    animation: rotateGradient 30s linear infinite;
+    background-color: rgba(31, 32, 37, 0.3);
+    backdrop-filter: blur(215px);
+  }
+
+  /* To enhance the lights, we'll add a pulsing animation */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
+
+  .aurora-container::before {
+    animation: pulse 10s ease-in-out infinite;
+  }
+
+  .aurora-container::after {
+    animation: pulse 15s ease-in-out infinite reverse;
+  }
+  .conic-gradient {
+    --gradient-center-x: 60%;
+    --gradient-center-y: 50%;
+    background: conic-gradient(
+      from var(--gradient-angle, 90deg) at var(--gradient-center-x)
+        var(--gradient-center-y),
+      #1f2025 0deg,
+      #e2cd69 141.92deg,
+      #94c67a 202.5deg,
+      #1f2025 340.96deg,
+      #1f2025 360deg
+    );
+    animation: rotateGradient 20s linear infinite;
+    backdrop-filter: blur(250px);
+  }
+  .linear-gradient-1 {
+    background: linear-gradient(
+      112.26deg,
+      rgba(66, 66, 66, 0.29) 5.76%,
+      rgba(74, 72, 72, 0.25) 51.24%,
+      rgba(43, 43, 43, 0.49) 97.6%
+    );
+    box-shadow: 1px 2px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(187.6999969482422px);
+    box-shadow: 0.5px 0.5px 0px 0px hsla(0, 0%, 100%, 1) inset;
+  }
+  .linear-gradient-2 {
+    background: linear-gradient(360deg, #1f2025 40%, rgba(31, 32, 37, 0) 100%);
+  }
+  .linear-gradient-3 {
+    background: linear-gradient(
+      112.26deg,
+      rgba(130, 130, 130, 0.29) 5.76%,
+      rgba(133, 124, 124, 0.25) 51.24%,
+      rgba(120, 120, 120, 0.49) 97.6%
+    );
+    box-shadow: 1px 2px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(187.6999969482422px);
+  }
+  .text-gradient-1 {
+    background: linear-gradient(90deg, #ffeaa0 0%, #fffcf2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-2 {
+    background: linear-gradient(90deg, #e2cd69 0%, #94c67a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .card-gradient-1 {
+    background: radial-gradient(
+      108.62% 156.65% at 5.17% -4.78%,
+      rgba(109, 108, 108, 0) 0.74%,
+      rgba(73, 73, 73, 0.12) 32.58%,
+      rgba(78, 78, 78, 0.49) 89.53%
+    );
+    box-shadow: 1px -1px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(187.6999969482422px);
+    box-shadow: -0.5px -0.3px 0px 0px hsla(0, 0%, 53%, 1) inset;
+  }
+  .card-gradient-2 {
+    background: radial-gradient(
+      108.62% 156.65% at 5.17% -4.78%,
+      rgba(109, 108, 108, 0) 0.74%,
+      rgba(73, 73, 73, 0.12) 32.58%,
+      rgba(78, 78, 78, 0.49) 89.53%
+    );
+    box-shadow: 1px -1px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(187.6999969482422px);
+    box-shadow: 0.3px 0.5px 0px 0px hsla(0, 0%, 53%, 1) inset;
+  }
+  .btn-gradient-1 {
+    background: linear-gradient(90deg, #e2cd69 0%, #94c67a 100%);
+  }
+  .btn-primary {
+    @apply bg-[--color-accent-green] text-black font-medium px-6 py-2 rounded-md hover:opacity-90 transition-opacity;
+  }
+  .section {
+    @apply py-16 md:py-20;
+  }
+  .card {
+    @apply bg-[--color-card-bg] rounded-lg p-6;
+  }
 }
