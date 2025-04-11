@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 
 export function Header() {
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
