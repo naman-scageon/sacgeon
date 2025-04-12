@@ -340,14 +340,15 @@
     background: linear-gradient(360deg, #1f2025 40%, rgba(31, 32, 37, 0) 100%);
   }
   .linear-gradient-3 {
-    background: linear-gradient(
-      112.26deg,
-      rgba(130, 130, 130, 0.29) 5.76%,
-      rgba(133, 124, 124, 0.25) 51.24%,
-      rgba(120, 120, 120, 0.49) 97.6%
+    background: radial-gradient(
+      108.62% 156.65% at 5.17% -4.78%,
+      rgba(109, 108, 108, 0) 0.74%,
+      rgba(73, 73, 73, 0.12) 32.58%,
+      rgba(78, 78, 78, 0.49) 89.53%
     );
-    box-shadow: 1px 2px 4px 0px hsla(0, 0%, 0%, 0.27);
-    backdrop-filter: blur(187.6999969482422px);
+    box-shadow: 1px -1px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(85px);
+    box-shadow: 0.5px 0.3px 0px 0px hsla(0, 0%, 53%, 1) inset;
   }
   .text-gradient-1 {
     background: linear-gradient(90deg, #ffeaa0 0%, #fffcf2 100%);
@@ -380,6 +381,18 @@
     box-shadow: 1px -1px 4px 0px hsla(0, 0%, 0%, 0.27);
     backdrop-filter: blur(187.6999969482422px);
     box-shadow: 0.3px 0.5px 0px 0px hsla(0, 0%, 53%, 1) inset;
+  }
+  .card-gradient-3 {
+    background: radial-gradient(
+        108.62% 156.65% at 5.17% -4.78%,
+        rgba(109, 108, 108, 0) 0.74%,
+        rgba(73, 73, 73, 0.12) 32.58%,
+        rgba(78, 78, 78, 0.49) 89.53%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: 1px -1px 4px 0px hsla(0, 0%, 0%, 0.27);
+    backdrop-filter: blur(85px);
+    box-shadow: 0.5px 0.3px 0px 0px hsla(0, 0%, 53%, 1) inset;
   }
   .btn-gradient-1 {
     background: linear-gradient(90deg, #e2cd69 0%, #94c67a 100%);
