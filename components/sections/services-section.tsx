@@ -1,22 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Cloud, Brain, Code, ChevronRight } from "lucide-react";
+// import { Database, Cloud, Brain, Code, ChevronRight } from "lucide-react";
 import { servicesSection } from "@/constants/site-data";
 import { Button } from "../ui/button";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 
 export function ServicesSection() {
   const { headline, highlightedHeadline, tagline, services } = servicesSection;
 
-  const serviceIcons = {
-    database: <Database className="w-8 h-8 text-[--color-accent-green]" />,
-    cloud: <Cloud className="w-8 h-8 text-[--color-accent-green]" />,
-    brain: <Brain className="w-8 h-8 text-[--color-accent-green]" />,
-    code: <Code className="w-8 h-8 text-[--color-accent-green]" />,
-  };
+  // const serviceIcons = {
+  //   database: <Database className="w-8 h-8 text-[--color-accent-green]" />,
+  //   aiML: <Cloud className="w-8 h-8 text-[--color-accent-green]" />,
+  //   product: <Brain className="w-8 h-8 text-[--color-accent-green]" />,
+  //   // code: <Code className="w-8 h-8 text-[--color-accent-green]" />,
+  // };
 
   // Define which services occupy larger spaces in the bento grid
-  const isFeatureService = (index: number) => index === 0 || index === 3;
+  const isFeatureService = (index: number) => false;
 
   return (
     <section id="services" className="bg-[--color-dark-bg] py-20">
@@ -48,7 +50,7 @@ export function ServicesSection() {
                 ${
                   isFeatureService(index)
                     ? "md:col-span-4 md:row-span-1 card-gradient-1 rounded-3xl rounded-br-none"
-                    : "md:col-span-2 md:row-span-1 card-gradient-2 rounded-3xl rounded-tr-none"
+                    : "md:col-span-2 md:row-span-1 card-gradient-2 rounded-3xl rounded-br-none"
                 }
               `}
               initial={{ opacity: 0, y: 30 }}
@@ -58,11 +60,17 @@ export function ServicesSection() {
               <div className="flex flex-col h-full">
                 <div className="flex items-center">
                   <div
-                    className={`rounded-full w-fit p-3 mb-5 bg-[--color-card-bg]/50 
+                    className={`rounded-full w-fit p-3 mb-3 bg-[--color-card-bg]/50 
                   group-hover:bg-[--color-accent-green]/10 transition-colors duration-300
                 `}
                   >
-                    {serviceIcons[service.icon as keyof typeof serviceIcons]}
+                    <Image
+                      src={service.icon}
+                      alt={`Service image ${index + 1}`}
+                      width={24} 
+                      height={24} 
+                      className="object-contain"
+                    />
                   </div>
 
                   <h3

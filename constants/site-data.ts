@@ -1,18 +1,33 @@
+import { title } from "process";
+
 export const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "#products" },
+  { label: "Who we are", href: "/" },
   { label: "Services", href: "#services" },
-  { label: "About Us", href: "#about" },
+  { label: "Select Stories", href: "#selectStories" },
 ];
 
 export const heroSection = {
-  title: "Driving Digital",
-  highlightedTitle: ["Transformation", "Innovation", "Design", "Concept"],
-  description:
-    "We're creating the next generation of digital products that businesses need to stay competitive in today's digital landscape. Our team is experienced, knowledgeable, and passionate.",
-  ctaButton: "Get Started",
-  ctaLink: "#contact",
+  subtTitle : "WE ARE",
+   title : "SCAGEON",
+   description:"We are driving business transformation by unlocking the power of data, leveraging digital technologies and implementing AI .",
+  img: "/technologyDigital.svg",
+  // title: "Driving Digital",
+  // highlightedTitle: ["Transformation", "Innovation", "Design", "Concept"],
+  // description:
+  //   "We're creating the next generation of digital products that businesses need to stay competitive in today's digital landscape. Our team is experienced, knowledgeable, and passionate.",
+  // ctaButton: "Get Started",
+  // ctaLink: "#contact",
 };
+
+
+export const aboutSection = {
+  getTo : "Get to",
+  knowBetter:"Know Us Better",
+   title : "Scageon brings together a highly experienced team and has already partnered with notable industry players.",
+   subTitle:"Scageon drives digital transformations by unlocking the power of Data.",
+   description:"We are driving business transformation by unlocking the power of data, leveraging digital technologies and implementing AI .",
+  img: ["/partnersImg/Shutterfly.svg","/partnersImg/Zoom.svg","/partnersImg/Facebook.svg","/partnersImg/Google.svg"],
+}
 
 export const partnersSection = {
   tagline:
@@ -35,30 +50,30 @@ export const servicesSection = {
       id: "data-service",
       title: "Data Service",
       description:
-        "Unlock the potential of your data with our comprehensive data services. We help you collect, process, and analyze data to make informed decisions.",
-      icon: "database",
+        "Strategic technology consulting to help businesses navigate digital transformation, optimize processes, and make informed decisions for sustainable growth.",
+      icon: "/services/dataService.svg",
     },
     {
-      id: "cloud-services",
-      title: "Cloud Services",
-      description:
-        "Leverage the power of cloud computing with our scalable and secure cloud services. We help you migrate, optimize, and manage your cloud infrastructure.",
-      icon: "cloud",
-    },
-    {
-      id: "ai-services",
+      id: "ai-ml-services",
       title: "AI ML Services",
       description:
-        "Transform your business with our cutting-edge AI and machine learning solutions. We build custom models that solve your unique business challenges.",
-      icon: "brain",
+        "Leverage the power of artificial intelligence and machine learning to transform your business processes and create intelligent solutions that drive innovation.",
+  icon: "/services/aiMlService.svg",
     },
     {
-      id: "application-services",
-      title: "Application Services",
+      id: "product-design",
+      title: "Product & Design",
       description:
-        "Develop robust and scalable applications with our expert development team. We create custom software solutions tailored to your business needs.",
-      icon: "code",
+        "Strategic technology consulting to help businesses navigate digital transformation, optimize processes, and make informed decisions for sustainable growth.",
+       icon: "/services/productService.svg",
     },
+    // {
+    //   id: "application-services",
+    //   title: "Application Services",
+    //   description:
+    //     "Develop robust and scalable applications with our expert development team. We create custom software solutions tailored to your business needs.",
+    //   icon: "code",
+    // },
   ],
 };
 
@@ -166,10 +181,11 @@ export const articlesSection = {
 export const closingSection = {
   headline: "Transforming",
   highlightedHeadline: "Data",
-  middleText: "into intelligence—",
+  middleText: "into intelligence",
+  middleTextLine:"—",
   secondHighlighted: "Engineering",
   tagline: "the future",
-  finalText: "with AI.",
+  finalText: "with AI",
 };
 
 export const footerSection = {
@@ -192,4 +208,39 @@ export const footerSection = {
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Cookie Policy", href: "/cookies" },
   ],
+  // New structure for main footer links, reflecting the image's nested structure
+  mainFooterLinks: {
+    services: [
+      {
+        label: "Data Services",
+        href: "#",
+        subLinks: [
+          { label: "Data Strategy", href: "#" },
+          { label: "Data Management and Engineering", href: "#" },
+          { label: "Data Analytics", href: "#" },
+        ],
+      },
+      {
+        label: "AIML Services",
+        href: "#",
+        subLinks: [
+          { label: "AI Consulting Services", href: "#" },
+          { label: "AI Model Development", href: "#" },
+          { label: "NLP and Generative AI", href: "#" },
+          { label: "MLOps", href: "#" },
+        ],
+      },
+      {
+        label: "Product and Design",
+        href: "#",
+        subLinks: [
+          { label: "XX", href: "#" },
+          { label: "XX", href: "#" },
+          { label: "XX", href: "#" },
+          { label: "XX", href: "#" },
+        ],
+      },
+    ],
+    aboutUs: [], // Empty as per the image
+  }
 };

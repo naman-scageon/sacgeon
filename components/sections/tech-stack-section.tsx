@@ -188,7 +188,7 @@ function TechCard({ tech }: { tech: Technology }) {
         transition: { duration: 0.2 },
       }}
     >
-      <div className="w-24 h-24 md:w-28 md:h-28 bg-foreground/40 backdrop-blur-2xl rounded-xl flex items-center justify-center p-4 shadow-lg transition-all duration-300 border border-[--color-border] hover:border-[--color-accent-green]">
+      <div className="w-24 h-24 md:w-20 md:h-20 bg-foreground/40 backdrop-blur-2xl rounded-xl flex items-center justify-center p-4 shadow-lg transition-all duration-300 border border-[--color-border] hover:border-[--color-accent-green]">
         <div className="relative w-full h-full">
           <Image
             src={tech.svgPath}

@@ -62,12 +62,12 @@ export function ArticlesSection() {
           initial="hidden"
           animate="visible"
         >
-          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
             <div className="linear-gradient-3 absolute top-0 left-0 w-full h-full" />
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="group h-[380px] md:h-[320px] rounded-3xl overflow-hidden"
+                className="group h-[380px] md:h-[250px] rounded-3xl overflow-hidden"
               >
                 <Link
                   href={`/articles/${article.id}`}
