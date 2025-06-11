@@ -106,7 +106,7 @@ export function CasesSection({ className }: CasesSectionProps) {
               {cases.map((item, index) => (
                 <CarouselItem
                   key={item.id}
-                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-2"
+                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-6"
                 >
                   <div className="group h-full aspect-[3/4] relative rounded-3xl overflow-hidden linear-gradient-3 border flex flex-col">
                     {/* Card Content */}

@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { heroSection } from "@/constants/site-data";
-import { VerticalWordCarousel } from "../widgets/vertical-words-carousel";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export function HeroSection() {
-  const { title, highlightedTitle, description, ctaButton, ctaLink } =
+  const { title, subtTitle, description,img} =
     heroSection;
   const auroraRef = useRef<HTMLDivElement>(null);
 
@@ -80,25 +79,25 @@ export function HeroSection() {
     };
   }, []);
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
+  // const container = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //       delayChildren: 0.3,
+  //     },
+  //   },
+  // };
 
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  // const item = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: { duration: 0.5, ease: "easeOut" },
+  //   },
+  // };
 
   return (
     <section className="relative h-screen flex items-center w-full">
@@ -109,8 +108,27 @@ export function HeroSection() {
       >
         <div className="aurora-layer"></div>
       </div>
-      <div className="container relative h-full flex items-center justify-center">
-        <motion.div
+      <div className="container relative h-full flex items-center justify-between">
+        <div className="max-w-lg">
+            <p className="text-gray-300 text-sm tracking-wider mb-2">{subtTitle}</p>
+            <div className="text-white text-5xl md:text-6xl font-bold italic mb-4">{title}</div>
+            <div className="w-35 h-1 bg-[#c5e054] my-10 "></div>
+            <p className="text-gray-300 leading-relaxed">
+             {description}
+            </p>
+          </div>
+          
+          <div className="relative w-full md:w-1/2 h-80 md:h-96">
+            <Image
+              src={img}
+              alt="Person interacting with digital technology"
+              fill
+              className="object-cover rounded-lg"
+              priority
+            />  
+          </div>
+
+        {/* <motion.div
           className="max-w-3xl mx-auto text-center mb-12"
           initial="hidden"
           animate="visible"
@@ -140,11 +158,12 @@ export function HeroSection() {
               {ctaButton}
             </Link>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Dark gradient box/placeholder for image or video */}
+      
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-full h-64 md:h-72 lg:h-96 linear-gradient-1 backdrop-blur-sm rounded-xl mx-auto container shadow-xl"
+          className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-full h-64 md:h-72 lg:h-15 linear-gradient-1 backdrop-blur-sm rounded-xl mx-auto container shadow-xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}

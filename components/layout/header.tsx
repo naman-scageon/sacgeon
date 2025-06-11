@@ -61,13 +61,13 @@ export function Header() {
             <Image src="/logo.svg" alt="logo" width={120} height={40} />
           </Link>
 
-          {/* <nav className="flex items-center gap-10">
+          <nav className="flex items-center gap-10 space-x-10">
             {navItems.map((item) => (
               <Link key={item.label} href={item.href} className="text-sm">
                 {item.label}
               </Link>
             ))}
-          </nav> */}
+          </nav>
           <Button className="bg-background text-foreground rounded-xl">
             Contact Us
           </Button>

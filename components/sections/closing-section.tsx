@@ -11,6 +11,7 @@ export function ClosingSection() {
     secondHighlighted,
     tagline,
     finalText,
+    middleTextLine,
   } = closingSection;
 
   return (
@@ -37,9 +38,11 @@ export function ClosingSection() {
           <span className="text-[--color-text-light]">{headline} </span>
           <span className="text-gradient-2">{highlightedHeadline} </span>
           <span className="text-gradient-2">{middleText}</span>
+          <span className="text-[--color-text-light]">{middleTextLine}</span>
           <span className="text-gradient-2">{secondHighlighted} </span>
           <span className="text-[--color-text-light]">{tagline} </span>
           <span className="text-gradient-2">{finalText}</span>
+          <span className="text-[--color-text-light]">.</span>
         </motion.h2>
       </div>
     </div>
