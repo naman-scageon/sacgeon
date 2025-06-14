@@ -7,7 +7,7 @@ import { navItems } from "@/constants/site-data";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -15,7 +15,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50);
+    setIsScrolled(latest > 20);
   });
 
   useEffect(() => {
@@ -37,43 +37,47 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled 
-            ? "bg-black/80 backdrop-blur-md border-b border-white/10" 
+            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm" 
             : "bg-transparent"
         )}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="container">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="relative z-10 flex items-center">
-              <Image
-                src="/logo-white.svg"
-                alt="Scageon logo"
-                width={140}
-                height={32}
-                className="h-8 w-auto"
-              />
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg flex items-center justify-center">
+                  <span className="text-black font-bold text-sm">S</span>
+                </div>
+                <span className="font-bold text-xl font-heading">Scageon</span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-1">
               {navItems.map((item, index) => (
-                <motion.div key={item.label} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
+                <motion.div 
+                  key={item.label} 
+                  initial={{ opacity: 0, y: -10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ delay: index * 0.1 }}
+                >
                   <Link
                     href={item.href}
-                    className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group"
+                    className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-muted/50"
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 group-hover:w-full transition-all duration-300" />
                   </Link>
                 </motion.div>
               ))}
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-3">
               <Link href="/contact">
-                <Button className="bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300 rounded-full px-6">
+                <Button size="sm" className="btn-primary">
                   Get Started
+                  <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>
             </div>
@@ -81,9 +85,9 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+              className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -99,9 +103,9 @@ export function Header() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="fixed inset-0 z-40 md:hidden"
       >
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setIsMobileMenuOpen(false)} />
-        <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-black/95 backdrop-blur-xl border-l border-white/10">
-          <div className="flex flex-col p-6 pt-24 space-y-6">
+        <div className="absolute inset-0 bg-background/95 backdrop-blur-md" onClick={() => setIsMobileMenuOpen(false)} />
+        <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-card/90 backdrop-blur-xl border-l border-border">
+          <div className="flex flex-col p-6 pt-20 space-y-4">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.label}
@@ -112,16 +116,17 @@ export function Header() {
                 <Link
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-lg font-medium text-gray-300 hover:text-white transition-colors py-2"
+                  className="block px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
                 >
                   {item.label}
                 </Link>
               </motion.div>
             ))}
-            <div className="pt-6 border-t border-white/10">
+            <div className="pt-4 border-t border-border">
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold hover:shadow-lg transition-all duration-300 rounded-full">
+                <Button className="w-full btn-primary">
                   Get Started
+                  <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>
             </div>

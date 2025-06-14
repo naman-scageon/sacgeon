@@ -3,161 +3,177 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import { SpeakerIcon, ArrowRight } from "lucide-react";
+import { Building2, TrendingUp, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { casesSection } from "@/constants/site-data";
 
 interface CasesSectionProps {
   className?: string;
 }
 
-// Sample data - in production, this would come from your data source
-const casesData = {
-  headline: "Learn how Scageon handles",
-  highlightedHeadline: "Real-world tasks",
-  cases: [
-    {
-      id: "case1",
-      title: "Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/1.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/digital-advertising",
-    },
-    {
-      id: "case2",
-      title: "Healthcare Command Centre Platform for Healthcare Services",
-      description: "Major in Middle East",
-      image: "/cases/2.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/healthcare-command",
-    },
-    {
-      id: "case3",
-      title: "Messaging Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/3.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/messaging-platform",
-    },
-    {
-      id: "case4",
-      title: "Healthcare Command Centre Platform for Healthcare Services",
-      description: "Major in Middle East",
-      image: "/cases/2.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/healthcare-services",
-    },
-    {
-      id: "case5",
-      title: "Messaging Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/1.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/marketing-platform",
-    },
-  ],
-};
-
 export function CasesSection({ className }: CasesSectionProps) {
-  const { headline, highlightedHeadline, cases } = casesData;
+  const { headline, highlightedHeadline, cases } = casesSection;
 
   return (
-    <section className={cn("py-20 text-foreground", className)}>
-      <div className="container mx-auto px-4 relative">
+    <section className={cn("py-24 bg-black relative overflow-hidden", className)}>
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500/5 to-cyan-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="text-center mb-12 w-fit mx-auto relative"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Background blur element */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-foreground/10 h-full w-full -z-10 blur-3xl rounded-full" />
-
-          {/* "Select Stories" badge */}
-          <div className="p-2 px-8 rounded-full w-fit mx-auto mb-4 bg-foreground/10 backdrop-blur-sm">
-            <span>Select Stories</span>
-          </div>
+          {/* Section Header */}
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-6"
+          >
+            Client Success Stories
+          </motion.span>
 
           {/* Headline */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            {headline} <br />
-            <span className="text-gradient-2">{highlightedHeadline}</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {headline}{" "}
+            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+              {highlightedHeadline}
+            </span>
           </h2>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Real projects, measurable results. See how we've helped businesses transform their operations through data and AI solutions.
+          </p>
         </motion.div>
 
-        {/* Carousel container */}
-        <div className="relative">
-          <Carousel>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-30 lg:-left-12" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-30 lg:-right-12" />
-            <CarouselContent>
-              {cases.map((item, index) => (
-                <CarouselItem
-                  key={item.id}
-                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-6"
-                >
-                  <div className="group h-full aspect-[3/4] relative rounded-3xl overflow-hidden linear-gradient-3 border flex flex-col">
-                    {/* Card Content */}
-                    <div className="p-4 sm:p-6 flex flex-col justify-start items-center flex-grow z-10">
-                      <div className="mb-2">{item.icon}</div>
-                      <h3 className="text-base text-gradient-2 font-semibold mt-3 text-center">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-center mt-1 text-foreground/80">
-                        {item.description}
-                      </p>
+        {/* Cases Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {cases.map((caseStudy, index) => (
+            <motion.div
+              key={caseStudy.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              className="group relative"
+            >
+              <div className="bg-white/[0.02] backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:bg-white/5 hover:border-white/10 transition-all duration-300 h-full">
+                {/* Case Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg flex items-center justify-center">
+                      <Building2 className="w-6 h-6 text-white" />
                     </div>
-
-                    {/* Image Container with CTA behind it */}
-                    <div className="relative h-1/2 w-full overflow-hidden">
-                      {/* CTA Button (behind the image) */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-start gap-2 z-10 bg-gradient-3 p-4 pt-0">
-                        <Button
-                          className="btn-gradient-1 rounded-xl text-xs"
-                          size={"sm"}
-                        >
-                          {item.ctaText}
-                        </Button>
-                        <p className="text-xs text-center text-foreground/80">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Cum temporibus inventore iusto in similique
-                          adipisci perferendis a sequi eum ipsum beatae ut
-                          repellat ducimus nemo, at velit modi accusantium
-                          nulla.
-                        </p>
-                      </div>
-
-                      {/* Image that slides down on hover */}
-                      <div className="absolute inset-0 z-20 transform transition-transform duration-500 ease-in-out group-hover:translate-y-3/4">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                          className="object-cover rounded-3xl"
-                          priority={index < 2}
-                          quality={80}
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
+                        {caseStudy.title}
+                      </h3>
+                      <p className="text-sm text-gray-400">{caseStudy.client}</p>
                     </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                  <div className="flex items-center gap-1 text-xs text-gray-500">
+                    <Clock className="w-3 h-3" />
+                    {caseStudy.timeline}
+                  </div>
+                </div>
+
+                {/* Challenge & Solution */}
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <h4 className="text-sm font-semibold text-red-400 mb-2">Challenge</h4>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {caseStudy.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-green-400 mb-2">Solution</h4>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      {caseStudy.solution}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Impact Highlight */}
+                <div className="bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-lg p-4 mb-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="w-4 h-4 text-green-400" />
+                    <span className="text-sm font-semibold text-white">Key Impact</span>
+                  </div>
+                  <p className="text-lg font-bold text-green-400">
+                    {caseStudy.impact}
+                  </p>
+                </div>
+
+                {/* Technologies Used */}
+                <div className="mb-6">
+                  <h4 className="text-sm font-semibold text-white mb-3">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {caseStudy.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-white/10 text-xs text-gray-300 rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-green-400 hover:text-green-300 p-0 h-auto font-medium group/btn"
+                  >
+                    View Case Study
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                  <div className="flex items-center gap-1 text-xs text-gray-500">
+                    <CheckCircle className="w-3 h-3 text-green-400" />
+                    <span>Completed</span>
+                  </div>
+                </div>
+
+                {/* Hover effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/5 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <div className="bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8 border border-white/5 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to Create Your Success Story?
+            </h3>
+            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+              Join these successful companies who have transformed their operations with our data and AI solutions. Let's discuss how we can help you achieve similar results.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300">
+                Start Your Project
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/10"
+              >
+                Download Case Studies
+              </Button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

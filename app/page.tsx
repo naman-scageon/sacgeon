@@ -9,15 +9,16 @@ import {
   AboutSection,
   AiConceptDemo,
 } from "@/components/sections";
+import { TestimonialSection } from "@/components/sections/testimonial-section";
 
 export default function Home() {
   return (
     <BaseLayout>
       <HeroSection />
       <AboutSection />
-      <AiConceptDemo />
       <ServicesSection />
       <CasesSection />
+      <TestimonialSection />
       <TechStackSection />
       <ArticlesSection />
       <ClosingSection />

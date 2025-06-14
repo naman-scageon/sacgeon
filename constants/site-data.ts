@@ -7,18 +7,18 @@ export const navItems = [
 ];
 
 export const heroSection = {
-  subtTitle: "AI-NATIVE TRANSFORMATION",
+  subtTitle: "DATA-DRIVEN BUSINESS INTELLIGENCE",
   title: "SCAGEON",
-  description: "We transform enterprises with AI-native solutions, turning complex data into intelligent business advantages through cutting-edge engineering.",
+  description: "We help enterprises unlock the value of their data through strategic analytics, modern data platforms, and targeted AI solutions that deliver measurable business outcomes.",
 };
 
 
 export const aboutSection = {
   getTo : "Get to",
   knowBetter:"Know Us Better",
-   title : "From enterprise development expertise to AI-first innovation - we bring deep technical knowledge and startup agility to complex business challenges.",
-   subTitle:"Building the future of AI-native business transformation.",
-   description:"We leverage our enterprise development background to create AI solutions that actually work in complex business environments.",
+   title : "Specialized data and AI consultancy helping mid-market enterprises modernize their data infrastructure and implement intelligent solutions that drive real business value.",
+   subTitle:"Your trusted partner for data modernization and AI implementation.",
+   description:"We combine deep technical expertise with proven methodologies to deliver data platforms, analytics solutions, and AI implementations that actually work in enterprise environments.",
   img: ["/partnersImg/Shutterfly.svg","/partnersImg/Zoom.svg","/partnersImg/Facebook.svg","/partnersImg/Google.svg"],
 }
 
@@ -34,83 +34,109 @@ export const partnersSection = {
 };
 
 export const servicesSection = {
-  headline: "Transform your enterprise with",
-  highlightedHeadline: "AI-Native Solutions",
+  headline: "Accelerate your business with",
+  highlightedHeadline: "Data & AI Solutions",
   tagline:
-    "We build intelligent systems from the ground up, combining enterprise-grade reliability with cutting-edge AI innovation.",
+    "We deliver practical data platforms, analytics solutions, and AI implementations that drive measurable business outcomes.",
   services: [
     {
-      id: "ai-transformation",
-      title: "AI Transformation Strategy",
+      id: "data-services",
+      title: "Data Services",
       description:
-        "Design comprehensive AI adoption roadmaps that align with your business objectives, from proof-of-concept to enterprise-wide implementation.",
+        "Modernize your data infrastructure with cloud migration, data warehousing, integration, and advanced analytics platforms that scale with your business.",
       icon: "/services/dataService.svg",
+      deliverables: ["Data Strategy & Assessment", "Cloud Migration", "Data Warehouse Implementation", "Business Intelligence Dashboards"],
+      outcomes: ["40% faster reporting", "60% cost reduction", "Single source of truth"]
     },
     {
-      id: "intelligent-systems",
-      title: "Intelligent System Development",
+      id: "ai-engineering",
+      title: "AI Engineering",
       description:
-        "Build custom AI-powered applications with neural networks, machine learning models, and automated decision-making capabilities tailored to your industry.",
+        "Implement practical AI solutions including custom models, NLP systems, predictive analytics, and intelligent automation tailored to your industry needs.",
   icon: "/services/aiMlService.svg",
+      deliverables: ["AI Readiness Assessment", "Custom Model Development", "MLOps Implementation", "AI Chatbot Development"],
+      outcomes: ["85% accuracy improvement", "50% process automation", "Real-time insights"]
     },
     {
-      id: "ai-integration",
-      title: "AI Integration & Automation",
+      id: "application-services",
+      title: "Application Services",
       description:
-        "Seamlessly integrate AI capabilities into existing enterprise systems, creating intelligent workflows that enhance productivity and decision-making.",
+        "Modernize legacy systems and build cloud-native applications with robust APIs, microservices architecture, and seamless third-party integrations.",
        icon: "/services/productService.svg",
+       deliverables: ["Legacy System Assessment", "Cloud-Native Development", "API Integration", "System Modernization"],
+       outcomes: ["70% performance improvement", "99.9% uptime", "Scalable architecture"]
     },
 
   ],
 };
 
 export const casesSection = {
-  headline: "AI Transformation",
-  highlightedHeadline: "Scenarios",
+  headline: "Real Client",
+  highlightedHeadline: "Success Stories",
   cases: [
     {
       id: 1,
-      title: "Manufacturing Intelligence",
+      title: "Manufacturing Data Platform",
       description:
-        "Transform production lines with predictive maintenance, quality control, and supply chain optimization through AI-powered sensors and analytics.",
+        "Implemented a comprehensive data warehouse and analytics platform for a mid-size manufacturer, consolidating production, inventory, and sales data.",
       icon: "file-text",
-      impact: "40% reduction in downtime",
-      technologies: ["Computer Vision", "Predictive Analytics", "IoT Integration"]
+      impact: "40% reduction in reporting time",
+      technologies: ["PostgreSQL", "Apache Spark", "Power BI"],
+      client: "Manufacturing Company",
+      timeline: "6 months",
+      challenge: "Siloed data across 15+ systems",
+      solution: "Unified data platform with real-time dashboards"
     },
     {
       id: 2,
-      title: "Healthcare AI Assistant",
+      title: "Healthcare Analytics Implementation",
       description:
-        "Build intelligent diagnosis support systems that analyze medical data, predict patient risks, and optimize treatment recommendations.",
+        "Built a patient data analytics system for a regional healthcare provider, enabling better resource allocation and patient care optimization.",
       icon: "activity",
-      impact: "60% faster diagnosis",
-      technologies: ["Medical NLP", "Deep Learning", "Clinical Decision Support"]
+      impact: "25% improvement in resource utilization",
+      technologies: ["HIPAA-compliant cloud", "Python", "Tableau"],
+      client: "Regional Healthcare Provider",
+      timeline: "4 months",
+      challenge: "Manual reporting taking 40+ hours weekly",
+      solution: "Automated analytics with predictive insights"
     },
     {
       id: 3,
-      title: "Financial Intelligence Platform",
-      description: "Create AI-native fraud detection, risk assessment, and algorithmic trading systems that adapt to market conditions in real-time.",
+      title: "Financial Services Modernization",
+      description: "Migrated legacy systems to cloud and implemented real-time fraud detection for a financial services company.",
       icon: "truck",
-      impact: "90% fraud detection accuracy",
-      technologies: ["Anomaly Detection", "Time Series Analysis", "Ensemble Methods"]
+      impact: "60% faster transaction processing",
+      technologies: ["AWS", "Machine Learning", "API Gateway"],
+      client: "Financial Services Firm",
+      timeline: "8 months",
+      challenge: "Legacy systems causing delays and security risks",
+      solution: "Cloud-native platform with ML-powered fraud detection"
     },
     {
       id: 4,
-      title: "Retail Personalization Engine",
+      title: "Retail Customer Analytics",
       description:
-        "Develop intelligent recommendation systems that understand customer behavior, predict trends, and optimize inventory across channels.",
+        "Developed customer behavior analytics and inventory optimization system for a retail chain with 50+ locations.",
       icon: "users",
-      impact: "35% increase in conversion",
-      technologies: ["Recommender Systems", "Behavioral Analytics", "Dynamic Pricing"]
+      impact: "22% increase in inventory turnover",
+      technologies: ["MongoDB", "Python", "React Dashboard"],
+      client: "Multi-location Retailer",
+      timeline: "5 months",
+      challenge: "Poor inventory management and customer insights",
+      solution: "Integrated analytics platform with predictive inventory"
     },
     {
       id: 5,
-      title: "Smart City Operations",
+      title: "Supply Chain Optimization",
       description:
-        "Design AI systems for traffic optimization, energy management, and public safety through integrated sensor networks and predictive models.",
+        "Built end-to-end supply chain visibility platform with predictive analytics for a logistics company.",
       icon: "trending-up",
-      impact: "25% efficiency improvement",
-      technologies: ["Edge Computing", "Multi-Agent Systems", "Optimization Algorithms"]
+      impact: "18% reduction in operational costs",
+      technologies: ["Apache Kafka", "Elasticsearch", "Node.js"],
+      client: "Logistics Company",
+      timeline: "7 months",
+      challenge: "Lack of real-time visibility across supply chain",
+      solution: "Real-time tracking with predictive alerts"
     },
   ],
 };
@@ -178,11 +204,11 @@ export const articlesSection = {
 export const closingSection = {
   headline: "Transforming",
   highlightedHeadline: "Data",
-  middleText: "into intelligence",
+  middleText: "into business",
   middleTextLine:"—",
-  secondHighlighted: "Engineering",
-  tagline: "the future",
-  finalText: "with AI",
+  secondHighlighted: "Value",
+  tagline: "through proven",
+  finalText: "expertise",
 };
 
 export const footerSection = {

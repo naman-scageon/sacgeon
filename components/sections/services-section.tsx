@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Brain, Zap, ArrowRight, TrendingUp, BarChart3, Layers } from "lucide-react";
+import { Database, Brain, Zap, ArrowRight, TrendingUp, BarChart3, CheckCircle, Clock, DollarSign } from "lucide-react";
 import { useState } from "react";
+import { servicesSection } from "@/constants/site-data";
 
 // Performance metrics visualization component
 const MetricsVisualization = ({ metrics, isActive }: { metrics: any[], isActive: boolean }) => {
@@ -35,6 +36,8 @@ interface Service {
   title: string;
   description: string;
   icon: any;
+  deliverables?: Array<string>;
+  outcomes?: Array<string>;
   subServices?: Array<{
     title: string;
     description: string;
@@ -48,84 +51,121 @@ interface Service {
 
 export function ServicesSection() {
   const [activeService, setActiveService] = useState<string | null>(null);
+  const { headline, highlightedHeadline, tagline } = servicesSection;
 
   const services: Service[] = [
     {
       id: "data-services",
       title: "Data Services",
-      description: "Transform raw data into strategic assets with our comprehensive data engineering and analytics solutions.",
+      description: "Modernize your data infrastructure with proven methodologies. We help enterprises consolidate, migrate, and optimize their data platforms for better decision-making and operational efficiency.",
       icon: Database,
+      deliverables: [
+        "Data Strategy & Assessment",
+        "Cloud Migration Planning",
+        "Data Warehouse Implementation", 
+        "ETL/ELT Pipeline Development",
+        "Business Intelligence Dashboards"
+      ],
+      outcomes: [
+        "40% faster reporting cycles",
+        "60% reduction in data processing costs",
+        "Single source of truth across systems"
+      ],
       subServices: [
         {
-          title: "Data Strategy & Architecture",
-          description: "Design scalable data ecosystems aligned with business objectives"
+          title: "Data Strategy Development",
+          description: "Comprehensive assessment and roadmap for data modernization aligned with business goals"
         },
         {
-          title: "Data Engineering & Pipelines",
-          description: "Build robust ETL/ELT processes for real-time data processing"
+          title: "Cloud Data Migration",
+          description: "Seamless migration of on-premise data to AWS, Azure, or GCP with zero downtime"
         },
         {
-          title: "Advanced Analytics & BI",
-          description: "Create interactive dashboards and predictive analytics models"
+          title: "Analytics Implementation",
+          description: "End-to-end business intelligence solutions with real-time dashboards and reporting"
         }
       ],
       metrics: [
         { label: "Data Processing Speed", value: 85, color: "from-blue-500 to-cyan-400" },
-        { label: "Analytics Accuracy", value: 92, color: "from-cyan-400 to-blue-500" },
-        { label: "Pipeline Reliability", value: 96, color: "from-blue-600 to-indigo-500" }
+        { label: "Cost Optimization", value: 60, color: "from-cyan-400 to-blue-500" },
+        { label: "System Reliability", value: 96, color: "from-blue-600 to-indigo-500" }
       ]
     },
     {
       id: "ai-engineering",
       title: "AI Engineering",
-      description: "Harness the power of artificial intelligence with custom models and intelligent automation solutions.",
+      description: "Practical AI implementations that solve real business problems. From chatbots to predictive analytics, we build AI systems that integrate seamlessly with your existing operations.",
       icon: Brain,
+      deliverables: [
+        "AI Readiness Assessment",
+        "Custom Model Development",
+        "MLOps Pipeline Setup",
+        "AI Chatbot Implementation",
+        "Predictive Analytics Models"
+      ],
+      outcomes: [
+        "85% improvement in prediction accuracy",
+        "50% automation of manual processes",
+        "Real-time intelligent decision making"
+      ],
       subServices: [
         {
           title: "AI Strategy & Consulting",
-          description: "Identify AI opportunities and create implementation roadmaps"
+          description: "Identify high-impact AI opportunities and create practical implementation roadmaps"
         },
         {
           title: "Custom AI Model Development",
-          description: "Build domain-specific models for your unique challenges"
+          description: "Build and train domain-specific models for your unique business challenges"
         },
         {
-          title: "NLP & Generative AI",
-          description: "Deploy conversational AI and content generation systems"
+          title: "NLP & Chatbot Development",
+          description: "Deploy conversational AI systems and intelligent document processing"
         },
         {
           title: "MLOps & Model Management",
-          description: "Automate model deployment, monitoring, and optimization"
+          description: "Automate model deployment, monitoring, and continuous improvement"
         }
       ],
       metrics: [
         { label: "Model Accuracy", value: 94, color: "from-purple-500 to-pink-400" },
-        { label: "Training Efficiency", value: 88, color: "from-pink-400 to-red-400" },
-        { label: "Deployment Success", value: 97, color: "from-purple-600 to-indigo-500" }
+        { label: "Process Automation", value: 88, color: "from-pink-400 to-red-400" },
+        { label: "Implementation Success", value: 97, color: "from-purple-600 to-indigo-500" }
       ]
     },
     {
       id: "application-services",
       title: "Application Services",
-      description: "Accelerate digital transformation with modern, scalable applications built for tomorrow's challenges.",
+      description: "Modernize legacy systems and build scalable cloud-native applications. We specialize in API development, system integration, and application architecture that grows with your business.",
       icon: Zap,
+      deliverables: [
+        "Legacy System Assessment",
+        "Cloud-Native Development",
+        "API Design & Integration",
+        "Microservices Architecture",
+        "Performance Optimization"
+      ],
+      outcomes: [
+        "70% improvement in system performance",
+        "99.9% application uptime",
+        "Scalable, future-ready architecture"
+      ],
       subServices: [
         {
-          title: "Modern App Development",
-          description: "Build cloud-native applications with microservices architecture"
+          title: "Legacy System Modernization",
+          description: "Systematic approach to migrating and updating outdated systems"
         },
         {
-          title: "Legacy System Modernization",
-          description: "Migrate and transform outdated systems to modern platforms"
+          title: "Cloud-Native Development",
+          description: "Build applications designed for cloud scalability and resilience"
         },
         {
           title: "API & Integration Services",
-          description: "Connect systems with robust APIs and integration platforms"
+          description: "Connect systems with robust APIs and seamless third-party integrations"
         }
       ],
       metrics: [
-        { label: "Development Speed", value: 89, color: "from-green-500 to-emerald-400" },
-        { label: "System Performance", value: 93, color: "from-emerald-400 to-teal-400" },
+        { label: "Performance Improvement", value: 89, color: "from-green-500 to-emerald-400" },
+        { label: "System Uptime", value: 99, color: "from-emerald-400 to-teal-400" },
         { label: "Migration Success", value: 91, color: "from-green-600 to-cyan-500" }
       ]
     }
@@ -153,21 +193,21 @@ export function ServicesSection() {
             transition={{ delay: 0.2 }}
             className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-6"
           >
-            Services
+            Our Services
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Accelerate your{" "}
+            {headline}{" "}
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Digital Transformation
+              {highlightedHeadline}
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Unlock the power of data and AI to transform your business operations, enhance decision-making, and drive sustainable growth.
+            {tagline}
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isActive = activeService === service.id;
@@ -215,8 +255,8 @@ export function ServicesSection() {
                     {service.description}
                   </p>
 
-                  {/* Sub-services and Metrics */}
-                  {service.subServices && (
+                  {/* Deliverables and Outcomes */}
+                  {service.deliverables && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ 
@@ -226,29 +266,52 @@ export function ServicesSection() {
                       transition={{ duration: 0.4 }}
                       className="overflow-hidden"
                     >
-                      <div className="space-y-4 pt-6 border-t border-white/10">
-                        {/* Sub-services */}
-                        <div className="space-y-3">
-                          {service.subServices.map((subService, subIndex) => (
-                            <motion.div 
-                              key={subIndex} 
-                              className="flex items-start gap-3 p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/5"
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -10 }}
-                              transition={{ delay: subIndex * 0.1 }}
-                            >
-                              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-green-400 to-blue-400 mt-2 flex-shrink-0" />
-                              <div className="flex-1">
-                                <h4 className="text-sm font-semibold text-white mb-1">
-                                  {subService.title}
-                                </h4>
-                                <p className="text-xs text-gray-400 leading-relaxed">
-                                  {subService.description}
-                                </p>
-                              </div>
-                            </motion.div>
-                          ))}
+                      <div className="space-y-6 pt-6 border-t border-white/10">
+                        {/* Key Deliverables */}
+                        <div>
+                          <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                            <CheckCircle className="w-4 h-4 text-green-400" />
+                            Key Deliverables
+                          </h4>
+                          <div className="space-y-2">
+                            {service.deliverables.map((deliverable, dIndex) => (
+                              <motion.div 
+                                key={dIndex} 
+                                className="flex items-start gap-2 text-sm text-gray-400"
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -10 }}
+                                transition={{ delay: dIndex * 0.05 }}
+                              >
+                                <div className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0" />
+                                <span>{deliverable}</span>
+                              </motion.div>
+                            ))}
+                          </div>
                         </div>
+                        
+                        {/* Business Outcomes */}
+                        {service.outcomes && (
+                          <div>
+                            <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                              <TrendingUp className="w-4 h-4 text-blue-400" />
+                              Expected Outcomes
+                            </h4>
+                            <div className="space-y-2">
+                              {service.outcomes.map((outcome, oIndex) => (
+                                <motion.div 
+                                  key={oIndex} 
+                                  className="flex items-start gap-2 text-sm font-medium text-green-400"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -10 }}
+                                  transition={{ delay: oIndex * 0.05 }}
+                                >
+                                  <TrendingUp className="w-3 h-3 mt-0.5 flex-shrink-0" />
+                                  <span>{outcome}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                         
                         {/* Performance Metrics */}
                         {service.metrics && (
@@ -283,6 +346,37 @@ export function ServicesSection() {
             );
           })}
         </div>
+
+        {/* Bottom CTA Section */}
+        <motion.div
+          className="text-center bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8 border border-white/5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Ready to Transform Your Business?
+          </h3>
+          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+            Get a free consultation to discuss your specific needs and learn how our proven methodologies can help your organization achieve measurable results.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold rounded-full hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300"
+            >
+              <Clock className="w-5 h-5" />
+              Schedule Free Consultation
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300"
+            >
+              <DollarSign className="w-5 h-5" />
+              Get Project Estimate
+            </motion.button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
