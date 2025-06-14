@@ -7,25 +7,18 @@ export const navItems = [
 ];
 
 export const heroSection = {
-  subtTitle : "WE ARE",
-   title : "SCAGEON",
-   description:"We are driving business transformation by unlocking the power of data, leveraging digital technologies and implementing AI .",
-  img: "/technologyDigital.svg",
-  // title: "Driving Digital",
-  // highlightedTitle: ["Transformation", "Innovation", "Design", "Concept"],
-  // description:
-  //   "We're creating the next generation of digital products that businesses need to stay competitive in today's digital landscape. Our team is experienced, knowledgeable, and passionate.",
-  // ctaButton: "Get Started",
-  // ctaLink: "#contact",
+  subtTitle: "AI-NATIVE TRANSFORMATION",
+  title: "SCAGEON",
+  description: "We transform enterprises with AI-native solutions, turning complex data into intelligent business advantages through cutting-edge engineering.",
 };
 
 
 export const aboutSection = {
   getTo : "Get to",
   knowBetter:"Know Us Better",
-   title : "Scageon brings together a highly experienced team and has already partnered with notable industry players.",
-   subTitle:"Scageon drives digital transformations by unlocking the power of Data.",
-   description:"We are driving business transformation by unlocking the power of data, leveraging digital technologies and implementing AI .",
+   title : "From enterprise development expertise to AI-first innovation - we bring deep technical knowledge and startup agility to complex business challenges.",
+   subTitle:"Building the future of AI-native business transformation.",
+   description:"We leverage our enterprise development background to create AI solutions that actually work in complex business environments.",
   img: ["/partnersImg/Shutterfly.svg","/partnersImg/Zoom.svg","/partnersImg/Facebook.svg","/partnersImg/Google.svg"],
 }
 
@@ -41,79 +34,83 @@ export const partnersSection = {
 };
 
 export const servicesSection = {
-  headline: "Get your business",
-  highlightedHeadline: "Problem Solved",
+  headline: "Transform your enterprise with",
+  highlightedHeadline: "AI-Native Solutions",
   tagline:
-    "Scageon helps you grow your business with AI-driven solutions and methods.",
+    "We build intelligent systems from the ground up, combining enterprise-grade reliability with cutting-edge AI innovation.",
   services: [
     {
-      id: "data-service",
-      title: "Data Service",
+      id: "ai-transformation",
+      title: "AI Transformation Strategy",
       description:
-        "Strategic technology consulting to help businesses navigate digital transformation, optimize processes, and make informed decisions for sustainable growth.",
+        "Design comprehensive AI adoption roadmaps that align with your business objectives, from proof-of-concept to enterprise-wide implementation.",
       icon: "/services/dataService.svg",
     },
     {
-      id: "ai-ml-services",
-      title: "AI ML Services",
+      id: "intelligent-systems",
+      title: "Intelligent System Development",
       description:
-        "Leverage the power of artificial intelligence and machine learning to transform your business processes and create intelligent solutions that drive innovation.",
+        "Build custom AI-powered applications with neural networks, machine learning models, and automated decision-making capabilities tailored to your industry.",
   icon: "/services/aiMlService.svg",
     },
     {
-      id: "product-design",
-      title: "Product & Design",
+      id: "ai-integration",
+      title: "AI Integration & Automation",
       description:
-        "Strategic technology consulting to help businesses navigate digital transformation, optimize processes, and make informed decisions for sustainable growth.",
+        "Seamlessly integrate AI capabilities into existing enterprise systems, creating intelligent workflows that enhance productivity and decision-making.",
        icon: "/services/productService.svg",
     },
-    // {
-    //   id: "application-services",
-    //   title: "Application Services",
-    //   description:
-    //     "Develop robust and scalable applications with our expert development team. We create custom software solutions tailored to your business needs.",
-    //   icon: "code",
-    // },
+
   ],
 };
 
 export const casesSection = {
-  headline: "Learn how Scageon handles",
-  highlightedHeadline: "Real-world tasks",
+  headline: "AI Transformation",
+  highlightedHeadline: "Scenarios",
   cases: [
     {
       id: 1,
-      title: "Intelligent Document Processing",
+      title: "Manufacturing Intelligence",
       description:
-        "Automated extraction and processing of data from various document types using AI",
+        "Transform production lines with predictive maintenance, quality control, and supply chain optimization through AI-powered sensors and analytics.",
       icon: "file-text",
+      impact: "40% reduction in downtime",
+      technologies: ["Computer Vision", "Predictive Analytics", "IoT Integration"]
     },
     {
       id: 2,
-      title: "Healthcare Data Analysis",
+      title: "Healthcare AI Assistant",
       description:
-        "Advanced analytics for healthcare providers to improve patient outcomes",
+        "Build intelligent diagnosis support systems that analyze medical data, predict patient risks, and optimize treatment recommendations.",
       icon: "activity",
+      impact: "60% faster diagnosis",
+      technologies: ["Medical NLP", "Deep Learning", "Clinical Decision Support"]
     },
     {
       id: 3,
-      title: "Supply Chain Optimization",
-      description: "AI-driven logistics and inventory management solutions",
+      title: "Financial Intelligence Platform",
+      description: "Create AI-native fraud detection, risk assessment, and algorithmic trading systems that adapt to market conditions in real-time.",
       icon: "truck",
+      impact: "90% fraud detection accuracy",
+      technologies: ["Anomaly Detection", "Time Series Analysis", "Ensemble Methods"]
     },
     {
       id: 4,
-      title: "Customer Experience Enhancement",
+      title: "Retail Personalization Engine",
       description:
-        "Personalized customer journeys powered by predictive analytics",
+        "Develop intelligent recommendation systems that understand customer behavior, predict trends, and optimize inventory across channels.",
       icon: "users",
+      impact: "35% increase in conversion",
+      technologies: ["Recommender Systems", "Behavioral Analytics", "Dynamic Pricing"]
     },
     {
       id: 5,
-      title: "Financial Risk Assessment",
+      title: "Smart City Operations",
       description:
-        "Machine learning models for accurate financial risk prediction",
+        "Design AI systems for traffic optimization, energy management, and public safety through integrated sensor networks and predictive models.",
       icon: "trending-up",
+      impact: "25% efficiency improvement",
+      technologies: ["Edge Computing", "Multi-Agent Systems", "Optimization Algorithms"]
     },
   ],
 };

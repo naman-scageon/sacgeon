@@ -1,203 +1,130 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Marquee } from "../magicui/marquee";
+import { useState } from "react";
 
-// Define TypeScript interfaces
-interface Technology {
-  name: string;
-  category: string;
-  svgPath: string;
-}
-
-// Hardcoded tech stack data with SVG paths
-const technologies: Technology[] = [
-  { name: "Anthropic", category: "AI", svgPath: "/tech-stack/anthropic.svg" },
-  {
-    name: "Apache Airflow",
-    category: "Data Pipeline",
-    svgPath: "/tech-stack/apache-airflow-svgrepo-com.svg",
-  },
-  {
-    name: "Apache Flink",
-    category: "Stream Processing",
-    svgPath: "/tech-stack/apache-flink-svgrepo-com.svg",
-  },
-  {
-    name: "Apache Spark",
-    category: "Big Data",
-    svgPath: "/tech-stack/apache-spark-svgrepo-com.svg",
-  },
-  {
-    name: "Apache",
-    category: "Web Server",
-    svgPath: "/tech-stack/apache-svgrepo-com.svg",
-  },
-  {
-    name: "Atlassian",
-    category: "DevOps",
-    svgPath: "/tech-stack/atlassian-svgrepo-com.svg",
-  },
-  {
-    name: "Docker",
-    category: "Containerization",
-    svgPath: "/tech-stack/docker-svgrepo-com.svg",
-  },
-  {
-    name: "Expo",
-    category: "Mobile Development",
-    svgPath: "/tech-stack/expo-svgrepo-com.svg",
-  },
-  {
-    name: "Firebase",
-    category: "Backend",
-    svgPath: "/tech-stack/firebase-svgrepo-com.svg",
-  },
-  {
-    name: "Flask",
-    category: "Web Framework",
-    svgPath: "/tech-stack/flask-svgrepo-com.svg",
-  },
-  {
-    name: "Flutter",
-    category: "Mobile Development",
-    svgPath: "/tech-stack/flutter-svgrepo-com.svg",
-  },
-  {
-    name: "Git",
-    category: "Version Control",
-    svgPath: "/tech-stack/git-svgrepo-com.svg",
-  },
-  {
-    name: "Go",
-    category: "Programming",
-    svgPath: "/tech-stack/go-svgrepo-com.svg",
-  },
-  {
-    name: "Java",
-    category: "Programming",
-    svgPath: "/tech-stack/java-svgrepo-com.svg",
-  },
-  {
-    name: "JavaScript",
-    category: "Programming",
-    svgPath: "/tech-stack/javascript-svgrepo-com.svg",
-  },
-  {
-    name: "Jest",
-    category: "Testing",
-    svgPath: "/tech-stack/jest-svgrepo-com.svg",
-  },
-  {
-    name: "Langchain",
-    category: "AI/ML",
-    svgPath: "/tech-stack/langchain-text.svg",
-  },
-  {
-    name: "Linux",
-    category: "Operating System",
-    svgPath: "/tech-stack/linux-svgrepo-com.svg",
-  },
-  {
-    name: "MongoDB",
-    category: "Database",
-    svgPath: "/tech-stack/mongodb-svgrepo-com.svg",
-  },
-  { name: "Ollama", category: "AI", svgPath: "/tech-stack/ollama.svg" },
-  { name: "OpenAI", category: "AI", svgPath: "/tech-stack/openai.svg" },
-  {
-    name: "PostgreSQL",
-    category: "Database",
-    svgPath: "/tech-stack/postgresql-svgrepo-com.svg",
-  },
-  {
-    name: "Python",
-    category: "Programming",
-    svgPath: "/tech-stack/python-svgrepo-com.svg",
-  },
-  {
-    name: "React",
-    category: "Frontend",
-    svgPath: "/tech-stack/react-svgrepo-com.svg",
-  },
-];
+// Define technology categories with their tools
+const techCategories = {
+  "AI & ML": [
+    "Anthropic", "OpenAI", "Ollama", "Langchain", "TensorFlow", "PyTorch"
+  ],
+  "Data & Analytics": [
+    "Apache Spark", "Apache Flink", "Apache Airflow", "PostgreSQL", "MongoDB", "Elasticsearch"
+  ],
+  "Cloud & DevOps": [
+    "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Terraform"
+  ],
+  "Programming": [
+    "Python", "JavaScript", "Go", "Java", "TypeScript", "Rust"
+  ],
+  "Frameworks": [
+    "React", "Next.js", "Flask", "FastAPI", "Node.js", "Express"
+  ]
+};
 
 export function TechStackSection() {
-  // Split technologies into three rows for a staggered effect
-  const row1 = technologies.slice(0, 8);
-  const row2 = technologies.slice(8, 16);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
-    <section id="tech-stack" className="py-24 relative w-full overflow-hidden">
+    <section id="tech-stack" className="py-24 bg-black relative overflow-hidden">
       {/* Background effects */}
-      <div className="aurora-container absolute left-0 bottom-0 w-full h-2/3 z-0">
-        <div className="aurora-layer opacity-30"></div>
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500/5 to-cyan-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-block py-1.5 px-6 bg-foreground/10 backdrop-blur-sm rounded-full mb-3">
-            <span className="text-sm font-medium">Tech Stack</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Get to know about the <br />
-            <span className="text-gradient-2">Technology we use</span>
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-6"
+          >
+            Tech Stack
+          </motion.span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Get to know about the{" "}
+            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+              Technology we use
+            </span>
           </h2>
         </motion.div>
 
-        {/* Tech Stack Marquees - 3 rows with alternating directions */}
-        <div className="space-y-10 pt-12">
-          {/* Row 1: Left to Right */}
-          <Marquee className="py-2 [--duration:16s]" pauseOnHover={true}>
-            {row1.map((tech, index) => (
-              <TechCard key={`row1-${index}`} tech={tech} />
-            ))}
-          </Marquee>
-
-          {/* Row 2: Right to Left */}
-          <Marquee
-            className="py-2 [--duration:16s]"
-            pauseOnHover={true}
-            reverse={true}
-          >
-            {row2.map((tech, index) => (
-              <TechCard key={`row2-${index}`} tech={tech} />
-            ))}
-          </Marquee>
+        {/* Technology Categories */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Object.entries(techCategories).map(([category, technologies], categoryIndex) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * categoryIndex }}
+              className="group"
+              onMouseEnter={() => setActiveCategory(category)}
+              onMouseLeave={() => setActiveCategory(null)}
+            >
+              <div className={`
+                p-6 rounded-2xl border transition-all duration-500
+                ${activeCategory === category 
+                  ? 'bg-white/5 border-white/20 backdrop-blur-sm scale-105' 
+                  : 'bg-white/[0.02] border-white/5 hover:bg-white/5'
+                }
+              `}>
+                <h3 className={`text-xl font-bold mb-6 transition-colors duration-500 ${
+                  activeCategory === category ? 'text-white' : 'text-gray-200 group-hover:text-white'
+                }`}>
+                  {category}
+                </h3>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  {technologies.map((tech, techIndex) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + techIndex * 0.05 }}
+                      className={`
+                        p-3 rounded-lg text-center transition-all duration-300
+                        ${activeCategory === category 
+                          ? 'bg-gradient-to-r from-green-400/20 to-blue-400/20 text-white' 
+                          : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white'
+                        }
+                      `}
+                    >
+                      <span className="text-sm font-medium">{tech}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <p className="text-gray-400 mb-6">
+            Ready to leverage these technologies for your business?
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold rounded-full hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300"
+          >
+            Discuss Your Project
+          </motion.button>
+        </motion.div>
       </div>
     </section>
-  );
-}
-
-// Tech card component that displays only the SVG image
-function TechCard({ tech }: { tech: Technology }) {
-  return (
-    <motion.div
-      className="mx-4"
-      whileHover={{
-        y: -8,
-        scale: 1.05,
-        transition: { duration: 0.2 },
-      }}
-    >
-      <div className="w-24 h-24 md:w-20 md:h-20 bg-foreground/40 backdrop-blur-2xl rounded-xl flex items-center justify-center p-4 shadow-lg transition-all duration-300 border border-[--color-border] hover:border-[--color-accent-green]">
-        <div className="relative w-full h-full">
-          <Image
-            src={tech.svgPath}
-            alt={tech.category}
-            fill
-            className="object-contain p-1"
-          />
-        </div>
-      </div>
-    </motion.div>
   );
 }
