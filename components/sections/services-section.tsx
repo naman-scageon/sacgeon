@@ -6,7 +6,6 @@ import {
   Brain,
   Rocket,
   CheckCircle,
-  ArrowRight,
   Target,
   Zap,
   BarChart3,
@@ -29,7 +28,8 @@ interface ServiceSolution {
 }
 
 export function ServicesSection() {
-  const [activeService, setActiveService] = useState<string>("data-intelligence");
+  const [activeService, setActiveService] =
+    useState<string>("data-intelligence");
 
   const serviceSolutions: ServiceSolution[] = [
     {
@@ -135,14 +135,12 @@ export function ServicesSection() {
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold text-offwhite-100 mb-4">
             Solutions that drive
-            <span className="gradient-text">
-              {" "}
-              measurable results
-            </span>
+            <span className="gradient-text"> measurable results</span>
           </h2>
           <p className="text-lg text-offwhite-400 max-w-3xl mx-auto">
-            We don't just build technology—we create transformation pathways 
-            that turn your biggest challenges into competitive advantages.
+            We don&apos;t just build technology—we create transformation
+            pathways that turn your biggest challenges into competitive
+            advantages.
           </p>
         </motion.div>
 
@@ -260,10 +258,10 @@ export function ServicesSection() {
                       transition={{ delay: index * 0.1 }}
                     >
                       <div className="text-2xl font-bold text-offwhite-100 mb-1">
-                        {outcome.split(' ')[0]}
+                        {outcome.split(" ")[0]}
                       </div>
                       <div className="text-sm text-offwhite-400">
-                        {outcome.split(' ').slice(1).join(' ')}
+                        {outcome.split(" ").slice(1).join(" ")}
                       </div>
                     </motion.div>
                   ))}
@@ -285,21 +283,16 @@ export function ServicesSection() {
             Ready to Transform Your Business?
           </h3>
           <p className="text-offwhite-400 mb-8 max-w-2xl mx-auto">
-            Every successful transformation starts with understanding your unique challenges. 
-            Let's discuss how our proven methodologies can deliver measurable results for your organization.
+            Every successful transformation starts with understanding your
+            unique challenges. Let&apos;s discuss how our proven methodologies
+            can deliver measurable results for your organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              onClick={handleGetQuote}
-              className="btn-primary"
-            >
+            <Button onClick={handleGetQuote} className="btn-primary">
               <Calendar className="w-4 h-4 mr-2" />
               Get Started Today
             </Button>
-            <Button
-              onClick={handleWatchDemo}
-              className="btn-secondary"
-            >
+            <Button onClick={handleWatchDemo} className="btn-secondary">
               <Play className="w-4 h-4 mr-2" />
               View Success Stories
             </Button>

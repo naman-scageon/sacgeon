@@ -9,13 +9,9 @@ import {
   ArrowRight,
   Activity,
   MessageSquare,
-  Database,
-  Zap,
   Users,
   Target,
-  BarChart3,
   Shield,
-  Globe,
   ExternalLink,
 } from "lucide-react";
 import { Button } from "../ui/button";
@@ -135,8 +131,8 @@ export function CasesSection({ className }: CasesSectionProps) {
             </span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Real projects, quantifiable outcomes. See how we've helped industry
-            leaders achieve breakthrough results through strategic
+            Real projects, quantifiable outcomes. See how we&apos;ve helped
+            industry leaders achieve breakthrough results through strategic
             implementation.
           </p>
         </motion.div>
@@ -291,7 +287,7 @@ export function CasesSection({ className }: CasesSectionProps) {
             </h3>
             <p className="text-slate-300 mb-8 max-w-2xl mx-auto text-lg">
               Join industry leaders who have transformed their operations with
-              our proven approach. Let's discuss how we can deliver similar
+              our proven approach. Let&apos;s discuss how we can deliver similar
               results for your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

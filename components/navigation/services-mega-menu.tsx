@@ -26,13 +26,11 @@ import {
   Link as LinkIcon,
   Grid3X3,
   ArrowRight,
-  ExternalLink,
   Layers3,
 } from "lucide-react";
 import {
   servicesNavigationData,
   type ServiceItem,
-  type SubService,
 } from "@/constants/site-data";
 import { cn } from "@/lib/utils";
 
@@ -106,30 +104,41 @@ const ServiceCard = ({
             : "hover:bg-slate-800/30 border-l-transparent hover:border-l-slate-600"
         )}
       >
-        <div className={cn(
-          "w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 transition-all duration-200",
-          isActive 
-            ? "bg-blue-500/20 text-blue-400" 
-            : "bg-slate-700/50 text-slate-400 group-hover:bg-slate-600/50 group-hover:text-slate-300"
-        )}>
+        <div
+          className={cn(
+            "w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 transition-all duration-200",
+            isActive
+              ? "bg-blue-500/20 text-blue-400"
+              : "bg-slate-700/50 text-slate-400 group-hover:bg-slate-600/50 group-hover:text-slate-300"
+          )}
+        >
           <ServiceIcon name={service.icon} className="w-4 h-4" />
         </div>
-        
+
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h3 className={cn(
-              "text-sm font-medium transition-colors duration-200",
-              isActive ? "text-white" : "text-slate-200 group-hover:text-white"
-            )}>
+            <h3
+              className={cn(
+                "text-sm font-medium transition-colors duration-200",
+                isActive
+                  ? "text-white"
+                  : "text-slate-200 group-hover:text-white"
+              )}
+            >
               {service.title}
             </h3>
             {service.badge && (
-              <span className={cn(
-                "px-1.5 py-0.5 text-xs font-medium rounded",
-                service.badge === "Core" && "bg-emerald-500/10 text-emerald-400",
-                service.badge === "Advanced" && "bg-purple-500/10 text-purple-400",
-                service.badge === "Coming Soon" && "bg-amber-500/10 text-amber-400"
-              )}>
+              <span
+                className={cn(
+                  "px-1.5 py-0.5 text-xs font-medium rounded",
+                  service.badge === "Core" &&
+                    "bg-emerald-500/10 text-emerald-400",
+                  service.badge === "Advanced" &&
+                    "bg-purple-500/10 text-purple-400",
+                  service.badge === "Coming Soon" &&
+                    "bg-amber-500/10 text-amber-400"
+                )}
+              >
                 {service.badge}
               </span>
             )}
@@ -139,12 +148,14 @@ const ServiceCard = ({
           </p>
         </div>
 
-        <ArrowRight className={cn(
-          "w-4 h-4 transition-all duration-200 flex-shrink-0 mt-1",
-          isActive 
-            ? "text-blue-400 translate-x-0.5" 
-            : "text-slate-500 group-hover:text-slate-400 group-hover:translate-x-0.5"
-        )} />
+        <ArrowRight
+          className={cn(
+            "w-4 h-4 transition-all duration-200 flex-shrink-0 mt-1",
+            isActive
+              ? "text-blue-400 translate-x-0.5"
+              : "text-slate-500 group-hover:text-slate-400 group-hover:translate-x-0.5"
+          )}
+        />
       </Link>
     </motion.div>
   );
@@ -165,7 +176,10 @@ const SubServicesPanel = ({ service }: { service: ServiceItem | null }) => {
         {/* Header */}
         <div className="flex items-center gap-3 mb-3 pb-3 border-b border-slate-700/30">
           <div className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center">
-            <ServiceIcon name={service.icon} className="w-3 h-3 text-blue-400" />
+            <ServiceIcon
+              name={service.icon}
+              className="w-3 h-3 text-blue-400"
+            />
           </div>
           <div>
             <h4 className="text-sm font-medium text-white">{service.title}</h4>
@@ -188,7 +202,10 @@ const SubServicesPanel = ({ service }: { service: ServiceItem | null }) => {
               >
                 <div className="w-5 h-5 rounded bg-slate-700/30 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-slate-600/40 transition-colors">
                   {subService.icon && (
-                    <ServiceIcon name={subService.icon} className="w-2.5 h-2.5 text-slate-400 group-hover:text-slate-300" />
+                    <ServiceIcon
+                      name={subService.icon}
+                      className="w-2.5 h-2.5 text-slate-400 group-hover:text-slate-300"
+                    />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -222,7 +239,9 @@ const SubServicesPanel = ({ service }: { service: ServiceItem | null }) => {
             href={service.href}
             className="flex items-center justify-between p-2 bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-150 group"
           >
-            <span className="text-xs font-medium text-blue-400">View all {service.title.toLowerCase()}</span>
+            <span className="text-xs font-medium text-blue-400">
+              View all {service.title.toLowerCase()}
+            </span>
             <ArrowRight className="w-3 h-3 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
@@ -278,8 +297,8 @@ export function ServicesMegaMenu({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const hoveredServiceData = hoveredService 
-    ? servicesNavigationData.find(s => s.id === hoveredService) 
+  const hoveredServiceData = hoveredService
+    ? servicesNavigationData.find((s) => s.id === hoveredService)
     : null;
 
   return (
@@ -328,8 +347,12 @@ export function ServicesMegaMenu({
               <div className="px-4 py-3 border-b border-slate-700/30">
                 <div className="flex items-center gap-2">
                   <Layers3 className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm font-medium text-white">Services</span>
-                  <span className="text-xs text-slate-500 ml-auto">Hover to explore</span>
+                  <span className="text-sm font-medium text-white">
+                    Services
+                  </span>
+                  <span className="text-xs text-slate-500 ml-auto">
+                    Hover to explore
+                  </span>
                 </div>
               </div>
 
@@ -358,7 +381,9 @@ export function ServicesMegaMenu({
               {/* Footer */}
               <div className="px-4 py-3 border-t border-slate-700/30 bg-slate-800/20">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-400">Need help choosing?</span>
+                  <span className="text-xs text-slate-400">
+                    Need help choosing?
+                  </span>
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 text-xs font-medium border border-blue-500/20 hover:border-blue-500/30 transition-all duration-150 group"

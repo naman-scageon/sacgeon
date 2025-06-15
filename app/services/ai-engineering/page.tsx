@@ -1,12 +1,25 @@
 import { BaseLayout } from "@/components/layout/base-layout";
 import { servicesNavigationData } from "@/constants/site-data";
 import Link from "next/link";
-import { ArrowRight, Brain, Lightbulb, Cpu, MessageCircle, GitBranch, Search, Bot, CheckCircle, Sparkles, Star } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  Lightbulb,
+  Cpu,
+  MessageCircle,
+  GitBranch,
+  Search,
+  Bot,
+  CheckCircle,
+  Sparkles,
+  Star,
+} from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AI Engineering | Scageon - Intelligent Solutions & Custom AI Models",
-  description: "Implement practical AI solutions including custom models, NLP systems, predictive analytics, and intelligent automation tailored to your industry needs.",
+  description:
+    "Implement practical AI solutions including custom models, NLP systems, predictive analytics, and intelligent automation tailored to your industry needs.",
 };
 
 const iconMap = {
@@ -18,7 +31,9 @@ const iconMap = {
   bot: Bot,
 };
 
-const aiService = servicesNavigationData.find(service => service.id === "ai-engineering")!;
+const aiService = servicesNavigationData.find(
+  (service) => service.id === "ai-engineering"
+)!;
 
 const benefits = [
   "85% accuracy improvement in predictive models",
@@ -26,51 +41,66 @@ const benefits = [
   "Real-time insights and decision-making capabilities",
   "Custom AI solutions tailored to your industry",
   "Seamless integration with existing workflows",
-  "Scalable AI infrastructure for future growth"
+  "Scalable AI infrastructure for future growth",
 ];
 
 const useCases = [
   {
     title: "Predictive Analytics",
-    description: "Forecast trends, demand, and outcomes with advanced machine learning models.",
+    description:
+      "Forecast trends, demand, and outcomes with advanced machine learning models.",
     icon: "📊",
-    industries: ["Finance", "Retail", "Manufacturing"]
+    industries: ["Finance", "Retail", "Manufacturing"],
   },
   {
     title: "Intelligent Automation",
-    description: "Automate complex business processes with AI-powered decision making.",
+    description:
+      "Automate complex business processes with AI-powered decision making.",
     icon: "⚙️",
-    industries: ["Healthcare", "Insurance", "Logistics"]
+    industries: ["Healthcare", "Insurance", "Logistics"],
   },
   {
     title: "Natural Language Processing",
-    description: "Extract insights from unstructured text and enable conversational AI.",
+    description:
+      "Extract insights from unstructured text and enable conversational AI.",
     icon: "💬",
-    industries: ["Customer Service", "Legal", "Media"]
+    industries: ["Customer Service", "Legal", "Media"],
   },
   {
     title: "Computer Vision",
-    description: "Analyze images and video content for quality control and insights.",
+    description:
+      "Analyze images and video content for quality control and insights.",
     icon: "👁️",
-    industries: ["Manufacturing", "Security", "Retail"]
+    industries: ["Manufacturing", "Security", "Retail"],
   },
   {
     title: "Recommendation Systems",
-    description: "Personalize user experiences with intelligent recommendation engines.",
+    description:
+      "Personalize user experiences with intelligent recommendation engines.",
     icon: "🎯",
-    industries: ["E-commerce", "Media", "Finance"]
+    industries: ["E-commerce", "Media", "Finance"],
   },
   {
     title: "Fraud Detection",
     description: "Identify suspicious patterns and prevent fraud in real-time.",
     icon: "🛡️",
-    industries: ["Banking", "Insurance", "E-commerce"]
-  }
+    industries: ["Banking", "Insurance", "E-commerce"],
+  },
 ];
 
 const technologies = [
-  "TensorFlow", "PyTorch", "Scikit-learn", "Hugging Face", "OpenAI GPT", "LangChain",
-  "Apache Spark", "MLflow", "Kubeflow", "Docker", "Kubernetes", "AWS SageMaker"
+  "TensorFlow",
+  "PyTorch",
+  "Scikit-learn",
+  "Hugging Face",
+  "OpenAI GPT",
+  "LangChain",
+  "Apache Spark",
+  "MLflow",
+  "Kubeflow",
+  "Docker",
+  "Kubernetes",
+  "AWS SageMaker",
 ];
 
 export default function AIEngineeringPage() {
@@ -96,11 +126,16 @@ export default function AIEngineeringPage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                AI <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Engineering</span>
+                AI{" "}
+                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                  Engineering
+                </span>
               </h1>
               <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                Harness the power of artificial intelligence to transform your business operations. We build custom AI solutions 
-                that deliver intelligent automation, predictive insights, and enhanced decision-making capabilities.
+                Harness the power of artificial intelligence to transform your
+                business operations. We build custom AI solutions that deliver
+                intelligent automation, predictive insights, and enhanced
+                decision-making capabilities.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -138,12 +173,16 @@ export default function AIEngineeringPage() {
               AI-Powered Business Transformation
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our AI engineering solutions deliver tangible business outcomes that drive competitive advantage.
+              Our AI engineering solutions deliver tangible business outcomes
+              that drive competitive advantage.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3 p-6 bg-white rounded-xl border border-slate-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300">
+              <div
+                key={index}
+                className="flex items-center gap-3 p-6 bg-white rounded-xl border border-slate-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
+              >
                 <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <span className="text-slate-700 font-medium">{benefit}</span>
               </div>
@@ -160,14 +199,19 @@ export default function AIEngineeringPage() {
               Comprehensive AI Solutions
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From consulting to deployment, we provide end-to-end AI services that transform how you operate.
+              From consulting to deployment, we provide end-to-end AI services
+              that transform how you operate.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {aiService.subServices?.map((service, index) => {
-              const Icon = iconMap[service.icon as keyof typeof iconMap] || Brain;
+              const Icon =
+                iconMap[service.icon as keyof typeof iconMap] || Brain;
               return (
-                <div key={service.id} className="group relative p-8 bg-slate-50 hover:bg-white border border-slate-200 hover:border-purple-300 rounded-2xl transition-all duration-300 hover:shadow-xl">
+                <div
+                  key={service.id}
+                  className="group relative p-8 bg-slate-50 hover:bg-white border border-slate-200 hover:border-purple-300 rounded-2xl transition-all duration-300 hover:shadow-xl"
+                >
                   <div className="w-12 h-12 mb-6 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
@@ -213,18 +257,29 @@ export default function AIEngineeringPage() {
               AI Use Cases Across Industries
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Discover how AI can solve specific challenges in your industry with proven use cases and applications.
+              Discover how AI can solve specific challenges in your industry
+              with proven use cases and applications.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300">
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
+              >
                 <div className="text-4xl mb-4">{useCase.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">{useCase.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  {useCase.title}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  {useCase.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {useCase.industries.map((industry) => (
-                    <span key={industry} className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                    <span
+                      key={industry}
+                      className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full"
+                    >
                       {industry}
                     </span>
                   ))}
@@ -243,13 +298,19 @@ export default function AIEngineeringPage() {
               Cutting-Edge AI Technology Stack
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We leverage the latest AI frameworks and tools to build robust, scalable solutions.
+              We leverage the latest AI frameworks and tools to build robust,
+              scalable solutions.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {technologies.map((tech, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:bg-slate-700/50 hover:border-slate-600/50 transition-all duration-300">
-                <span className="text-slate-300 font-medium text-center">{tech}</span>
+              <div
+                key={index}
+                className="flex items-center justify-center p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:bg-slate-700/50 hover:border-slate-600/50 transition-all duration-300"
+              >
+                <span className="text-slate-300 font-medium text-center">
+                  {tech}
+                </span>
               </div>
             ))}
           </div>
@@ -263,7 +324,8 @@ export default function AIEngineeringPage() {
             Ready to Implement AI in Your Business?
           </h2>
           <p className="text-xl text-purple-100 mb-12 max-w-3xl mx-auto">
-            Let's explore how artificial intelligence can revolutionize your operations and drive unprecedented growth.
+            Let&apos;s explore how artificial intelligence can revolutionize
+            your operations and drive unprecedented growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

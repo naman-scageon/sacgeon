@@ -1,11 +1,10 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   Database,
   Brain,
-  Zap,
   ArrowRight,
   TrendingUp,
   Users,
@@ -27,11 +26,7 @@ const transformationStages = [
     icon: Database,
     color: "from-blue-500 to-cyan-400",
     duration: "2-3 weeks",
-    features: [
-      "One-click integrations",
-      "Real-time sync",
-      "Data validation",
-    ],
+    features: ["One-click integrations", "Real-time sync", "Data validation"],
   },
   {
     id: "analyze",
@@ -40,11 +35,7 @@ const transformationStages = [
     icon: Brain,
     color: "from-purple-500 to-pink-400",
     duration: "1-2 weeks",
-    features: [
-      "Pattern recognition",
-      "Custom models",
-      "Automated insights",
-    ],
+    features: ["Pattern recognition", "Custom models", "Automated insights"],
   },
   {
     id: "optimize",
@@ -66,11 +57,7 @@ const transformationStages = [
     icon: TrendingUp,
     color: "from-emerald-500 to-teal-400",
     duration: "Ongoing",
-    features: [
-      "Automated actions",
-      "ROI measurement",
-      "Continuous learning",
-    ],
+    features: ["Automated actions", "ROI measurement", "Continuous learning"],
   },
 ];
 
@@ -145,12 +132,15 @@ const InteractiveDemo = () => {
           </span>
         </h2>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-          See how businesses achieve measurable results in weeks, not months. 
+          See how businesses achieve measurable results in weeks, not months.
           Watch the transformation process in action.
         </p>
 
         {!isPlaying && (
-          <Button onClick={startDemo} className="bg-purple-600 hover:bg-purple-700">
+          <Button
+            onClick={startDemo}
+            className="bg-purple-600 hover:bg-purple-700"
+          >
             <Play className="w-4 h-4 mr-2" />
             Watch Demo
           </Button>
@@ -318,14 +308,21 @@ const InteractiveDemo = () => {
             Ready to Start Your Transformation?
           </h3>
           <p className="text-slate-600 mb-6 max-w-md mx-auto">
-            Join hundreds of businesses already seeing measurable results with our proven approach.
+            Join hundreds of businesses already seeing measurable results with
+            our proven approach.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button onClick={handleGetStarted} className="bg-purple-600 hover:bg-purple-700">
+            <Button
+              onClick={handleGetStarted}
+              className="bg-purple-600 hover:bg-purple-700"
+            >
               Get Started Today
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="outline" className="border-slate-300 hover:bg-slate-50">
+            <Button
+              variant="outline"
+              className="border-slate-300 hover:bg-slate-50"
+            >
               <Users className="w-4 h-4 mr-2" />
               Talk to Expert
             </Button>
@@ -338,8 +335,8 @@ const InteractiveDemo = () => {
 
 export function AiConceptDemo() {
   return (
-    <section 
-      data-section="ai-demo" 
+    <section
+      data-section="ai-demo"
       className="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden"
     >
       {/* Subtle Background Elements */}

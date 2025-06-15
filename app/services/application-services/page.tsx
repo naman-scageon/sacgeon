@@ -1,12 +1,22 @@
 import { BaseLayout } from "@/components/layout/base-layout";
 import { servicesNavigationData } from "@/constants/site-data";
 import Link from "next/link";
-import { ArrowRight, Code2, RefreshCw, Cloud, Link as LinkIcon, Grid3X3, CheckCircle, Clock } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  RefreshCw,
+  Cloud,
+  Link as LinkIcon,
+  Grid3X3,
+  CheckCircle,
+} from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Application Services | Scageon - Modern Development & System Modernization",
-  description: "Modernize legacy systems and build cloud-native applications with robust APIs, microservices architecture, and seamless third-party integrations.",
+  title:
+    "Application Services | Scageon - Modern Development & System Modernization",
+  description:
+    "Modernize legacy systems and build cloud-native applications with robust APIs, microservices architecture, and seamless third-party integrations.",
 };
 
 const iconMap = {
@@ -16,7 +26,9 @@ const iconMap = {
   "grid-3x3": Grid3X3,
 };
 
-const appService = servicesNavigationData.find(service => service.id === "application-services")!;
+const appService = servicesNavigationData.find(
+  (service) => service.id === "application-services"
+)!;
 
 const benefits = [
   "70% performance improvement through modernization",
@@ -24,64 +36,95 @@ const benefits = [
   "Reduced technical debt and maintenance costs",
   "Enhanced security and compliance capabilities",
   "Seamless integration with modern ecosystems",
-  "Future-ready scalable infrastructure"
+  "Future-ready scalable infrastructure",
 ];
 
 const modernizationApproaches = [
   {
     title: "Lift & Shift",
-    description: "Quick migration to cloud with minimal changes for immediate benefits.",
+    description:
+      "Quick migration to cloud with minimal changes for immediate benefits.",
     timeline: "2-4 weeks",
     complexity: "Low",
-    benefits: ["Fast deployment", "Cost savings", "Improved reliability"]
+    benefits: ["Fast deployment", "Cost savings", "Improved reliability"],
   },
   {
     title: "Re-platforming",
-    description: "Optimize applications for cloud platforms with targeted improvements.",
+    description:
+      "Optimize applications for cloud platforms with targeted improvements.",
     timeline: "1-3 months",
     complexity: "Medium",
-    benefits: ["Better performance", "Cloud-native features", "Reduced costs"]
+    benefits: ["Better performance", "Cloud-native features", "Reduced costs"],
   },
   {
     title: "Re-architecting",
-    description: "Complete redesign using microservices and cloud-native patterns.",
+    description:
+      "Complete redesign using microservices and cloud-native patterns.",
     timeline: "3-8 months",
     complexity: "High",
-    benefits: ["Maximum scalability", "Modern architecture", "Future-proof"]
-  }
+    benefits: ["Maximum scalability", "Modern architecture", "Future-proof"],
+  },
 ];
 
 const technologies = [
-  "React", "Next.js", "Node.js", "Python", "Go", "Java",
-  "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Terraform"
+  "React",
+  "Next.js",
+  "Node.js",
+  "Python",
+  "Go",
+  "Java",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Terraform",
 ];
 
 const developmentProcess = [
   {
     phase: "Discovery",
     description: "Comprehensive analysis of existing systems and requirements",
-    deliverables: ["System Assessment", "Architecture Review", "Migration Strategy"]
+    deliverables: [
+      "System Assessment",
+      "Architecture Review",
+      "Migration Strategy",
+    ],
   },
   {
     phase: "Design",
-    description: "Create detailed technical specifications and architecture plans",
-    deliverables: ["Technical Design", "API Specifications", "Infrastructure Plan"]
+    description:
+      "Create detailed technical specifications and architecture plans",
+    deliverables: [
+      "Technical Design",
+      "API Specifications",
+      "Infrastructure Plan",
+    ],
   },
   {
     phase: "Development",
-    description: "Iterative development with continuous integration and testing",
-    deliverables: ["MVP Release", "Feature Increments", "Quality Assurance"]
+    description:
+      "Iterative development with continuous integration and testing",
+    deliverables: ["MVP Release", "Feature Increments", "Quality Assurance"],
   },
   {
     phase: "Deployment",
     description: "Seamless deployment with zero-downtime migration strategies",
-    deliverables: ["Production Deployment", "Monitoring Setup", "Documentation"]
+    deliverables: [
+      "Production Deployment",
+      "Monitoring Setup",
+      "Documentation",
+    ],
   },
   {
     phase: "Support",
     description: "Ongoing maintenance, monitoring, and optimization",
-    deliverables: ["24/7 Monitoring", "Performance Optimization", "Feature Updates"]
-  }
+    deliverables: [
+      "24/7 Monitoring",
+      "Performance Optimization",
+      "Feature Updates",
+    ],
+  },
 ];
 
 export default function ApplicationServicesPage() {
@@ -107,11 +150,16 @@ export default function ApplicationServicesPage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Application <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Services</span>
+                Application{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                  Services
+                </span>
               </h1>
               <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                Transform your legacy systems into modern, scalable applications. We specialize in cloud-native development, 
-                system modernization, and building robust APIs that power your digital transformation.
+                Transform your legacy systems into modern, scalable
+                applications. We specialize in cloud-native development, system
+                modernization, and building robust APIs that power your digital
+                transformation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -149,12 +197,16 @@ export default function ApplicationServicesPage() {
               Modern Application Development Benefits
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our application services deliver measurable improvements in performance, scalability, and maintainability.
+              Our application services deliver measurable improvements in
+              performance, scalability, and maintainability.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3 p-6 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+              <div
+                key={index}
+                className="flex items-center gap-3 p-6 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              >
                 <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <span className="text-slate-700 font-medium">{benefit}</span>
               </div>
@@ -171,14 +223,19 @@ export default function ApplicationServicesPage() {
               Comprehensive Application Solutions
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From legacy modernization to cloud-native development, we provide end-to-end application services.
+              From legacy modernization to cloud-native development, we provide
+              end-to-end application services.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {appService.subServices?.map((service, index) => {
-              const Icon = iconMap[service.icon as keyof typeof iconMap] || Code2;
+            {appService.subServices?.map((service) => {
+              const Icon =
+                iconMap[service.icon as keyof typeof iconMap] || Code2;
               return (
-                <div key={service.id} className="group relative p-8 bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-300 rounded-2xl transition-all duration-300 hover:shadow-xl">
+                <div
+                  key={service.id}
+                  className="group relative p-8 bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-300 rounded-2xl transition-all duration-300 hover:shadow-xl"
+                >
                   <div className="w-12 h-12 mb-6 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
@@ -210,29 +267,48 @@ export default function ApplicationServicesPage() {
               Modernization Approaches
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Choose the right modernization strategy based on your timeline, complexity, and business requirements.
+              Choose the right modernization strategy based on your timeline,
+              complexity, and business requirements.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {modernizationApproaches.map((approach, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">{approach.title}</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">{approach.description}</p>
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-xl font-bold text-slate-900 mb-4">
+                  {approach.title}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  {approach.description}
+                </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-500">Timeline:</span>
-                    <span className="text-sm font-medium text-slate-700">{approach.timeline}</span>
+                    <span className="text-sm font-medium text-slate-700">
+                      {approach.timeline}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-500">Complexity:</span>
-                    <span className={`text-sm font-medium ${
-                      approach.complexity === 'Low' ? 'text-green-600' :
-                      approach.complexity === 'Medium' ? 'text-yellow-600' : 'text-red-600'
-                    }`}>{approach.complexity}</span>
+                    <span
+                      className={`text-sm font-medium ${
+                        approach.complexity === "Low"
+                          ? "text-green-600"
+                          : approach.complexity === "Medium"
+                          ? "text-yellow-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {approach.complexity}
+                    </span>
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-slate-900">Key Benefits:</h4>
+                  <h4 className="text-sm font-semibold text-slate-900">
+                    Key Benefits:
+                  </h4>
                   {approach.benefits.map((benefit, benefitIndex) => (
                     <div key={benefitIndex} className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
@@ -254,7 +330,8 @@ export default function ApplicationServicesPage() {
               Our Development Process
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We follow a structured approach that ensures successful application development and modernization projects.
+              We follow a structured approach that ensures successful
+              application development and modernization projects.
             </p>
           </div>
           <div className="grid md:grid-cols-5 gap-8">
@@ -262,13 +339,22 @@ export default function ApplicationServicesPage() {
               <div key={index} className="relative">
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-emerald-600 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">{index + 1}</span>
+                    <span className="text-white font-bold text-lg">
+                      {index + 1}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-3">{phase.phase}</h3>
-                  <p className="text-slate-300 text-sm mb-4 leading-relaxed">{phase.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-3">
+                    {phase.phase}
+                  </h3>
+                  <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                    {phase.description}
+                  </p>
                   <div className="space-y-1">
                     {phase.deliverables.map((deliverable, deliverableIndex) => (
-                      <div key={deliverableIndex} className="text-xs text-slate-400">
+                      <div
+                        key={deliverableIndex}
+                        className="text-xs text-slate-400"
+                      >
                         • {deliverable}
                       </div>
                     ))}
@@ -291,13 +377,19 @@ export default function ApplicationServicesPage() {
               Modern Technology Stack
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We use cutting-edge technologies and frameworks to build scalable, maintainable applications.
+              We use cutting-edge technologies and frameworks to build scalable,
+              maintainable applications.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {technologies.map((tech, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-slate-50 border border-slate-200 rounded-xl hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-300">
-                <span className="text-slate-700 font-medium text-center">{tech}</span>
+              <div
+                key={index}
+                className="flex items-center justify-center p-4 bg-slate-50 border border-slate-200 rounded-xl hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-300"
+              >
+                <span className="text-slate-700 font-medium text-center">
+                  {tech}
+                </span>
               </div>
             ))}
           </div>
@@ -311,7 +403,8 @@ export default function ApplicationServicesPage() {
             Ready to Modernize Your Applications?
           </h2>
           <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-            Let's transform your legacy systems into modern, scalable applications that drive business growth.
+            Let&apos;s transform your legacy systems into modern, scalable
+            applications that drive business growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -9,7 +9,6 @@ import {
   ArrowRight,
   Network,
   Shield,
-  Monitor,
   Workflow,
   Users,
   TrendingUp,

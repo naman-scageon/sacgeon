@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote, Building2, CheckCircle } from "lucide-react";
-import Image from "next/image";
+import { Star, Quote, CheckCircle } from "lucide-react";
 
 interface Testimonial {
   id: number;
@@ -23,7 +22,8 @@ export function TestimonialSection() {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "Scageon transformed our data infrastructure in just 4 months. Their team understood our manufacturing challenges and delivered a solution that gives us real-time visibility across all our production lines. The ROI was immediate.",
+      quote:
+        "Scageon transformed our data infrastructure in just 4 months. Their team understood our manufacturing challenges and delivered a solution that gives us real-time visibility across all our production lines. The ROI was immediate.",
       author: "Sarah Johnson",
       position: "VP of Operations",
       company: "MidWest Manufacturing",
@@ -32,11 +32,12 @@ export function TestimonialSection() {
       projectType: "Data Warehouse & Analytics",
       outcome: "40% reduction in reporting time",
       rating: 5,
-      avatarUrl: "/testimonials/sarah-j.jpg"
+      avatarUrl: "/testimonials/sarah-j.jpg",
     },
     {
       id: 2,
-      quote: "Working with Scageon was refreshingly different. They didn't oversell us on AI we didn't need. Instead, they focused on solving our actual business problems with practical data solutions. The predictive maintenance system they built has saved us hundreds of thousands in equipment downtime.",
+      quote:
+        "Working with Scageon was refreshingly different. They didn't oversell us on AI we didn't need. Instead, they focused on solving our actual business problems with practical data solutions. The predictive maintenance system they built has saved us hundreds of thousands in equipment downtime.",
       author: "Michael Chen",
       position: "CTO",
       company: "Regional Healthcare Systems",
@@ -45,11 +46,12 @@ export function TestimonialSection() {
       projectType: "Predictive Analytics Platform",
       outcome: "25% improvement in resource utilization",
       rating: 5,
-      avatarUrl: "/testimonials/michael-c.jpg"
+      avatarUrl: "/testimonials/michael-c.jpg",
     },
     {
       id: 3,
-      quote: "The team at Scageon delivered exactly what they promised, on time and within budget. Their technical expertise combined with clear communication made the entire cloud migration process smooth. Our new platform handles 10x the transaction volume with better performance.",
+      quote:
+        "The team at Scageon delivered exactly what they promised, on time and within budget. Their technical expertise combined with clear communication made the entire cloud migration process smooth. Our new platform handles 10x the transaction volume with better performance.",
       author: "Lisa Rodriguez",
       position: "Head of Technology",
       company: "Financial Services Group",
@@ -58,8 +60,8 @@ export function TestimonialSection() {
       projectType: "Cloud Migration & Modernization",
       outcome: "60% faster transaction processing",
       rating: 5,
-      avatarUrl: "/testimonials/lisa-r.jpg"
-    }
+      avatarUrl: "/testimonials/lisa-r.jpg",
+    },
   ];
 
   return (
@@ -86,16 +88,17 @@ export function TestimonialSection() {
           >
             Client Testimonials
           </motion.span>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Built with{" "}
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
               Precision
             </span>
           </h2>
-          
+
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Backed by those who know the value of reliable, results-driven solutions
+            Backed by those who know the value of reliable, results-driven
+            solutions
           </p>
         </motion.div>
 
@@ -115,27 +118,39 @@ export function TestimonialSection() {
                   <Quote className="w-8 h-8 text-green-400 flex-shrink-0" />
                   <div className="flex items-center gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                      />
                     ))}
                   </div>
                 </div>
 
                 {/* Testimonial Content */}
                 <blockquote className="text-gray-300 leading-relaxed mb-6 text-sm">
-                  "{testimonial.quote}"
+                  {testimonial.quote}
                 </blockquote>
 
                 {/* Author Info */}
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-semibold text-sm">
-                      {testimonial.author.split(' ').map(n => n[0]).join('')}
+                      {testimonial.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-white font-semibold text-sm">{testimonial.author}</h4>
-                    <p className="text-gray-400 text-xs">{testimonial.position}</p>
-                    <p className="text-green-400 text-xs font-medium">{testimonial.company}</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      {testimonial.author}
+                    </h4>
+                    <p className="text-gray-400 text-xs">
+                      {testimonial.position}
+                    </p>
+                    <p className="text-green-400 text-xs font-medium">
+                      {testimonial.company}
+                    </p>
                   </div>
                 </div>
 
@@ -143,15 +158,21 @@ export function TestimonialSection() {
                 <div className="space-y-2 mb-4 pt-4 border-t border-white/5">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-500">Industry:</span>
-                    <span className="text-gray-400">{testimonial.industry}</span>
+                    <span className="text-gray-400">
+                      {testimonial.industry}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-500">Project:</span>
-                    <span className="text-gray-400">{testimonial.projectType}</span>
+                    <span className="text-gray-400">
+                      {testimonial.projectType}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-500">Company Size:</span>
-                    <span className="text-gray-400">{testimonial.companySize}</span>
+                    <span className="text-gray-400">
+                      {testimonial.companySize}
+                    </span>
                   </div>
                 </div>
 

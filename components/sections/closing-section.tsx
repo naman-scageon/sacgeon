@@ -3,7 +3,14 @@
 import { motion } from "framer-motion";
 import { closingSection } from "@/constants/site-data";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
 
 export function ClosingSection() {
   const {
@@ -17,15 +24,21 @@ export function ClosingSection() {
   } = closingSection;
 
   const handleScheduleCall = () => {
-    window.open("mailto:info@scageon.com?subject=Schedule%20Consultation", "_blank");
+    window.open(
+      "mailto:info@scageon.com?subject=Schedule%20Consultation",
+      "_blank"
+    );
   };
 
   const handleGetQuote = () => {
-    window.open("mailto:info@scageon.com?subject=Project%20Quote%20Request", "_blank");
+    window.open(
+      "mailto:info@scageon.com?subject=Project%20Quote%20Request",
+      "_blank"
+    );
   };
 
   return (
-    <section 
+    <section
       id="contact"
       data-section="closing"
       className="relative py-32 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950 overflow-hidden"
@@ -91,18 +104,12 @@ export function ClosingSection() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-offwhite-100">{headline} </span>
-            <span className="gradient-text">
-              {highlightedHeadline}
-            </span>
+            <span className="gradient-text">{highlightedHeadline}</span>
             <span className="text-offwhite-100"> {middleText}</span>
             <span className="text-offwhite-100">{middleTextLine}</span>
-            <span className="gradient-text-secondary">
-              {secondHighlighted}
-            </span>
+            <span className="gradient-text-secondary">{secondHighlighted}</span>
             <span className="text-offwhite-100"> {tagline} </span>
-            <span className="gradient-text">
-              {finalText}
-            </span>
+            <span className="gradient-text">{finalText}</span>
             <span className="text-offwhite-100">.</span>
           </motion.h2>
 
@@ -114,9 +121,9 @@ export function ClosingSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-offwhite-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Ready to transform your business with data and AI? Let's start a 
-            conversation about your specific challenges and how we can help you 
-            achieve measurable results.
+            Ready to transform your business with data and AI? Let&apos;s start
+            a conversation about your specific challenges and how we can help
+            you achieve measurable results.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -127,19 +134,13 @@ export function ClosingSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
-            <Button
-              onClick={handleScheduleCall}
-              className="btn-primary group"
-            >
+            <Button onClick={handleScheduleCall} className="btn-primary group">
               <Calendar className="w-5 h-5 mr-2" />
               <span>Schedule Free Consultation</span>
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
 
-            <Button
-              onClick={handleGetQuote}
-              className="btn-secondary group"
-            >
+            <Button onClick={handleGetQuote} className="btn-secondary group">
               <MessageCircle className="w-5 h-5 mr-2" />
               <span>Get Project Quote</span>
             </Button>
@@ -183,7 +184,9 @@ export function ClosingSection() {
                   <div className="w-12 h-12 bg-steel-500/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-steel-500/20 transition-colors duration-300">
                     <Icon className="w-6 h-6 text-steel-400 group-hover:text-steel-300 transition-colors duration-300" />
                   </div>
-                  <div className="text-sm text-offwhite-500 mb-1">{contact.label}</div>
+                  <div className="text-sm text-offwhite-500 mb-1">
+                    {contact.label}
+                  </div>
                   <div className="text-offwhite-200 font-medium group-hover:text-offwhite-100 transition-colors duration-300">
                     {contact.value}
                   </div>

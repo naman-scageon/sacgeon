@@ -7,7 +7,6 @@ import {
   Database,
   Cloud,
   Code,
-  Layers,
   ArrowRight,
   Sparkles,
   Zap,
@@ -23,7 +22,8 @@ const techCategories = [
   {
     id: "ai-ml",
     title: "AI & Machine Learning",
-    description: "Advanced AI models and ML frameworks for intelligent solutions",
+    description:
+      "Advanced AI models and ML frameworks for intelligent solutions",
     icon: Brain,
     color: "from-steel-500 to-steel-400",
     bgColor: "bg-steel-500/10",
@@ -264,14 +264,13 @@ export function TechStackSection() {
 
           <h2 className="text-3xl md:text-4xl font-semibold text-offwhite-100 mb-6">
             Built with{" "}
-            <span className="gradient-text">
-              enterprise-grade technology
-            </span>
+            <span className="gradient-text">enterprise-grade technology</span>
           </h2>
 
           <p className="text-lg text-offwhite-400 max-w-3xl mx-auto">
             We leverage the latest technologies and proven frameworks to build
-            scalable, secure, and high-performance solutions for enterprise clients.
+            scalable, secure, and high-performance solutions for enterprise
+            clients.
           </p>
         </motion.div>
 
@@ -324,7 +323,10 @@ export function TechStackSection() {
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div key={index} className="text-center bg-charcoal-900/30 backdrop-blur-sm rounded-xl p-6 border border-warm-700/30">
+              <div
+                key={index}
+                className="text-center bg-charcoal-900/30 backdrop-blur-sm rounded-xl p-6 border border-warm-700/30"
+              >
                 <div className="w-12 h-12 bg-charcoal-800/50 rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Icon className={`w-6 h-6 ${stat.color}`} />
                 </div>
@@ -350,22 +352,16 @@ export function TechStackSection() {
                 Ready to Build Something Amazing?
               </h3>
               <p className="text-offwhite-400 text-lg mb-8">
-                Let's discuss how these technologies can transform your business
-                and deliver exceptional results for your users.
+                Let&apos;s discuss how these technologies can transform your
+                business and deliver exceptional results for your users.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  onClick={handleGetStarted}
-                  className="btn-primary"
-                >
+                <Button onClick={handleGetStarted} className="btn-primary">
                   <Zap className="w-4 h-4 mr-2" />
                   Start Your Project
                 </Button>
-                <Button
-                  onClick={handleViewWork}
-                  className="btn-secondary"
-                >
+                <Button onClick={handleViewWork} className="btn-secondary">
                   View Our Work
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
