@@ -3,32 +3,180 @@
 @theme inline {
   --font-sans: var(--font-dm-sans);
   --font-heading: var(--font-inter);
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 
-  /* Modern Animation keyframes */
+  /* Advanced Animation keyframes */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-    to { box-shadow: 0 0 30px rgba(34, 197, 94, 0.4); }
+    from {
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+    }
   }
 
   @keyframes slide {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
   }
 
   @keyframes pulse-subtle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 
   @keyframes scale-in {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
+
+  @keyframes neural-pulse {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes data-flow {
+    0% {
+      transform: translateX(-100%) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes quantum-spin {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(90deg) scale(1.1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1);
+    }
+    75% {
+      transform: rotate(270deg) scale(0.9);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes holographic {
+    0%,
+    100% {
+      background: linear-gradient(45deg, #00f5ff, #ff00f5, #f5ff00, #00f5ff);
+      background-size: 400% 400%;
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes matrix-rain {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes circuit-glow {
+    0% {
+      box-shadow: 0 0 5px rgba(56, 189, 248, 0.3),
+        inset 0 0 5px rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6),
+        inset 0 0 10px rgba(56, 189, 248, 0.3);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+  }
+
+  /* Enhanced color palette */
+  --color-neural-50: rgb(240 253 249);
+  --color-neural-100: rgb(209 250 238);
+  --color-neural-200: rgb(153 246 220);
+  --color-neural-300: rgb(74 222 183);
+  --color-neural-400: rgb(16 185 129);
+  --color-neural-500: rgb(5 150 105);
+  --color-neural-600: rgb(4 120 87);
+  --color-neural-700: rgb(6 95 70);
+  --color-neural-800: rgb(6 78 59);
+  --color-neural-900: rgb(6 66 52);
+
+  --color-quantum-50: rgb(238 242 255);
+  --color-quantum-100: rgb(224 231 255);
+  --color-quantum-200: rgb(199 210 254);
+  --color-quantum-300: rgb(165 180 252);
+  --color-quantum-400: rgb(129 140 248);
+  --color-quantum-500: rgb(99 102 241);
+  --color-quantum-600: rgb(79 70 229);
+  --color-quantum-700: rgb(67 56 202);
+  --color-quantum-800: rgb(55 48 163);
+  --color-quantum-900: rgb(49 46 129);
+
+  --color-cyber-50: rgb(240 249 255);
+  --color-cyber-100: rgb(224 242 254);
+  --color-cyber-200: rgb(186 230 253);
+  --color-cyber-300: rgb(125 211 252);
+  --color-cyber-400: rgb(56 189 248);
+  --color-cyber-500: rgb(14 165 233);
+  --color-cyber-600: rgb(2 132 199);
+  --color-cyber-700: rgb(3 105 161);
+  --color-cyber-800: rgb(7 89 133);
+  --color-cyber-900: rgb(12 74 110);
 
   /* Radix UI Colors */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -64,6 +212,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
 }
 
 :root {
@@ -74,7 +224,7 @@
   --card-foreground: 250 250 250;
   --popover: 12 12 12;
   --popover-foreground: 250 250 250;
-  --primary: 34 197 94;
+  --primary: 16 185 129;
   --primary-foreground: 0 0 0;
   --secondary: 24 24 27;
   --secondary-foreground: 250 250 250;
@@ -85,20 +235,36 @@
   --destructive: 239 68 68;
   --border: 39 39 42;
   --input: 39 39 42;
-  --ring: 34 197 94;
-  --chart-1: 59 130 246;
-  --chart-2: 34 197 94;
+  --ring: 16 185 129;
+  --chart-1: 56 189 248;
+  --chart-2: 16 185 129;
   --chart-3: 251 191 36;
-  --chart-4: 168 85 247;
+  --chart-4: 129 140 248;
   --chart-5: 239 68 68;
   --sidebar: 12 12 12;
   --sidebar-foreground: 250 250 250;
-  --sidebar-primary: 34 197 94;
+  --sidebar-primary: 16 185 129;
   --sidebar-primary-foreground: 0 0 0;
   --sidebar-accent: 39 39 42;
   --sidebar-accent-foreground: 250 250 250;
   --sidebar-border: 39 39 42;
-  --sidebar-ring: 34 197 94;
+  --sidebar-ring: 16 185 129;
+
+  /* Neural network inspired gradients */
+  --neural-gradient: linear-gradient(135deg, rgb(16 185 129), rgb(5 150 105));
+  --quantum-gradient: linear-gradient(
+    135deg,
+    rgb(129 140 248),
+    rgb(99 102 241)
+  );
+  --cyber-gradient: linear-gradient(135deg, rgb(56 189 248), rgb(14 165 233));
+  --holographic-gradient: linear-gradient(
+    45deg,
+    #00f5ff,
+    #ff00f5,
+    #f5ff00,
+    #00f5ff
+  );
 }
 
 .dark {
@@ -108,7 +274,7 @@
   --card-foreground: 250 250 250;
   --popover: 12 12 12;
   --popover-foreground: 250 250 250;
-  --primary: 34 197 94;
+  --primary: 16 185 129;
   --primary-foreground: 0 0 0;
   --secondary: 24 24 27;
   --secondary-foreground: 250 250 250;
@@ -119,85 +285,234 @@
   --destructive: 239 68 68;
   --border: 39 39 42;
   --input: 39 39 42;
-  --ring: 34 197 94;
-  --chart-1: 59 130 246;
-  --chart-2: 34 197 94;
+  --ring: 16 185 129;
+  --chart-1: 56 189 248;
+  --chart-2: 16 185 129;
   --chart-3: 251 191 36;
-  --chart-4: 168 85 247;
+  --chart-4: 129 140 248;
   --chart-5: 239 68 68;
   --sidebar: 12 12 12;
   --sidebar-foreground: 250 250 250;
-  --sidebar-primary: 34 197 94;
+  --sidebar-primary: 16 185 129;
   --sidebar-primary-foreground: 0 0 0;
   --sidebar-accent: 39 39 42;
   --sidebar-accent-foreground: 250 250 250;
   --sidebar-border: 39 39 42;
-  --sidebar-ring: 34 197 94;
+  --sidebar-ring: 16 185 129;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   body {
-    @apply bg-black text-white antialiased;
+    @apply bg-slate-950 text-white antialiased;
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.5;
+    background: radial-gradient(
+      ellipse at top,
+      rgba(16, 185, 129, 0.05) 0%,
+      rgba(8, 8, 8, 0.95) 100%
+    );
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     @apply font-semibold tracking-tight;
     line-height: 1.2;
   }
-  
+
   .container {
     @apply px-4 mx-auto;
-    max-width: 1200px;
-  }
-  
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+    max-width: 1400px;
   }
 
-  /* Modern utility classes */
+  /* Smooth scrolling with enhanced behavior */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+
+  /* Enhanced utility classes */
   .text-balance {
     text-wrap: balance;
   }
 
+  /* Advanced glass morphism effects */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-slate-800/20 backdrop-blur-xl border border-slate-700/30;
+    backdrop-filter: blur(16px) saturate(180%);
   }
 
   .glass-hover {
-    @apply hover:bg-white/10 hover:border-white/20 transition-all duration-300;
+    @apply hover:bg-slate-800/30 hover:border-slate-600/40 transition-all duration-300;
+  }
+
+  .glass-intense {
+    @apply bg-slate-800/40 backdrop-blur-2xl border border-slate-600/40;
+    backdrop-filter: blur(24px) saturate(200%);
+  }
+
+  /* Neural network inspired gradients */
+  .gradient-neural {
+    background: var(--neural-gradient);
+  }
+
+  .gradient-quantum {
+    background: var(--quantum-gradient);
+  }
+
+  .gradient-cyber {
+    background: var(--cyber-gradient);
+  }
+
+  .gradient-holographic {
+    background: var(--holographic-gradient);
+    background-size: 400% 400%;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-neural-400 to-cyber-400 bg-clip-text text-transparent;
   }
 
+  .gradient-text-quantum {
+    @apply bg-gradient-to-r from-quantum-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-cyber {
+    @apply bg-gradient-to-r from-cyber-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  /* Enhanced section styling */
   .section-padding {
-    @apply py-16 lg:py-20;
+    @apply py-20 lg:py-32;
   }
 
+  .section-padding-sm {
+    @apply py-16 lg:py-24;
+  }
+
+  /* Modern card components */
   .card-modern {
-    @apply bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl p-6 hover:bg-zinc-900/70 transition-all duration-300;
+    @apply bg-slate-800/30 backdrop-blur-xl border border-slate-700/30 rounded-3xl p-8 hover:bg-slate-800/40 hover:border-slate-600/40 transition-all duration-500;
   }
 
+  .card-neural {
+    @apply bg-slate-900/40 backdrop-blur-2xl border border-slate-700/30 rounded-3xl p-8 relative overflow-hidden;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 0
+    );
+    background-size: 24px 24px;
+  }
+
+  .card-quantum {
+    @apply bg-slate-900/50 backdrop-blur-2xl border border-slate-600/30 rounded-3xl p-8 relative;
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(129, 140, 248, 0.05) 60deg,
+      transparent 120deg,
+      rgba(16, 185, 129, 0.05) 180deg,
+      transparent 240deg,
+      rgba(129, 140, 248, 0.05) 300deg,
+      transparent 360deg
+    );
+  }
+
+  /* Enhanced button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-green-400 to-blue-400 text-black font-medium px-6 py-2.5 rounded-lg hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300;
+    @apply bg-gradient-to-r from-neural-400 to-cyber-400 text-black font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-neural-400/25 hover:scale-105 transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-zinc-800/50 hover:bg-zinc-800 text-white border border-zinc-700 px-6 py-2.5 rounded-lg font-medium transition-all duration-300;
+    @apply bg-slate-800/50 backdrop-blur-sm hover:bg-slate-700/50 text-white border border-slate-600/30 hover:border-slate-500/40 px-8 py-4 rounded-2xl font-medium transition-all duration-300;
+  }
+
+  .btn-quantum {
+    @apply bg-gradient-to-r from-quantum-500 to-purple-500 text-white font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-quantum-400/25 hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-cyber {
+    @apply bg-gradient-to-r from-cyber-500 to-blue-500 text-white font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-cyber-400/25 hover:scale-105 transition-all duration-300;
+  }
+
+  /* Neural grid and circuit patterns */
+  .neural-grid {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 0
+    );
+  }
+
+  .circuit-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(56, 189, 248, 0.1) 2px,
+      rgba(56, 189, 248, 0.1) 4px
+    );
+  }
+
+  .quantum-mesh {
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(129, 140, 248, 0.1) 60deg,
+      transparent 120deg,
+      rgba(16, 185, 129, 0.1) 180deg,
+      transparent 240deg,
+      rgba(129, 140, 248, 0.1) 300deg,
+      transparent 360deg
+    );
+  }
+
+  /* Interactive hover states */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-102 hover:-translate-y-1;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-neural-400/20;
+  }
+
+  .hover-quantum-glow {
+    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-quantum-400/20;
+  }
+
+  .hover-cyber-glow {
+    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-cyber-400/20;
+  }
+
+  /* Status indicators */
+  /* .status-active {
+    @apply bg-emerald-400 animate-neural-pulse;
+  } */
+
+  /* .status-processing {
+    @apply bg-cyber-400 animate-quantum-spin;
+  }
+
+  .status-automated {
+    @apply bg-purple-400 animate-holographic;
+  } */
+
+  .status-pending {
+    @apply bg-slate-600;
   }
 }
 
-/* Custom animations */
+/* Enhanced custom animations */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -216,4 +531,56 @@
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out;
+}
+
+.animate-neural-pulse {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.animate-data-flow {
+  animation: data-flow 4s linear infinite;
+}
+
+.animate-quantum-spin {
+  animation: quantum-spin 8s linear infinite;
+}
+
+.animate-holographic {
+  animation: holographic 6s ease-in-out infinite;
+}
+
+.animate-matrix-rain {
+  animation: matrix-rain 15s linear infinite;
+}
+
+.animate-circuit-glow {
+  animation: circuit-glow 2s ease-in-out infinite alternate;
+}
+
+/* Responsive design enhancements */
+@media (max-width: 768px) {
+  .container {
+    @apply px-6;
+  }
+
+  .section-padding {
+    @apply py-16;
+  }
+
+  .section-padding-sm {
+    @apply py-12;
+  }
+
+  .card-modern,
+  .card-neural,
+  .card-quantum {
+    @apply p-6 rounded-2xl;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-quantum,
+  .btn-cyber {
+    @apply px-6 py-3 text-sm rounded-xl;
+  }
 }

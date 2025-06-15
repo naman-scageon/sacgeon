@@ -8,3 +8,4 @@ export { ArticlesSection } from './articles-section';
 export { ClosingSection } from './closing-section';
 export { AboutSection } from './about-section';
 export { AiConceptDemo } from './ai-concept-demo';
+export { AiArchitectureSection } from './ai-architecture-section';

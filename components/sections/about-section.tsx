@@ -1,211 +1,146 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { aboutSection } from "@/constants/site-data";
-import Image from "next/image";
-import { Users, Award, Target, Zap, Shield, Clock } from "lucide-react";
+import { Database, Brain, Shield } from "lucide-react";
+
+interface CapabilityProps {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  delay: number;
+}
+
+const Capability: React.FC<CapabilityProps> = ({
+  icon: Icon,
+  title,
+  description,
+  delay,
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.5, delay }}
+    whileHover={{ scale: 1.02, y: -2 }}
+    className="group relative p-6 rounded-2xl bg-slate-900/30 backdrop-blur-sm border border-slate-700/20 hover:border-emerald-500/30 hover:bg-slate-900/40 transition-all duration-300"
+  >
+    <div className="relative z-10">
+      {/* Icon */}
+      <div className="mb-4">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+          <Icon className="w-6 h-6 text-black" />
+        </div>
+      </div>
+
+      {/* Content */}
+      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors duration-300">
+        {title}
+      </h3>
+      <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+        {description}
+      </p>
+    </div>
+  </motion.div>
+);
 
 export function AboutSection() {
-  const { title, subTitle, description, img } = aboutSection;
-
   const capabilities = [
     {
-      icon: Target,
-      title: "Strategic Approach",
-      description: "We focus on high-impact initiatives that deliver measurable business outcomes, not just technology implementations."
+      icon: Database,
+      title: "Data Engineering Excellence",
+      description:
+        "Modern data platforms, cloud migrations, and real-time pipelines that scale with your business growth.",
+      delay: 0.1,
     },
     {
-      icon: Zap,
-      title: "Rapid Deployment",
-      description: "Our proven methodologies enable faster project delivery - weeks instead of months for most implementations."
+      icon: Brain,
+      title: "AI Implementation",
+      description:
+        "Custom AI models, NLP solutions, and MLOps frameworks that deliver measurable business outcomes.",
+      delay: 0.2,
     },
     {
       icon: Shield,
-      title: "Enterprise-Grade",
-      description: "Security, compliance, and scalability built into every solution we deliver for mid-market and enterprise clients."
-    }
-  ];
-
-  const stats = [
-    { number: "50+", label: "Projects Delivered" },
-    { number: "95%", label: "Client Satisfaction" },
-    { number: "6x", label: "Average ROI" },
-    { number: "24/7", label: "Support Coverage" }
+      title: "Enterprise-Grade Security",
+      description:
+        "HIPAA, SOX, and industry-compliant solutions with enterprise security and governance built-in.",
+      delay: 0.3,
+    },
   ];
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
-      {/* Subtle background effects */}
+    <section className="relative py-16 overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/95 to-slate-950" />
+
+      {/* Subtle animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-gradient-to-r from-green-400/3 to-blue-400/3 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/2 right-1/3 w-96 h-96 bg-gradient-to-r from-purple-400/3 to-pink-400/3 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-gradient-to-r from-emerald-500/5 to-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/6 w-64 h-64 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container relative z-10">
         <div className="max-w-6xl mx-auto">
-          
-          {/* Company Introduction */}
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          {/* Header */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-8"
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.4 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-sm font-medium mb-6"
             >
+              <div className="w-2 h-2 rounded-full bg-emerald-400" />
               About Scageon
             </motion.span>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
-              {subTitle}
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+              Your trusted partner for{" "}
+              <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+                data modernization
+              </span>{" "}
+              and AI implementation
             </h2>
-            
-            <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-              {title}
-            </p>
 
-            <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto mb-12" />
-            
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              {description}
+            <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              We are a pioneering IT services firm dedicated to driving business
+              transformation through cutting-edge data analytics, modern data
+              platforms, and targeted AI solutions.
             </p>
           </motion.div>
 
-          {/* Key Capabilities */}
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8 mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {capabilities.map((capability, index) => {
-              const Icon = capability.icon;
-              return (
-                <motion.div 
-                  key={index}
-                  className="text-center p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-white/5 hover:bg-white/5 transition-all duration-300"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-400 rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">{capability.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{capability.description}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          {/* Capabilities Grid */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {capabilities.map((capability, index) => (
+              <Capability key={index} {...capability} />
+            ))}
+          </div>
 
-          {/* Stats Section */}
-          <motion.div 
-            className="bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8 border border-white/5 mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Proven Track Record</h3>
-              <p className="text-gray-400">Numbers that speak to our commitment to client success</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <motion.div 
-                  key={index}
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                >
-                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Partner Logos */}
-          <motion.div 
+          {/* Value Proposition */}
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-8"
-            >
-              Technology Partners
-            </motion.span>
-            
-            <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
-              We work with industry-leading technology partners to deliver best-in-class solutions
-            </p>
-
-            {/* Partner logos with cleaner presentation */}
-            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-              {img.map((imageSrc, index) => (
-                <motion.div 
-                  key={index} 
-                  className="relative h-10 w-28 opacity-40 hover:opacity-80 transition-opacity duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 0.4, y: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.1, opacity: 0.8 }}
-                >
-                  <Image
-                    src={imageSrc}
-                    alt={`Technology Partner ${index + 1}`}
-                    fill
-                    className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                    priority={index === 0}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Call to Action */}
-          <motion.div 
-            className="text-center mt-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <div className="bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-2xl p-8 border border-white/10">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Ready to Work with Scageon?
-              </h3>
-              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                Let's discuss how our expertise can help your organization achieve its data and AI transformation goals.
+            <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-slate-900/30 backdrop-blur-sm border border-slate-700/20">
+              <p className="text-lg text-slate-300 leading-relaxed">
+                We combine deep technical expertise with proven methodologies to
+                deliver data platforms, analytics solutions, and AI
+                implementations that actually work in enterprise environments.
+                Our focus is on{" "}
+                <span className="text-emerald-400 font-semibold">
+                  measurable business outcomes
+                </span>
+                , not just technology implementations.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold rounded-full hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300"
-                >
-                  <Users className="w-5 h-5" />
-                  Meet Our Team
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300"
-                >
-                  <Award className="w-5 h-5" />
-                  View Our Work
-                </motion.button>
-              </div>
             </div>
           </motion.div>
         </div>

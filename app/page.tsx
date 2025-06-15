@@ -10,6 +10,7 @@ import {
   AiConceptDemo,
 } from "@/components/sections";
 import { TestimonialSection } from "@/components/sections/testimonial-section";
+import { AiArchitectureSection } from "@/components/sections/ai-architecture-section";
 
 export default function Home() {
   return (
@@ -17,10 +18,12 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <CasesSection />
-      <TestimonialSection />
+      {/* <AiArchitectureSection /> */}
       <TechStackSection />
-      <ArticlesSection />
+      <AiConceptDemo />
+      <CasesSection />
+      {/* <TestimonialSection /> */}
+      {/* <ArticlesSection /> */}
       <ClosingSection />
     </BaseLayout>
   );

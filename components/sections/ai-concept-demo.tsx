@@ -1,248 +1,478 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Database, Brain, Zap, ArrowRight, TrendingUp, Network, Cpu, Bot } from "lucide-react";
+import {
+  Database,
+  Brain,
+  Zap,
+  ArrowRight,
+  TrendingUp,
+  Users,
+  Target,
+  BarChart3,
+  Clock,
+  CheckCircle,
+  Play,
+  Lightbulb,
+  Workflow,
+  Globe,
+  Shield,
+} from "lucide-react";
 
-// Interactive AI Pipeline Visualization Component
-const AIPipelineDemo = () => {
+// Business transformation stages
+const transformationStages = [
+  {
+    id: "data-connection",
+    title: "Connect Your Data",
+    description: "Seamlessly integrate with your existing business systems",
+    icon: Database,
+    color: "from-blue-500 to-cyan-400",
+    duration: "2-3 weeks",
+    businessOutcome: "Unified data visibility",
+    features: [
+      "One-click integrations",
+      "Real-time synchronization",
+      "Data quality monitoring",
+      "Compliance & security",
+    ],
+    metrics: {
+      setup: "3 weeks",
+      integration: "50+ sources",
+      accuracy: "99.9%",
+    },
+  },
+  {
+    id: "ai-training",
+    title: "AI Learning Phase",
+    description: "Our AI models learn your business patterns and objectives",
+    icon: Brain,
+    color: "from-purple-500 to-pink-400",
+    duration: "1-2 weeks",
+    businessOutcome: "Custom AI for your business",
+    features: [
+      "Automated pattern recognition",
+      "Business rule learning",
+      "Performance optimization",
+      "Continuous improvement",
+    ],
+    metrics: {
+      training: "2 weeks",
+      patterns: "1000+",
+      accuracy: "92%+",
+    },
+  },
+  {
+    id: "insights-generation",
+    title: "Generate Insights",
+    description: "AI delivers actionable recommendations for growth",
+    icon: Lightbulb,
+    color: "from-amber-500 to-orange-400",
+    duration: "Real-time",
+    businessOutcome: "Data-driven decisions",
+    features: [
+      "Predictive analytics",
+      "Opportunity identification",
+      "Risk assessment",
+      "Performance forecasting",
+    ],
+    metrics: {
+      insights: "100+ daily",
+      speed: "<1 second",
+      relevance: "95%+",
+    },
+  },
+  {
+    id: "business-impact",
+    title: "Drive Results",
+    description: "Transform insights into measurable business outcomes",
+    icon: TrendingUp,
+    color: "from-green-500 to-emerald-400",
+    duration: "Ongoing",
+    businessOutcome: "Measurable ROI growth",
+    features: [
+      "Automated actions",
+      "Performance tracking",
+      "ROI measurement",
+      "Success optimization",
+    ],
+    metrics: {
+      roi: "300%+",
+      efficiency: "+250%",
+      growth: "+40%",
+    },
+  },
+];
+
+// Success stories/use cases
+const successStories = [
+  {
+    industry: "E-commerce",
+    challenge: "Low conversion rates",
+    solution: "AI-powered personalization",
+    result: "+67% conversion increase",
+    icon: Target,
+  },
+  {
+    industry: "Manufacturing",
+    challenge: "Equipment downtime",
+    solution: "Predictive maintenance",
+    result: "85% reduction in downtime",
+    icon: Shield,
+  },
+  {
+    industry: "Finance",
+    challenge: "Risk assessment",
+    solution: "Real-time risk scoring",
+    result: "40% faster decisions",
+    icon: BarChart3,
+  },
+];
+
+const InteractiveDemo = () => {
   const [activeStage, setActiveStage] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  const pipelineStages = [
-    {
-      id: 0,
-      name: "Data Ingestion",
-      icon: Database,
-      color: "from-blue-500 to-cyan-400",
-      description: "Multi-source data collection",
-      visualization: "Animated data streams flowing in",
-      concepts: ["Real-time APIs", "Database integration", "IoT sensors", "Document processing"]
-    },
-    {
-      id: 1,
-      name: "AI Processing",
-      icon: Brain,
-      color: "from-purple-500 to-indigo-400",
-      description: "Neural network analysis",
-      visualization: "Neural connections pulsing",
-      concepts: ["Deep learning", "Pattern recognition", "Predictive modeling", "NLP analysis"]
-    },
-    {
-      id: 2,
-      name: "Intelligence Layer",
-      icon: Cpu,
-      color: "from-green-500 to-emerald-400",
-      description: "Decision engine",
-      visualization: "Decision trees branching",
-      concepts: ["Automated decisions", "Risk assessment", "Optimization", "Recommendations"]
-    },
-    {
-      id: 3,
-      name: "Business Impact",
-      icon: TrendingUp,
-      color: "from-orange-500 to-red-400",
-      description: "Measurable outcomes",
-      visualization: "Growth metrics ascending",
-      concepts: ["Revenue growth", "Cost reduction", "Efficiency gains", "Competitive advantage"]
-    }
-  ];
-
+  // Auto-play demo
   useEffect(() => {
-    if (isInView && !isRunning) {
-      setIsRunning(true);
+    if (isInView && isPlaying) {
       const interval = setInterval(() => {
-        setActiveStage((prev) => (prev + 1) % pipelineStages.length);
+        setActiveStage((prev) => (prev + 1) % transformationStages.length);
+        setProgress((prev) => (prev + 25) % 100);
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [isInView, isRunning, pipelineStages.length]);
+  }, [isInView, isPlaying]);
+
+  const startDemo = () => {
+    setIsPlaying(true);
+    setProgress(0);
+  };
 
   return (
-    <div ref={ref} className="relative w-full max-w-4xl mx-auto">
-      {/* Pipeline Overview */}
-      <div className="mb-12 text-center">
-        <h3 className="text-2xl font-bold text-white mb-4">
-          AI Pipeline Visualization
-        </h3>
-        <p className="text-gray-400">
-          Watch how we transform raw data into intelligent business solutions
+    <div ref={ref} className="max-w-6xl mx-auto">
+      {/* Demo Header */}
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full text-sm text-slate-600 mb-4 border border-slate-200">
+          <Play className="w-4 h-4" />
+          Interactive Demo
+        </div>
+        <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
+          Your AI Transformation
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {" "}
+            Journey
+          </span>
+        </h2>
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+          See how businesses like yours achieve measurable results in weeks, not
+          months. Click play to watch the transformation process.
         </p>
-      </div>
 
-      {/* Interactive Pipeline */}
-      <div className="relative">
-        {/* Pipeline Flow */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-8">
-          {pipelineStages.map((stage, index) => {
-            const Icon = stage.icon;
-            const isActive = index === activeStage;
-            const isCompleted = index < activeStage;
-            
-            return (
-              <motion.div
-                key={stage.id}
-                className={`relative flex-1 p-6 rounded-2xl border transition-all duration-700 cursor-pointer ${
-                  isActive 
-                    ? 'bg-white/10 border-white/30 scale-105 shadow-xl' 
+        {!isPlaying && (
+          <button
+            onClick={startDemo}
+            className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition-colors duration-200"
+          >
+            <Play className="w-4 h-4" />
+            Start Demo
+          </button>
+        )}
+      </motion.div>
+
+      {/* Progress Bar */}
+      {isPlaying && (
+        <div className="mb-8">
+          <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${(activeStage + 1) * 25}%` }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+          <div className="flex justify-between text-xs text-slate-500 mt-2">
+            <span>Connect</span>
+            <span>Learn</span>
+            <span>Analyze</span>
+            <span>Results</span>
+          </div>
+        </div>
+      )}
+
+      {/* Transformation Stages */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {transformationStages.map((stage, index) => {
+          const Icon = stage.icon;
+          const isActive = index === activeStage;
+          const isCompleted = index < activeStage && isPlaying;
+
+          return (
+            <motion.div
+              key={stage.id}
+              className={`relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${
+                isActive
+                  ? "bg-white shadow-lg border-blue-200 scale-105"
+                  : isCompleted
+                  ? "bg-green-50 border-green-200 shadow-md"
+                  : "bg-white border-slate-200 hover:border-slate-300 hover:shadow-md"
+              }`}
+              onClick={() => !isPlaying && setActiveStage(index)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+            >
+              {/* Stage Icon */}
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${
+                  isActive
+                    ? `bg-gradient-to-r ${stage.color}`
                     : isCompleted
-                    ? 'bg-white/5 border-green-400/30'
-                    : 'bg-white/[0.02] border-white/10 hover:bg-white/5'
+                    ? "bg-green-500"
+                    : "bg-slate-100"
                 }`}
-                onClick={() => setActiveStage(index)}
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                {/* Stage Icon */}
-                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  isActive 
-                    ? `bg-gradient-to-r ${stage.color}` 
-                    : isCompleted
-                    ? 'bg-green-400/20'
-                    : 'bg-white/10'
-                }`}>
-                  <Icon className={`w-8 h-8 transition-colors duration-500 ${
-                    isActive || isCompleted ? 'text-white' : 'text-gray-400'
-                  }`} />
-                </div>
+                {isCompleted ? (
+                  <CheckCircle className="w-6 h-6 text-white" />
+                ) : (
+                  <Icon
+                    className={`w-6 h-6 ${
+                      isActive ? "text-white" : "text-slate-600"
+                    }`}
+                  />
+                )}
+              </div>
 
-                {/* Stage Content */}
-                <h4 className={`text-lg font-semibold mb-2 transition-colors duration-500 ${
-                  isActive ? 'text-white' : isCompleted ? 'text-green-400' : 'text-gray-300'
-                }`}>
-                  {stage.name}
-                </h4>
-                
-                <p className={`text-sm mb-4 transition-colors duration-500 ${
-                  isActive ? 'text-gray-300' : 'text-gray-500'
-                }`}>
+              {/* Stage Content */}
+              <div>
+                <h3
+                  className={`text-lg font-semibold mb-2 ${
+                    isActive ? "text-slate-900" : "text-slate-700"
+                  }`}
+                >
+                  {stage.title}
+                </h3>
+                <p className="text-sm text-slate-600 mb-3">
                   {stage.description}
                 </p>
 
-                {/* Concepts */}
+                {/* Duration & Outcome */}
                 <div className="space-y-2">
-                  {stage.concepts.map((concept, conceptIndex) => (
-                    <motion.div
-                      key={conceptIndex}
-                      className={`text-xs px-2 py-1 rounded-full transition-all duration-500 ${
-                        isActive 
-                          ? 'bg-white/20 text-white' 
-                          : 'bg-white/5 text-gray-500'
-                      }`}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        opacity: isActive ? 1 : 0.6, 
-                        scale: isActive ? 1 : 0.9 
-                      }}
-                      transition={{ delay: conceptIndex * 0.1 }}
-                    >
-                      {concept}
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Active Indicator */}
-                {isActive && (
-                  <motion.div
-                    className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-green-400 to-blue-400 rounded-full"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                )}
-
-                {/* Completion Indicator */}
-                {isCompleted && (
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full" />
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-500">Timeline:</span>
+                    <span className="font-medium text-slate-700">
+                      {stage.duration}
+                    </span>
                   </div>
-                )}
+                  <div
+                    className={`text-xs px-2 py-1 rounded-full ${
+                      isActive
+                        ? "bg-blue-50 text-blue-700 border border-blue-200"
+                        : isCompleted
+                        ? "bg-green-50 text-green-700 border border-green-200"
+                        : "bg-slate-50 text-slate-600 border border-slate-200"
+                    }`}
+                  >
+                    {stage.businessOutcome}
+                  </div>
+                </div>
+              </div>
 
-                {/* Connection Line */}
-                {index < pipelineStages.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-white/20 to-transparent" />
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
+              {/* Progress Indicator */}
+              {isActive && isPlaying && (
+                <div className="absolute top-2 right-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+                </div>
+              )}
+            </motion.div>
+          );
+        })}
+      </div>
 
-        {/* Active Stage Details */}
+      {/* Active Stage Details */}
+      <AnimatePresence mode="wait">
         <motion.div
           key={activeStage}
-          className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+          className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${pipelineStages[activeStage].color} flex items-center justify-center`}>
-              {(() => {
-                const Icon = pipelineStages[activeStage].icon;
-                return <Icon className="w-6 h-6 text-white" />;
-              })()}
-            </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Stage Details */}
             <div>
-              <h4 className="text-xl font-bold text-white">
-                {pipelineStages[activeStage].name}
-              </h4>
-              <p className="text-gray-400">
-                {pipelineStages[activeStage].visualization}
-              </p>
-            </div>
-          </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className={`w-10 h-10 rounded-lg bg-gradient-to-r ${transformationStages[activeStage].color} flex items-center justify-center`}
+                >
+                  {(() => {
+                    const Icon = transformationStages[activeStage].icon;
+                    return <Icon className="w-5 h-5 text-white" />;
+                  })()}
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">
+                  {transformationStages[activeStage].title}
+                </h3>
+              </div>
 
-          {/* Interactive Elements */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h5 className="text-sm font-semibold text-white mb-3">Key Technologies</h5>
-              <div className="flex flex-wrap gap-2">
-                {pipelineStages[activeStage].concepts.map((concept, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 bg-white/10 text-white text-sm rounded-full border border-white/20"
-                  >
-                    {concept}
-                  </span>
-                ))}
+              <p className="text-slate-600 mb-6">
+                {transformationStages[activeStage].description}
+              </p>
+
+              <div>
+                <h4 className="text-sm font-medium text-slate-900 mb-3">
+                  Key Features:
+                </h4>
+                <div className="space-y-2">
+                  {transformationStages[activeStage].features.map(
+                    (feature, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-2 text-sm text-slate-600"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        {feature}
+                      </motion.div>
+                    )
+                  )}
+                </div>
               </div>
             </div>
-            
+
+            {/* Metrics */}
             <div>
-              <h5 className="text-sm font-semibold text-white mb-3">Business Value</h5>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Processing Speed</span>
-                  <span className="text-sm text-green-400">+{85 + activeStage * 5}%</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Accuracy</span>
-                  <span className="text-sm text-green-400">+{90 + activeStage * 2}%</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Cost Efficiency</span>
-                  <span className="text-sm text-green-400">+{70 + activeStage * 7}%</span>
-                </div>
+              <h4 className="text-sm font-medium text-slate-900 mb-4">
+                Performance Metrics:
+              </h4>
+              <div className="space-y-4">
+                {Object.entries(transformationStages[activeStage].metrics).map(
+                  ([key, value], index) => (
+                    <motion.div
+                      key={key}
+                      className="bg-slate-50 rounded-lg p-4"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-slate-600 capitalize">
+                          {key}
+                        </span>
+                        <span className="text-lg font-semibold text-slate-900">
+                          {value}
+                        </span>
+                      </div>
+                    </motion.div>
+                  )
+                )}
+              </div>
+
+              {/* Business Impact */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-100">
+                <h5 className="text-sm font-medium text-slate-900 mb-2">
+                  Business Impact:
+                </h5>
+                <p className="text-sm text-slate-700">
+                  {transformationStages[activeStage].businessOutcome}
+                </p>
               </div>
             </div>
           </div>
         </motion.div>
-      </div>
+      </AnimatePresence>
 
-      {/* Call to Action */}
+      {/* Success Stories */}
       <motion.div
-        className="text-center mt-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        className="mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.8, duration: 0.6 }}
       >
-        <button className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold rounded-full hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300">
-          Build Your AI Pipeline
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </button>
+        <h3 className="text-xl font-semibold text-slate-900 text-center mb-8">
+          Real Results from Real Businesses
+        </h3>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {successStories.map((story, index) => {
+            const Icon = story.icon;
+
+            return (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 1 + index * 0.1, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-slate-600" />
+                  </div>
+                  <span className="text-sm font-medium text-slate-900">
+                    {story.industry}
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-slate-500">Challenge:</span>
+                    <p className="text-sm text-slate-700">{story.challenge}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-500">Solution:</span>
+                    <p className="text-sm text-slate-700">{story.solution}</p>
+                  </div>
+                  <div className="pt-2 border-t border-slate-100">
+                    <span className="text-xs text-slate-500">Result:</span>
+                    <p className="text-lg font-semibold text-green-600">
+                      {story.result}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* CTA Section */}
+      <motion.div
+        className="text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 1.2, duration: 0.6 }}
+      >
+        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-2xl p-8 border border-slate-200">
+          <h3 className="text-xl font-semibold text-slate-900 mb-3">
+            Ready to Start Your Transformation?
+          </h3>
+          <p className="text-slate-600 mb-6 max-w-md mx-auto">
+            Join hundreds of businesses already seeing measurable results with
+            our AI platform.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition-colors duration-200">
+              Start Free Trial
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button className="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-lg font-medium border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+              <Users className="w-4 h-4" />
+              Talk to Sales
+            </button>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
@@ -250,44 +480,15 @@ const AIPipelineDemo = () => {
 
 export function AiConceptDemo() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500/5 to-cyan-500/5 rounded-full blur-3xl" />
+    <section className="py-20 bg-slate-50 relative overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 tracking-wider mb-6"
-          >
-            Interactive Demo
-          </motion.span>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            See AI Transformation
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              {" "}in Action
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Experience how we transform raw business data into intelligent, actionable insights through our AI-native approach.
-          </p>
-        </motion.div>
-
-        {/* Interactive Demo */}
-        <AIPipelineDemo />
+        <InteractiveDemo />
       </div>
     </section>
   );
