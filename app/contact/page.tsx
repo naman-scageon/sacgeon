@@ -3,7 +3,15 @@
 import { motion } from "framer-motion";
 import { BaseLayout } from "@/components/layout/base-layout";
 import { useState } from "react";
-import { Calendar, MessageCircle, Phone, Mail, MapPin, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+  User,
+  Target,
+  FileText,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
@@ -18,7 +26,7 @@ export default function ContactPage() {
     challenge: "",
     budget: "",
     timeline: "",
-    message: ""
+    message: "",
   });
 
   const industries = [
@@ -27,16 +35,16 @@ export default function ContactPage() {
     "Financial Services",
     "Retail & E-commerce",
     "Technology",
-    "Other"
+    "Other",
   ];
 
   const budgetRanges = [
     "Under $50K",
-    "$50K - $100K", 
+    "$50K - $100K",
     "$100K - $250K",
     "$250K - $500K",
     "$500K+",
-    "Not sure yet"
+    "Not sure yet",
   ];
 
   const timelines = [
@@ -44,13 +52,17 @@ export default function ContactPage() {
     "Near term (3-6 months)",
     "Mid term (6-12 months)",
     "Long term (12+ months)",
-    "Just exploring"
+    "Just exploring",
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -64,68 +76,72 @@ export default function ContactPage() {
 
   return (
     <BaseLayout>
-      <div className="pt-20 pb-24 bg-black min-h-screen">
+      <div className="bg-black min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
           <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Let's Build Your{" "}
-              <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Let&apos;s Build Your{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Data Future
               </span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Get a free consultation to discuss your specific needs and learn how our proven methodologies can help your organization achieve measurable results.
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Get a free consultation to discuss your specific needs and learn
+              how our proven methodologies can help your organization achieve
+              measurable results.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            
+          <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
             {/* Contact Form */}
             <motion.div
-              className="lg:col-span-2"
-              initial={{ opacity: 0, x: -20 }}
+              className="lg:col-span-3"
+              initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <div className="bg-white/[0.02] backdrop-blur-sm border border-white/5 rounded-2xl p-8">
+              <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700/40 p-6">
                 {/* Form Progress */}
-                <div className="flex items-center justify-between mb-8">
-                  {[1, 2, 3].map((step) => (
-                    <div key={step} className="flex items-center">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                        step <= formStep 
-                          ? 'bg-gradient-to-r from-green-400 to-blue-400 text-white' 
-                          : 'bg-white/10 text-gray-400'
-                      }`}>
-                        {step < formStep ? <CheckCircle className="w-4 h-4" /> : step}
-                      </div>
-                      {step < 3 && (
-                        <div className={`w-16 h-0.5 ml-4 ${
-                          step < formStep ? 'bg-gradient-to-r from-green-400 to-blue-400' : 'bg-white/10'
-                        }`} />
-                      )}
-                    </div>
-                  ))}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-sm font-medium text-white">
+                    Step {formStep} of 3
+                  </span>
+                  <div className="flex gap-1">
+                    {[1, 2, 3].map((step) => (
+                      <div
+                        key={step}
+                        className={`w-8 h-1 transition-colors duration-200 ${
+                          step <= formStep ? "bg-blue-500" : "bg-slate-700"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Step 1: Basic Information */}
                 {formStep === 1 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="space-y-6"
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
                   >
-                    <h3 className="text-2xl font-bold text-white mb-6">Tell us about yourself</h3>
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <User className="w-4 h-4 text-blue-400" />
+                      <h3 className="text-lg font-semibold text-white">
+                        Basic Information
+                      </h3>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Full Name *
                         </label>
                         <input
@@ -133,14 +149,14 @@ export default function ContactPage() {
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                           placeholder="John Smith"
                           required
                         />
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Work Email *
                         </label>
                         <input
@@ -148,16 +164,16 @@ export default function ContactPage() {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                           placeholder="john@company.com"
                           required
                         />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Company Name *
                         </label>
                         <input
@@ -165,14 +181,14 @@ export default function ContactPage() {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                           placeholder="Your Company"
                           required
                         />
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Phone Number
                         </label>
                         <input
@@ -180,22 +196,22 @@ export default function ContactPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                           placeholder="+1 (555) 123-4567"
                         />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Company Size
                         </label>
                         <select
                           name="employees"
                           value={formData.employees}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white focus:outline-none focus:border-blue-500 transition-colors text-sm"
                         >
                           <option value="">Select size</option>
                           <option value="1-10">1-10 employees</option>
@@ -205,20 +221,22 @@ export default function ContactPage() {
                           <option value="500+">500+ employees</option>
                         </select>
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Industry
                         </label>
                         <select
                           name="industry"
                           value={formData.industry}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white focus:outline-none focus:border-blue-500 transition-colors text-sm"
                         >
                           <option value="">Select industry</option>
                           {industries.map((industry) => (
-                            <option key={industry} value={industry}>{industry}</option>
+                            <option key={industry} value={industry}>
+                              {industry}
+                            </option>
                           ))}
                         </select>
                       </div>
@@ -229,58 +247,68 @@ export default function ContactPage() {
                 {/* Step 2: Project Details */}
                 {formStep === 2 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="space-y-6"
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
                   >
-                    <h3 className="text-2xl font-bold text-white mb-6">Project Details</h3>
-                    
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="w-4 h-4 text-blue-400" />
+                      <h3 className="text-lg font-semibold text-white">
+                        Project Details
+                      </h3>
+                    </div>
+
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        What's your main challenge? *
+                      <label className="block text-sm font-medium text-slate-300 mb-1">
+                        Main Challenge *
                       </label>
                       <textarea
                         name="challenge"
                         value={formData.challenge}
                         onChange={handleInputChange}
                         rows={4}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
+                        className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm resize-none"
                         placeholder="Describe your current data/AI challenges..."
                         required
                       />
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Budget Range
                         </label>
                         <select
                           name="budget"
                           value={formData.budget}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white focus:outline-none focus:border-blue-500 transition-colors text-sm"
                         >
                           <option value="">Select budget</option>
                           {budgetRanges.map((range) => (
-                            <option key={range} value={range}>{range}</option>
+                            <option key={range} value={range}>
+                              {range}
+                            </option>
                           ))}
                         </select>
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-1">
                           Timeline
                         </label>
                         <select
                           name="timeline"
                           value={formData.timeline}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-green-400 transition-colors"
+                          className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white focus:outline-none focus:border-blue-500 transition-colors text-sm"
                         >
                           <option value="">Select timeline</option>
                           {timelines.map((timeline) => (
-                            <option key={timeline} value={timeline}>{timeline}</option>
+                            <option key={timeline} value={timeline}>
+                              {timeline}
+                            </option>
                           ))}
                         </select>
                       </div>
@@ -291,192 +319,143 @@ export default function ContactPage() {
                 {/* Step 3: Additional Information */}
                 {formStep === 3 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="space-y-6"
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
                   >
-                    <h3 className="text-2xl font-bold text-white mb-6">Anything else?</h3>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <div className="flex items-center gap-2 mb-4">
+                      <FileText className="w-4 h-4 text-blue-400" />
+                      <h3 className="text-lg font-semibold text-white">
                         Additional Details
+                      </h3>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-300 mb-1">
+                        Additional Information
                       </label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        rows={6}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors"
-                        placeholder="Any specific requirements, questions, or additional context you'd like to share..."
+                        rows={5}
+                        className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm resize-none"
+                        placeholder="Any specific requirements, questions, or additional context..."
                       />
                     </div>
 
-                    <div className="bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-lg p-4">
-                      <h4 className="text-white font-semibold mb-2">What happens next?</h4>
-                      <ul className="text-gray-300 text-sm space-y-1">
-                        <li>• We'll review your information within 24 hours</li>
-                        <li>• Schedule a 30-minute discovery call</li>
-                        <li>• Provide a preliminary assessment and recommendations</li>
-                        <li>• If it's a good fit, we'll create a detailed proposal</li>
+                    <div className="bg-blue-500/5 border border-blue-500/20 p-4">
+                      <h4 className="text-white font-medium mb-2 text-sm">
+                        What happens next?
+                      </h4>
+                      <ul className="text-slate-400 text-xs space-y-1">
+                        <li>• Review within 24 hours</li>
+                        <li>• 30-minute discovery call</li>
+                        <li>• Preliminary assessment</li>
+                        <li>• Detailed proposal if aligned</li>
                       </ul>
                     </div>
                   </motion.div>
                 )}
 
                 {/* Form Navigation */}
-                <div className="flex items-center justify-between mt-8">
+                <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-700/50">
                   <Button
                     onClick={prevStep}
                     variant="outline"
-                    className={`border-white/20 text-white hover:bg-white/10 ${
-                      formStep === 1 ? 'invisible' : ''
+                    size="sm"
+                    className={`border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white ${
+                      formStep === 1 ? "invisible" : ""
                     }`}
                   >
                     Previous
                   </Button>
-                  
+
                   {formStep < 3 ? (
                     <Button
                       onClick={nextStep}
-                      className="bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold"
+                      size="sm"
+                      className="bg-blue-500 hover:bg-blue-600 text-white"
                     >
-                      Next Step
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Next
+                      <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                   ) : (
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-green-400 to-blue-400 text-black font-semibold"
+                      size="sm"
+                      className="bg-blue-500 hover:bg-blue-600 text-white"
                     >
-                      Submit Request
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Submit
+                      <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                   )}
                 </div>
               </div>
             </motion.div>
 
-            {/* Contact Information Sidebar */}
+            {/* Sidebar */}
             <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, x: 20 }}
+              className="lg:col-span-2 space-y-6"
+              initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
               {/* Contact Methods */}
-              <div className="bg-white/[0.02] backdrop-blur-sm border border-white/5 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-white mb-6">Get in Touch</h3>
-                
-                <div className="space-y-4">
-                  <a 
+              <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700/40 p-4">
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  Contact Info
+                </h3>
+
+                <div className="space-y-3">
+                  <a
                     href="mailto:info@scageon.com"
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors group"
+                    className="flex items-center gap-3 p-2 hover:bg-slate-800/40 transition-colors group border-l-2 border-transparent hover:border-l-blue-500"
                   >
-                    <div className="w-10 h-10 bg-green-400/20 rounded-lg flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-green-400" />
+                    <div className="w-8 h-8 bg-blue-500/20 flex items-center justify-center">
+                      <Mail className="w-4 h-4 text-blue-400" />
                     </div>
                     <div>
-                      <div className="text-white font-medium group-hover:text-green-400 transition-colors">
+                      <div className="text-white text-sm font-medium group-hover:text-blue-400 transition-colors">
                         Email Us
                       </div>
-                      <div className="text-gray-400 text-sm">info@scageon.com</div>
+                      <div className="text-slate-400 text-xs">
+                        info@scageon.com
+                      </div>
                     </div>
                   </a>
 
-                  <a 
+                  <a
                     href="tel:+11234567890"
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors group"
+                    className="flex items-center gap-3 p-2 hover:bg-slate-800/40 transition-colors group border-l-2 border-transparent hover:border-l-blue-500"
                   >
-                    <div className="w-10 h-10 bg-blue-400/20 rounded-lg flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-blue-400" />
+                    <div className="w-8 h-8 bg-blue-500/20 flex items-center justify-center">
+                      <Phone className="w-4 h-4 text-blue-400" />
                     </div>
                     <div>
-                      <div className="text-white font-medium group-hover:text-blue-400 transition-colors">
+                      <div className="text-white text-sm font-medium group-hover:text-blue-400 transition-colors">
                         Call Us
                       </div>
-                      <div className="text-gray-400 text-sm">+1 (123) 456-7890</div>
+                      <div className="text-slate-400 text-xs">
+                        +1 (123) 456-7890
+                      </div>
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-4 p-3 rounded-lg">
-                    <div className="w-10 h-10 bg-purple-400/20 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-purple-400" />
+                  <div className="flex items-center gap-3 p-2 border-l-2 border-transparent">
+                    <div className="w-8 h-8 bg-blue-500/20 flex items-center justify-center">
+                      <MapPin className="w-4 h-4 text-blue-400" />
                     </div>
                     <div>
-                      <div className="text-white font-medium">Visit Us</div>
-                      <div className="text-gray-400 text-sm">42nd Street, New York</div>
+                      <div className="text-white text-sm font-medium">
+                        Location
+                      </div>
+                      <div className="text-slate-400 text-xs">
+                        42nd Street, New York
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Business Hours */}
-              <div className="bg-white/[0.02] backdrop-blur-sm border border-white/5 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-white mb-6">Business Hours</h3>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Monday - Friday</span>
-                    <span className="text-white">9:00 AM - 6:00 PM EST</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Saturday</span>
-                    <span className="text-white">10:00 AM - 2:00 PM EST</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Sunday</span>
-                    <span className="text-gray-500">Closed</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-3 bg-green-400/10 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-sm font-medium">Available for new projects</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Actions */}
-              <div className="bg-white/[0.02] backdrop-blur-sm border border-white/5 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-white mb-6">Quick Actions</h3>
-                
-                <div className="space-y-3">
-                  <Button 
-                    className="w-full justify-start bg-white/5 hover:bg-white/10 text-white border-white/20"
-                    variant="outline"
-                  >
-                    <Calendar className="w-4 h-4 mr-3" />
-                    Schedule a Call
-                  </Button>
-                  
-                  <Button 
-                    className="w-full justify-start bg-white/5 hover:bg-white/10 text-white border-white/20"
-                    variant="outline"
-                  >
-                    <MessageCircle className="w-4 h-4 mr-3" />
-                    Live Chat
-                  </Button>
-                  
-                  <Button 
-                    className="w-full justify-start bg-white/5 hover:bg-white/10 text-white border-white/20"
-                    variant="outline"
-                  >
-                    <Clock className="w-4 h-4 mr-3" />
-                    Free Assessment
-                  </Button>
-                </div>
-              </div>
-
-              {/* Response Time */}
-              <div className="bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-2xl p-6 border border-white/10">
-                <h4 className="text-white font-semibold mb-2">Response Time</h4>
-                <p className="text-gray-300 text-sm mb-4">
-                  We typically respond to all inquiries within 2-4 hours during business hours.
-                </p>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-green-400 text-sm">Fast response guaranteed</span>
                 </div>
               </div>
             </motion.div>

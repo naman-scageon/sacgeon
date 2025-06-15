@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Brain, Shield } from "lucide-react";
+import { Database, Brain, Shield, CheckCircle } from "lucide-react";
 
 interface CapabilityProps {
   icon: React.ElementType;
@@ -22,21 +22,21 @@ const Capability: React.FC<CapabilityProps> = ({
     viewport={{ once: true, margin: "-50px" }}
     transition={{ duration: 0.5, delay }}
     whileHover={{ scale: 1.02, y: -2 }}
-    className="group relative p-6 rounded-2xl bg-slate-900/30 backdrop-blur-sm border border-slate-700/20 hover:border-emerald-500/30 hover:bg-slate-900/40 transition-all duration-300"
+    className="group relative p-6 rounded-xl bg-charcoal-900/30 backdrop-blur-sm border border-warm-700/30 hover:border-warm-600/40 hover:bg-charcoal-800/40 transition-all duration-300"
   >
     <div className="relative z-10">
       {/* Icon */}
       <div className="mb-4">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-          <Icon className="w-6 h-6 text-black" />
+        <div className="w-10 h-10 rounded-lg bg-steel-500/10 flex items-center justify-center group-hover:bg-steel-500/20 transition-colors duration-300">
+          <Icon className="w-5 h-5 text-steel-400" />
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors duration-300">
+      <h3 className="text-lg font-semibold text-offwhite-100 mb-2 group-hover:text-offwhite-50 transition-colors duration-300">
         {title}
       </h3>
-      <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+      <p className="text-offwhite-400 text-sm leading-relaxed group-hover:text-offwhite-300 transition-colors duration-300">
         {description}
       </p>
     </div>
@@ -47,21 +47,21 @@ export function AboutSection() {
   const capabilities = [
     {
       icon: Database,
-      title: "Data Engineering Excellence",
+      title: "Data Platform Excellence",
       description:
-        "Modern data platforms, cloud migrations, and real-time pipelines that scale with your business growth.",
+        "Modern data infrastructure, cloud migrations, and real-time analytics that scale with your business.",
       delay: 0.1,
     },
     {
       icon: Brain,
       title: "AI Implementation",
       description:
-        "Custom AI models, NLP solutions, and MLOps frameworks that deliver measurable business outcomes.",
+        "Custom AI models, intelligent automation, and MLOps frameworks for measurable business outcomes.",
       delay: 0.2,
     },
     {
       icon: Shield,
-      title: "Enterprise-Grade Security",
+      title: "Enterprise Security",
       description:
         "HIPAA, SOX, and industry-compliant solutions with enterprise security and governance built-in.",
       delay: 0.3,
@@ -69,14 +69,11 @@ export function AboutSection() {
   ];
 
   return (
-    <section className="relative py-16 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/95 to-slate-950" />
-
-      {/* Subtle animated background elements */}
+    <section id="about" className="py-20 bg-gradient-to-b from-charcoal-950 to-charcoal-900 relative overflow-hidden">
+      {/* Subtle background effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-gradient-to-r from-emerald-500/5 to-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/6 w-64 h-64 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-steel-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/6 w-32 h-32 bg-warm-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container relative z-10">
@@ -94,24 +91,24 @@ export function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-sm font-medium mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal-800/40 border border-warm-700/30 text-steel-400 text-sm font-medium mb-6"
             >
-              <div className="w-2 h-2 rounded-full bg-emerald-400" />
+              <div className="w-2 h-2 rounded-full bg-steel-400" />
               About Scageon
             </motion.span>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold text-offwhite-100 leading-tight mb-4">
               Your trusted partner for{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                data modernization
+              <span className="gradient-text">
+                data transformation
               </span>{" "}
               and AI implementation
             </h2>
 
-            <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              We are a pioneering IT services firm dedicated to driving business
-              transformation through cutting-edge data analytics, modern data
-              platforms, and targeted AI solutions.
+            <p className="text-lg text-offwhite-400 max-w-3xl mx-auto leading-relaxed">
+              We help enterprises unlock the value of their data through strategic 
+              analytics, modern data platforms, and targeted AI solutions that deliver 
+              measurable business outcomes.
             </p>
           </motion.div>
 
@@ -130,17 +127,50 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-slate-900/30 backdrop-blur-sm border border-slate-700/20">
-              <p className="text-lg text-slate-300 leading-relaxed">
-                We combine deep technical expertise with proven methodologies to
-                deliver data platforms, analytics solutions, and AI
-                implementations that actually work in enterprise environments.
-                Our focus is on{" "}
-                <span className="text-emerald-400 font-semibold">
-                  measurable business outcomes
-                </span>
-                , not just technology implementations.
-              </p>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-charcoal-800/30 backdrop-blur-xl rounded-2xl p-8 border border-warm-700/30">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="text-left">
+                    <h3 className="text-xl font-semibold text-offwhite-100 mb-3">
+                      Why Choose Scageon?
+                    </h3>
+                    <p className="text-offwhite-400 leading-relaxed mb-6">
+                      We combine deep technical expertise with proven methodologies to
+                      deliver solutions that actually work in enterprise environments.
+                      Our focus is on measurable business outcomes, not just technology
+                      implementations.
+                    </p>
+                    <div className="space-y-3">
+                      {[
+                        "Enterprise-grade security & compliance",
+                        "Proven track record with 50+ clients",
+                        "End-to-end implementation support",
+                        "Measurable ROI within 6 months"
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle className="w-5 h-5 text-steel-400 flex-shrink-0" />
+                          <span className="text-sm text-offwhite-300">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="bg-charcoal-900/50 rounded-xl p-6 border border-warm-700/20">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-steel-400 mb-1">98%</div>
+                        <div className="text-sm text-offwhite-500 mb-4">Success Rate</div>
+                        
+                        <div className="text-2xl font-bold text-warm-400 mb-1">6 months</div>
+                        <div className="text-sm text-offwhite-500 mb-4">Average ROI Timeline</div>
+                        
+                        <div className="text-2xl font-bold text-steel-300 mb-1">50+</div>
+                        <div className="text-sm text-offwhite-500">Enterprise Clients</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

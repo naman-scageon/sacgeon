@@ -5,180 +5,89 @@
   --font-heading: var(--font-inter);
   --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 
+  /* ===== SOPHISTICATED 4-COLOR SYSTEM ===== */
+  
+  /* 1. CHARCOAL - Deep backgrounds and surfaces */
+  --color-charcoal-50: rgb(248 250 252);
+  --color-charcoal-100: rgb(241 245 249);
+  --color-charcoal-200: rgb(226 232 240);
+  --color-charcoal-300: rgb(203 213 225);
+  --color-charcoal-400: rgb(148 163 184);
+  --color-charcoal-500: rgb(100 116 139);
+  --color-charcoal-600: rgb(71 85 105);
+  --color-charcoal-700: rgb(51 65 85);
+  --color-charcoal-800: rgb(30 41 59);
+  --color-charcoal-900: rgb(15 23 42);
+  --color-charcoal-950: rgb(2 6 23);
+
+  /* 2. OFF-WHITE - Text and light elements */
+  --color-offwhite-50: rgb(255 255 255);
+  --color-offwhite-100: rgb(254 254 254);
+  --color-offwhite-200: rgb(250 250 250);
+  --color-offwhite-300: rgb(245 245 245);
+  --color-offwhite-400: rgb(229 229 229);
+  --color-offwhite-500: rgb(212 212 212);
+  --color-offwhite-600: rgb(163 163 163);
+  --color-offwhite-700: rgb(115 115 115);
+  --color-offwhite-800: rgb(82 82 82);
+  --color-offwhite-900: rgb(64 64 64);
+
+  /* 3. STEEL BLUE - Muted primary actions */
+  --color-steel-50: rgb(248 250 252);
+  --color-steel-100: rgb(241 245 249);
+  --color-steel-200: rgb(226 232 240);
+  --color-steel-300: rgb(203 213 225);
+  --color-steel-400: rgb(148 163 184);
+  --color-steel-500: rgb(100 116 139);
+  --color-steel-600: rgb(71 85 105);
+  --color-steel-700: rgb(51 65 85);
+  --color-steel-800: rgb(30 41 59);
+  --color-steel-900: rgb(15 23 42);
+
+  /* 4. WARM GRAY - Secondary elements and borders */
+  --color-warm-50: rgb(250 250 249);
+  --color-warm-100: rgb(245 245 244);
+  --color-warm-200: rgb(231 229 228);
+  --color-warm-300: rgb(214 211 209);
+  --color-warm-400: rgb(168 162 158);
+  --color-warm-500: rgb(120 113 108);
+  --color-warm-600: rgb(87 83 78);
+  --color-warm-700: rgb(68 64 60);
+  --color-warm-800: rgb(41 37 36);
+  --color-warm-900: rgb(28 25 23);
+
   /* Advanced Animation keyframes */
   @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
   }
 
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
-    }
-    to {
-      box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
-    }
+  @keyframes subtle-glow {
+    from { box-shadow: 0 0 20px rgba(100, 116, 139, 0.1); }
+    to { box-shadow: 0 0 30px rgba(100, 116, 139, 0.2); }
   }
 
   @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
   }
 
   @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
   }
 
   @keyframes scale-in {
-    from {
-      transform: scale(0.95);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 
-  @keyframes neural-pulse {
-    0%,
-    100% {
-      opacity: 0.6;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes data-flow {
-    0% {
-      transform: translateX(-100%) rotate(0deg);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(100%) rotate(180deg);
-      opacity: 0;
-    }
-  }
-
-  @keyframes quantum-spin {
-    0% {
-      transform: rotate(0deg) scale(1);
-    }
-    25% {
-      transform: rotate(90deg) scale(1.1);
-    }
-    50% {
-      transform: rotate(180deg) scale(1);
-    }
-    75% {
-      transform: rotate(270deg) scale(0.9);
-    }
-    100% {
-      transform: rotate(360deg) scale(1);
-    }
-  }
-
-  @keyframes holographic {
-    0%,
-    100% {
-      background: linear-gradient(45deg, #00f5ff, #ff00f5, #f5ff00, #00f5ff);
-      background-size: 400% 400%;
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes matrix-rain {
-    0% {
-      transform: translateY(-100vh);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-  }
-
-  @keyframes circuit-glow {
-    0% {
-      box-shadow: 0 0 5px rgba(56, 189, 248, 0.3),
-        inset 0 0 5px rgba(56, 189, 248, 0.1);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-    100% {
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6),
-        inset 0 0 10px rgba(56, 189, 248, 0.3);
-      border-color: rgba(56, 189, 248, 0.6);
-    }
-  }
-
-  /* Enhanced color palette */
-  --color-neural-50: rgb(240 253 249);
-  --color-neural-100: rgb(209 250 238);
-  --color-neural-200: rgb(153 246 220);
-  --color-neural-300: rgb(74 222 183);
-  --color-neural-400: rgb(16 185 129);
-  --color-neural-500: rgb(5 150 105);
-  --color-neural-600: rgb(4 120 87);
-  --color-neural-700: rgb(6 95 70);
-  --color-neural-800: rgb(6 78 59);
-  --color-neural-900: rgb(6 66 52);
-
-  --color-quantum-50: rgb(238 242 255);
-  --color-quantum-100: rgb(224 231 255);
-  --color-quantum-200: rgb(199 210 254);
-  --color-quantum-300: rgb(165 180 252);
-  --color-quantum-400: rgb(129 140 248);
-  --color-quantum-500: rgb(99 102 241);
-  --color-quantum-600: rgb(79 70 229);
-  --color-quantum-700: rgb(67 56 202);
-  --color-quantum-800: rgb(55 48 163);
-  --color-quantum-900: rgb(49 46 129);
-
-  --color-cyber-50: rgb(240 249 255);
-  --color-cyber-100: rgb(224 242 254);
-  --color-cyber-200: rgb(186 230 253);
-  --color-cyber-300: rgb(125 211 252);
-  --color-cyber-400: rgb(56 189 248);
-  --color-cyber-500: rgb(14 165 233);
-  --color-cyber-600: rgb(2 132 199);
-  --color-cyber-700: rgb(3 105 161);
-  --color-cyber-800: rgb(7 89 133);
-  --color-cyber-900: rgb(12 74 110);
-
-  /* Radix UI Colors */
+  /* Radix UI Colors mapped to our system */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -218,87 +127,48 @@
 
 :root {
   --radius: 0.75rem;
-  --background: 8 8 8;
-  --foreground: 250 250 250;
-  --card: 12 12 12;
-  --card-foreground: 250 250 250;
-  --popover: 12 12 12;
-  --popover-foreground: 250 250 250;
-  --primary: 16 185 129;
-  --primary-foreground: 0 0 0;
-  --secondary: 24 24 27;
-  --secondary-foreground: 250 250 250;
-  --muted: 39 39 42;
-  --muted-foreground: 161 161 170;
-  --accent: 39 39 42;
-  --accent-foreground: 250 250 250;
-  --destructive: 239 68 68;
-  --border: 39 39 42;
-  --input: 39 39 42;
-  --ring: 16 185 129;
-  --chart-1: 56 189 248;
-  --chart-2: 16 185 129;
-  --chart-3: 251 191 36;
-  --chart-4: 129 140 248;
-  --chart-5: 239 68 68;
-  --sidebar: 12 12 12;
-  --sidebar-foreground: 250 250 250;
-  --sidebar-primary: 16 185 129;
-  --sidebar-primary-foreground: 0 0 0;
-  --sidebar-accent: 39 39 42;
-  --sidebar-accent-foreground: 250 250 250;
-  --sidebar-border: 39 39 42;
-  --sidebar-ring: 16 185 129;
+  
+  /* Dark Theme Color System */
+  --background: 2 6 23;                    /* charcoal-950 */
+  --foreground: 250 250 250;               /* offwhite-200 */
+  --card: 15 23 42;                        /* charcoal-900 */
+  --card-foreground: 245 245 245;          /* offwhite-300 */
+  --popover: 15 23 42;                     /* charcoal-900 */
+  --popover-foreground: 245 245 245;       /* offwhite-300 */
+  --primary: 100 116 139;                  /* steel-500 */
+  --primary-foreground: 255 255 255;       /* offwhite-50 */
+  --secondary: 30 41 59;                   /* charcoal-800 */
+  --secondary-foreground: 245 245 245;     /* offwhite-300 */
+  --muted: 51 65 85;                       /* charcoal-700 */
+  --muted-foreground: 163 163 163;         /* offwhite-600 */
+  --accent: 71 85 105;                     /* steel-600 */
+  --accent-foreground: 250 250 250;        /* offwhite-200 */
+  --destructive: 220 38 38;                /* red-600 for errors */
+  --border: 68 64 60;                      /* warm-700 */
+  --input: 51 65 85;                       /* charcoal-700 */
+  --ring: 100 116 139;                     /* steel-500 */
+  
+  /* Chart colors using our palette */
+  --chart-1: 100 116 139;                  /* steel-500 */
+  --chart-2: 120 113 108;                  /* warm-500 */
+  --chart-3: 148 163 184;                  /* charcoal-400 */
+  --chart-4: 71 85 105;                    /* steel-600 */
+  --chart-5: 87 83 78;                     /* warm-600 */
+  
+  /* Sidebar using our system */
+  --sidebar: 15 23 42;                     /* charcoal-900 */
+  --sidebar-foreground: 245 245 245;       /* offwhite-300 */
+  --sidebar-primary: 100 116 139;          /* steel-500 */
+  --sidebar-primary-foreground: 255 255 255; /* offwhite-50 */
+  --sidebar-accent: 30 41 59;              /* charcoal-800 */
+  --sidebar-accent-foreground: 245 245 245; /* offwhite-300 */
+  --sidebar-border: 68 64 60;              /* warm-700 */
+  --sidebar-ring: 100 116 139;             /* steel-500 */
 
-  /* Neural network inspired gradients */
-  --neural-gradient: linear-gradient(135deg, rgb(16 185 129), rgb(5 150 105));
-  --quantum-gradient: linear-gradient(
-    135deg,
-    rgb(129 140 248),
-    rgb(99 102 241)
-  );
-  --cyber-gradient: linear-gradient(135deg, rgb(56 189 248), rgb(14 165 233));
-  --holographic-gradient: linear-gradient(
-    45deg,
-    #00f5ff,
-    #ff00f5,
-    #f5ff00,
-    #00f5ff
-  );
-}
-
-.dark {
-  --background: 8 8 8;
-  --foreground: 250 250 250;
-  --card: 12 12 12;
-  --card-foreground: 250 250 250;
-  --popover: 12 12 12;
-  --popover-foreground: 250 250 250;
-  --primary: 16 185 129;
-  --primary-foreground: 0 0 0;
-  --secondary: 24 24 27;
-  --secondary-foreground: 250 250 250;
-  --muted: 39 39 42;
-  --muted-foreground: 161 161 170;
-  --accent: 39 39 42;
-  --accent-foreground: 250 250 250;
-  --destructive: 239 68 68;
-  --border: 39 39 42;
-  --input: 39 39 42;
-  --ring: 16 185 129;
-  --chart-1: 56 189 248;
-  --chart-2: 16 185 129;
-  --chart-3: 251 191 36;
-  --chart-4: 129 140 248;
-  --chart-5: 239 68 68;
-  --sidebar: 12 12 12;
-  --sidebar-foreground: 250 250 250;
-  --sidebar-primary: 16 185 129;
-  --sidebar-primary-foreground: 0 0 0;
-  --sidebar-accent: 39 39 42;
-  --sidebar-accent-foreground: 250 250 250;
-  --sidebar-border: 39 39 42;
-  --sidebar-ring: 16 185 129;
+  /* Subtle gradients using our palette */
+  --gradient-primary: linear-gradient(135deg, rgb(100 116 139), rgb(71 85 105));
+  --gradient-secondary: linear-gradient(135deg, rgb(120 113 108), rgb(87 83 78));
+  --gradient-muted: linear-gradient(135deg, rgb(51 65 85), rgb(30 41 59));
 }
 
 @layer base {
@@ -307,25 +177,20 @@
   }
 
   body {
-    @apply bg-slate-950 text-white antialiased;
+    @apply bg-charcoal-950 text-offwhite-200 antialiased;
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.5;
     background: radial-gradient(
       ellipse at top,
-      rgba(16, 185, 129, 0.05) 0%,
-      rgba(8, 8, 8, 0.95) 100%
+      rgba(100, 116, 139, 0.03) 0%,
+      rgba(2, 6, 23, 0.98) 100%
     );
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    @apply font-semibold tracking-tight;
+    @apply font-semibold tracking-tight text-offwhite-100;
     line-height: 1.2;
   }
 
@@ -334,63 +199,54 @@
     max-width: 1400px;
   }
 
-  /* Smooth scrolling with enhanced behavior */
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 4rem;
   }
 
-  /* Enhanced utility classes */
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Advanced glass morphism effects */
+  /* ===== SOPHISTICATED COMPONENT STYLES ===== */
+  
+  /* Glass morphism effects */
   .glass {
-    @apply bg-slate-800/20 backdrop-blur-xl border border-slate-700/30;
+    @apply bg-charcoal-900/20 backdrop-blur-xl border border-warm-700/30;
     backdrop-filter: blur(16px) saturate(180%);
   }
 
   .glass-hover {
-    @apply hover:bg-slate-800/30 hover:border-slate-600/40 transition-all duration-300;
+    @apply hover:bg-charcoal-800/30 hover:border-warm-600/40 transition-all duration-300;
   }
 
   .glass-intense {
-    @apply bg-slate-800/40 backdrop-blur-2xl border border-slate-600/40;
+    @apply bg-charcoal-800/40 backdrop-blur-2xl border border-warm-600/40;
     backdrop-filter: blur(24px) saturate(200%);
   }
 
-  /* Neural network inspired gradients */
-  .gradient-neural {
-    background: var(--neural-gradient);
+  /* Gradient utilities */
+  .gradient-primary {
+    background: var(--gradient-primary);
   }
 
-  .gradient-quantum {
-    background: var(--quantum-gradient);
+  .gradient-secondary {
+    background: var(--gradient-secondary);
   }
 
-  .gradient-cyber {
-    background: var(--cyber-gradient);
-  }
-
-  .gradient-holographic {
-    background: var(--holographic-gradient);
-    background-size: 400% 400%;
+  .gradient-muted {
+    background: var(--gradient-muted);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-neural-400 to-cyber-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-steel-400 to-steel-300 bg-clip-text text-transparent;
   }
 
-  .gradient-text-quantum {
-    @apply bg-gradient-to-r from-quantum-400 to-purple-400 bg-clip-text text-transparent;
+  .gradient-text-secondary {
+    @apply bg-gradient-to-r from-warm-400 to-warm-300 bg-clip-text text-transparent;
   }
 
-  .gradient-text-cyber {
-    @apply bg-gradient-to-r from-cyber-400 to-blue-400 bg-clip-text text-transparent;
-  }
-
-  /* Enhanced section styling */
+  /* Section styling */
   .section-padding {
     @apply py-20 lg:py-32;
   }
@@ -399,116 +255,114 @@
     @apply py-16 lg:py-24;
   }
 
-  /* Modern card components */
+  /* Card components */
   .card-modern {
-    @apply bg-slate-800/30 backdrop-blur-xl border border-slate-700/30 rounded-3xl p-8 hover:bg-slate-800/40 hover:border-slate-600/40 transition-all duration-500;
+    @apply bg-charcoal-900/30 backdrop-blur-xl border border-warm-700/30 rounded-3xl p-8 hover:bg-charcoal-800/40 hover:border-warm-600/40 transition-all duration-500;
   }
 
-  .card-neural {
-    @apply bg-slate-900/40 backdrop-blur-2xl border border-slate-700/30 rounded-3xl p-8 relative overflow-hidden;
+  .card-subtle {
+    @apply bg-charcoal-900/40 backdrop-blur-2xl border border-warm-700/30 rounded-3xl p-8 relative overflow-hidden;
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(255, 255, 255, 0.05) 1px,
+      rgba(245, 245, 245, 0.02) 1px,
       transparent 0
     );
     background-size: 24px 24px;
   }
 
-  .card-quantum {
-    @apply bg-slate-900/50 backdrop-blur-2xl border border-slate-600/30 rounded-3xl p-8 relative;
-    background: conic-gradient(
-      from 0deg at 50% 50%,
-      transparent 0deg,
-      rgba(129, 140, 248, 0.05) 60deg,
-      transparent 120deg,
-      rgba(16, 185, 129, 0.05) 180deg,
-      transparent 240deg,
-      rgba(129, 140, 248, 0.05) 300deg,
-      transparent 360deg
-    );
+  .card-elevated {
+    @apply bg-charcoal-900/50 backdrop-blur-2xl border border-warm-600/30 rounded-3xl p-8 relative shadow-2xl shadow-charcoal-950/50;
   }
 
-  /* Enhanced button styles */
+  /* Button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-neural-400 to-cyber-400 text-black font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-neural-400/25 hover:scale-105 transition-all duration-300;
+    @apply bg-steel-500 hover:bg-steel-400 text-offwhite-50 font-medium px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-steel-500/20 hover:scale-[1.02] transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-slate-800/50 backdrop-blur-sm hover:bg-slate-700/50 text-white border border-slate-600/30 hover:border-slate-500/40 px-8 py-4 rounded-2xl font-medium transition-all duration-300;
+    @apply bg-charcoal-800/50 backdrop-blur-sm hover:bg-charcoal-700/50 text-offwhite-200 border border-warm-700/30 hover:border-warm-600/40 px-8 py-4 rounded-2xl font-medium transition-all duration-300;
   }
 
-  .btn-quantum {
-    @apply bg-gradient-to-r from-quantum-500 to-purple-500 text-white font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-quantum-400/25 hover:scale-105 transition-all duration-300;
+  .btn-ghost {
+    @apply bg-transparent hover:bg-charcoal-800/30 text-offwhite-300 hover:text-offwhite-100 border border-warm-700/20 hover:border-warm-600/30 px-8 py-4 rounded-2xl font-medium transition-all duration-300;
   }
 
-  .btn-cyber {
-    @apply bg-gradient-to-r from-cyber-500 to-blue-500 text-white font-bold px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-cyber-400/25 hover:scale-105 transition-all duration-300;
+  .btn-minimal {
+    @apply bg-transparent hover:bg-charcoal-800/20 text-steel-400 hover:text-steel-300 px-6 py-3 rounded-xl font-medium transition-all duration-300;
   }
 
-  /* Neural grid and circuit patterns */
-  .neural-grid {
+  /* Interactive patterns */
+  .subtle-grid {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(255, 255, 255, 0.05) 1px,
+      rgba(245, 245, 245, 0.02) 1px,
       transparent 0
     );
+    background-size: 32px 32px;
   }
 
-  .circuit-pattern {
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(56, 189, 248, 0.1) 2px,
-      rgba(56, 189, 248, 0.1) 4px
-    );
+  .warm-border {
+    @apply border-warm-700/30 hover:border-warm-600/40;
   }
 
-  .quantum-mesh {
-    background: conic-gradient(
-      from 0deg at 50% 50%,
-      transparent 0deg,
-      rgba(129, 140, 248, 0.1) 60deg,
-      transparent 120deg,
-      rgba(16, 185, 129, 0.1) 180deg,
-      transparent 240deg,
-      rgba(129, 140, 248, 0.1) 300deg,
-      transparent 360deg
-    );
+  .steel-border {
+    @apply border-steel-700/30 hover:border-steel-600/40;
   }
 
-  /* Interactive hover states */
+  /* Enhanced hover states */
   .hover-lift {
-    @apply transition-transform duration-300 hover:scale-102 hover:-translate-y-1;
+    @apply transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-1;
   }
 
   .hover-glow {
-    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-neural-400/20;
+    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-steel-500/10;
   }
 
-  .hover-quantum-glow {
-    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-quantum-400/20;
-  }
-
-  .hover-cyber-glow {
-    @apply transition-shadow duration-300 hover:shadow-xl hover:shadow-cyber-400/20;
+  .hover-warm-glow {
+    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-warm-500/10;
   }
 
   /* Status indicators */
-  /* .status-active {
-    @apply bg-emerald-400 animate-neural-pulse;
-  } */
-
-  /* .status-processing {
-    @apply bg-cyber-400 animate-quantum-spin;
+  .status-active {
+    @apply bg-steel-400;
   }
 
-  .status-automated {
-    @apply bg-purple-400 animate-holographic;
-  } */
+  .status-processing {
+    @apply bg-warm-400;
+  }
 
   .status-pending {
-    @apply bg-slate-600;
+    @apply bg-charcoal-600;
+  }
+
+  /* Text utilities */
+  .text-primary {
+    @apply text-steel-400;
+  }
+
+  .text-secondary {
+    @apply text-warm-400;
+  }
+
+  .text-muted {
+    @apply text-offwhite-600;
+  }
+
+  .text-subtle {
+    @apply text-offwhite-700;
+  }
+
+  /* Background utilities */
+  .bg-surface {
+    @apply bg-charcoal-900;
+  }
+
+  .bg-surface-elevated {
+    @apply bg-charcoal-800;
+  }
+
+  .bg-surface-subtle {
+    @apply bg-charcoal-900/50;
   }
 }
 
@@ -517,8 +371,8 @@
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
+.animate-subtle-glow {
+  animation: subtle-glow 3s ease-in-out infinite alternate;
 }
 
 .animate-slide {
@@ -533,28 +387,8 @@
   animation: scale-in 0.3s ease-out;
 }
 
-.animate-neural-pulse {
-  animation: neural-pulse 3s ease-in-out infinite;
-}
-
-.animate-data-flow {
-  animation: data-flow 4s linear infinite;
-}
-
-.animate-quantum-spin {
-  animation: quantum-spin 8s linear infinite;
-}
-
-.animate-holographic {
-  animation: holographic 6s ease-in-out infinite;
-}
-
-.animate-matrix-rain {
-  animation: matrix-rain 15s linear infinite;
-}
-
-.animate-circuit-glow {
-  animation: circuit-glow 2s ease-in-out infinite alternate;
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
 }
 
 /* Responsive design enhancements */
@@ -572,15 +406,37 @@
   }
 
   .card-modern,
-  .card-neural,
-  .card-quantum {
+  .card-subtle,
+  .card-elevated {
     @apply p-6 rounded-2xl;
   }
 
   .btn-primary,
   .btn-secondary,
-  .btn-quantum,
-  .btn-cyber {
+  .btn-ghost,
+  .btn-minimal {
     @apply px-6 py-3 text-sm rounded-xl;
   }
+}
+
+/* Light theme override (minimal, since you prefer dark) */
+.light {
+  --background: 250 250 249;               /* warm-50 */
+  --foreground: 28 25 23;                  /* warm-900 */
+  --card: 255 255 255;                     /* offwhite-50 */
+  --card-foreground: 28 25 23;             /* warm-900 */
+  --popover: 255 255 255;                  /* offwhite-50 */
+  --popover-foreground: 28 25 23;          /* warm-900 */
+  --primary: 71 85 105;                    /* steel-600 */
+  --primary-foreground: 250 250 249;       /* warm-50 */
+  --secondary: 245 245 244;                /* warm-100 */
+  --secondary-foreground: 68 64 60;        /* warm-700 */
+  --muted: 245 245 244;                    /* warm-100 */
+  --muted-foreground: 87 83 78;            /* warm-600 */
+  --accent: 245 245 244;                   /* warm-100 */
+  --accent-foreground: 68 64 60;           /* warm-700 */
+  --destructive: 220 38 38;                /* red-600 */
+  --border: 231 229 228;                   /* warm-200 */
+  --input: 231 229 228;                    /* warm-200 */
+  --ring: 71 85 105;                       /* steel-600 */
 }

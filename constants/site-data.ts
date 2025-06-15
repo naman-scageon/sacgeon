@@ -1,26 +1,33 @@
-import { title } from "process";
-
 export const navItems = [
-  { label: "Who we are", href: "/" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "#services" },
-  { label: "Select Stories", href: "#selectStories" },
+  { label: "Success Stories", href: "/#cases" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const heroSection = {
   subtTitle: "DATA-DRIVEN BUSINESS INTELLIGENCE",
   title: "SCAGEON",
-  description: "We help enterprises unlock the value of their data through strategic analytics, modern data platforms, and targeted AI solutions that deliver measurable business outcomes.",
+  description:
+    "We help enterprises unlock the value of their data through strategic analytics, modern data platforms, and targeted AI solutions that deliver measurable business outcomes.",
 };
 
-
 export const aboutSection = {
-  getTo : "Get to",
-  knowBetter:"Know Us Better",
-   title : "Specialized data and AI consultancy helping mid-market enterprises modernize their data infrastructure and implement intelligent solutions that drive real business value.",
-   subTitle:"Your trusted partner for data modernization and AI implementation.",
-   description:"We combine deep technical expertise with proven methodologies to deliver data platforms, analytics solutions, and AI implementations that actually work in enterprise environments.",
-  img: ["/partnersImg/Shutterfly.svg","/partnersImg/Zoom.svg","/partnersImg/Facebook.svg","/partnersImg/Google.svg"],
-}
+  getTo: "Get to",
+  knowBetter: "Know Us Better",
+  title:
+    "Specialized data and AI consultancy helping mid-market enterprises modernize their data infrastructure and implement intelligent solutions that drive real business value.",
+  subTitle:
+    "Your trusted partner for data modernization and AI implementation.",
+  description:
+    "We combine deep technical expertise with proven methodologies to deliver data platforms, analytics solutions, and AI implementations that actually work in enterprise environments.",
+  img: [
+    "/partnersImg/Shutterfly.svg",
+    "/partnersImg/Zoom.svg",
+    "/partnersImg/Facebook.svg",
+    "/partnersImg/Google.svg",
+  ],
+};
 
 export const partnersSection = {
   tagline:
@@ -32,6 +39,208 @@ export const partnersSection = {
     { name: "Google", icon: "search" },
   ],
 };
+
+// Enhanced service types for dropdown navigation
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+  badge?: string;
+  subServices?: SubService[];
+}
+
+export interface SubService {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon?: string;
+  isNew?: boolean;
+  isPopular?: boolean;
+}
+
+// Comprehensive services data structure
+export const servicesNavigationData: ServiceItem[] = [
+  {
+    id: "data-services",
+    title: "Data Services",
+    description:
+      "Transform your data infrastructure with modern cloud solutions",
+    href: "/services/data-services",
+    icon: "database",
+    badge: "Core",
+    subServices: [
+      {
+        id: "data-strategy",
+        title: "Data Strategy",
+        description:
+          "Optimize data use, align assets with business goals, and build solid AI foundation",
+        href: "/services/data-services/strategy",
+        icon: "target",
+        isPopular: true,
+      },
+      {
+        id: "data-management",
+        title: "Data Management & Engineering",
+        description:
+          "Build scalable data pipelines and optimize data architecture",
+        href: "/services/data-services/management",
+        icon: "settings",
+      },
+      {
+        id: "big-data-implementation",
+        title: "Big Data Implementation",
+        description:
+          "Maximize business insights with effective big data solutions",
+        href: "/services/data-services/big-data",
+        icon: "layers",
+      },
+      {
+        id: "data-integration",
+        title: "Data Integration",
+        description: "Combine data from various sources into unified view",
+        href: "/services/data-services/integration",
+        icon: "shuffle",
+      },
+      {
+        id: "data-warehouse",
+        title: "Data Warehouse",
+        description: "Build solid foundation for data-driven initiatives",
+        href: "/services/data-services/warehouse",
+        icon: "archive",
+      },
+      {
+        id: "cloud-migration",
+        title: "Data Migration - Cloud",
+        description: "Seamlessly migrate to leading cloud platforms",
+        href: "/services/data-services/cloud-migration",
+        icon: "cloud",
+      },
+      {
+        id: "data-modernization",
+        title: "Data Modernization",
+        description: "Simplification, agility, and adoption for legacy systems",
+        href: "/services/data-services/modernization",
+        icon: "refresh-cw",
+      },
+      {
+        id: "data-analytics",
+        title: "Data Analytics",
+        description: "Custom analytics solutions for operational efficiency",
+        href: "/services/data-services/analytics",
+        icon: "bar-chart-3",
+      },
+      {
+        id: "visualizations",
+        title: "Visualizations & Reporting",
+        description:
+          "Intuitive dashboards and visual data interpretation tools",
+        href: "/services/data-services/visualizations",
+        icon: "pie-chart",
+      },
+    ],
+  },
+  {
+    id: "ai-engineering",
+    title: "AI Engineering",
+    description:
+      "Implement intelligent solutions with cutting-edge AI technology",
+    href: "/services/ai-engineering",
+    icon: "brain",
+    badge: "Advanced",
+    subServices: [
+      {
+        id: "ai-consulting",
+        title: "AI Consulting Services",
+        description:
+          "Strategic AI implementation guidance for business transformation",
+        href: "/services/ai-engineering/consulting",
+        icon: "lightbulb",
+        isPopular: true,
+      },
+      {
+        id: "ai-model-development",
+        title: "AI Model Development",
+        description:
+          "Custom AI models for unique business needs and automation",
+        href: "/services/ai-engineering/model-development",
+        icon: "cpu",
+      },
+      {
+        id: "nlp-generative-ai",
+        title: "NLP & Generative AI",
+        description:
+          "Advanced language understanding and generation capabilities",
+        href: "/services/ai-engineering/nlp-generative",
+        icon: "message-circle",
+        isNew: true,
+      },
+      {
+        id: "mlops",
+        title: "MLOps",
+        description: "Seamless model deployment, scaling, and maintenance",
+        href: "/services/ai-engineering/mlops",
+        icon: "git-branch",
+      },
+      {
+        id: "ai-use-case-identification",
+        title: "AI Use Case Identification",
+        description: "Identify high-impact AI opportunities for maximum ROI",
+        href: "/services/ai-engineering/use-cases",
+        icon: "search",
+      },
+      {
+        id: "ai-chatbot-development",
+        title: "AI Chatbot Development",
+        description:
+          "Revolutionary customer engagement through intelligent bots",
+        href: "/services/ai-engineering/chatbots",
+        icon: "bot",
+        isNew: true,
+      },
+    ],
+  },
+  {
+    id: "application-services",
+    title: "Application Services",
+    description: "Modern application development and system modernization",
+    href: "/services/application-services",
+    icon: "code",
+    badge: "Coming Soon",
+    subServices: [
+      {
+        id: "legacy-modernization",
+        title: "Legacy System Modernization",
+        description: "Transform legacy applications with modern architectures",
+        href: "/services/application-services/legacy-modernization",
+        icon: "refresh-cw",
+      },
+      {
+        id: "cloud-native-development",
+        title: "Cloud-Native Development",
+        description: "Build scalable applications designed for the cloud",
+        href: "/services/application-services/cloud-native",
+        icon: "cloud",
+      },
+      {
+        id: "api-integration",
+        title: "API Integration & Development",
+        description: "Seamless system connectivity and integration solutions",
+        href: "/services/application-services/api-integration",
+        icon: "link",
+      },
+      {
+        id: "microservices",
+        title: "Microservices Architecture",
+        description: "Scalable and maintainable distributed system design",
+        href: "/services/application-services/microservices",
+        icon: "grid-3x3",
+      },
+    ],
+  },
+];
 
 export const servicesSection = {
   headline: "Accelerate your business with",
@@ -45,28 +254,54 @@ export const servicesSection = {
       description:
         "Modernize your data infrastructure with cloud migration, data warehousing, integration, and advanced analytics platforms that scale with your business.",
       icon: "/services/dataService.svg",
-      deliverables: ["Data Strategy & Assessment", "Cloud Migration", "Data Warehouse Implementation", "Business Intelligence Dashboards"],
-      outcomes: ["40% faster reporting", "60% cost reduction", "Single source of truth"]
+      deliverables: [
+        "Data Strategy & Assessment",
+        "Cloud Migration",
+        "Data Warehouse Implementation",
+        "Business Intelligence Dashboards",
+      ],
+      outcomes: [
+        "40% faster reporting",
+        "60% cost reduction",
+        "Single source of truth",
+      ],
     },
     {
       id: "ai-engineering",
       title: "AI Engineering",
       description:
         "Implement practical AI solutions including custom models, NLP systems, predictive analytics, and intelligent automation tailored to your industry needs.",
-  icon: "/services/aiMlService.svg",
-      deliverables: ["AI Readiness Assessment", "Custom Model Development", "MLOps Implementation", "AI Chatbot Development"],
-      outcomes: ["85% accuracy improvement", "50% process automation", "Real-time insights"]
+      icon: "/services/aiMlService.svg",
+      deliverables: [
+        "AI Readiness Assessment",
+        "Custom Model Development",
+        "MLOps Implementation",
+        "AI Chatbot Development",
+      ],
+      outcomes: [
+        "85% accuracy improvement",
+        "50% process automation",
+        "Real-time insights",
+      ],
     },
     {
       id: "application-services",
       title: "Application Services",
       description:
         "Modernize legacy systems and build cloud-native applications with robust APIs, microservices architecture, and seamless third-party integrations.",
-       icon: "/services/productService.svg",
-       deliverables: ["Legacy System Assessment", "Cloud-Native Development", "API Integration", "System Modernization"],
-       outcomes: ["70% performance improvement", "99.9% uptime", "Scalable architecture"]
+      icon: "/services/productService.svg",
+      deliverables: [
+        "Legacy System Assessment",
+        "Cloud-Native Development",
+        "API Integration",
+        "System Modernization",
+      ],
+      outcomes: [
+        "70% performance improvement",
+        "99.9% uptime",
+        "Scalable architecture",
+      ],
     },
-
   ],
 };
 
@@ -85,7 +320,7 @@ export const casesSection = {
       client: "Manufacturing Company",
       timeline: "6 months",
       challenge: "Siloed data across 15+ systems",
-      solution: "Unified data platform with real-time dashboards"
+      solution: "Unified data platform with real-time dashboards",
     },
     {
       id: 2,
@@ -98,19 +333,20 @@ export const casesSection = {
       client: "Regional Healthcare Provider",
       timeline: "4 months",
       challenge: "Manual reporting taking 40+ hours weekly",
-      solution: "Automated analytics with predictive insights"
+      solution: "Automated analytics with predictive insights",
     },
     {
       id: 3,
       title: "Financial Services Modernization",
-      description: "Migrated legacy systems to cloud and implemented real-time fraud detection for a financial services company.",
+      description:
+        "Migrated legacy systems to cloud and implemented real-time fraud detection for a financial services company.",
       icon: "truck",
       impact: "60% faster transaction processing",
       technologies: ["AWS", "Machine Learning", "API Gateway"],
       client: "Financial Services Firm",
       timeline: "8 months",
       challenge: "Legacy systems causing delays and security risks",
-      solution: "Cloud-native platform with ML-powered fraud detection"
+      solution: "Cloud-native platform with ML-powered fraud detection",
     },
     {
       id: 4,
@@ -123,7 +359,7 @@ export const casesSection = {
       client: "Multi-location Retailer",
       timeline: "5 months",
       challenge: "Poor inventory management and customer insights",
-      solution: "Integrated analytics platform with predictive inventory"
+      solution: "Integrated analytics platform with predictive inventory",
     },
     {
       id: 5,
@@ -136,7 +372,7 @@ export const casesSection = {
       client: "Logistics Company",
       timeline: "7 months",
       challenge: "Lack of real-time visibility across supply chain",
-      solution: "Real-time tracking with predictive alerts"
+      solution: "Real-time tracking with predictive alerts",
     },
   ],
 };
@@ -205,7 +441,7 @@ export const closingSection = {
   headline: "Transforming",
   highlightedHeadline: "Data",
   middleText: "into business",
-  middleTextLine:"—",
+  middleTextLine: " — ",
   secondHighlighted: "Value",
   tagline: "through proven",
   finalText: "expertise",
@@ -265,5 +501,5 @@ export const footerSection = {
       },
     ],
     aboutUs: [], // Empty as per the image
-  }
+  },
 };
