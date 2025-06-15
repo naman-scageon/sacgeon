@@ -290,7 +290,7 @@ export function TechStackSection() {
 
         {/* Stats Section */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.6 }}
@@ -314,12 +314,12 @@ export function TechStackSection() {
               value: "99.9%",
               color: "text-steel-300",
             },
-            {
-              icon: Globe,
-              label: "Global Scale",
-              value: "15+",
-              color: "text-warm-300",
-            },
+            // {
+            //   icon: Globe,
+            //   label: "Global Scale",
+            //   value: "15+",
+            //   color: "text-warm-300",
+            // },
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (

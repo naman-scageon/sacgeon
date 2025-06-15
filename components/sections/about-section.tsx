@@ -69,7 +69,10 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-charcoal-950 to-charcoal-900 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-20 bg-gradient-to-b from-charcoal-950 to-charcoal-900 relative overflow-hidden"
+    >
       {/* Subtle background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-steel-500/5 rounded-full blur-3xl" />
@@ -99,16 +102,14 @@ export function AboutSection() {
 
             <h2 className="text-3xl md:text-4xl font-semibold text-offwhite-100 leading-tight mb-4">
               Your trusted partner for{" "}
-              <span className="gradient-text">
-                data transformation
-              </span>{" "}
-              and AI implementation
+              <span className="gradient-text">data transformation</span> and AI
+              implementation
             </h2>
 
             <p className="text-lg text-offwhite-400 max-w-3xl mx-auto leading-relaxed">
-              We help enterprises unlock the value of their data through strategic 
-              analytics, modern data platforms, and targeted AI solutions that deliver 
-              measurable business outcomes.
+              We help enterprises unlock the value of their data through
+              strategic analytics, modern data platforms, and targeted AI
+              solutions that deliver measurable business outcomes.
             </p>
           </motion.div>
 
@@ -135,39 +136,26 @@ export function AboutSection() {
                       Why Choose Scageon?
                     </h3>
                     <p className="text-offwhite-400 leading-relaxed mb-6">
-                      We combine deep technical expertise with proven methodologies to
-                      deliver solutions that actually work in enterprise environments.
-                      Our focus is on measurable business outcomes, not just technology
-                      implementations.
+                      We combine deep technical expertise with proven
+                      methodologies to deliver solutions that actually work in
+                      enterprise environments. Our focus is on measurable
+                      business outcomes, not just technology implementations.
                     </p>
-                    <div className="space-y-3">
-                      {[
-                        "Enterprise-grade security & compliance",
-                        "Proven track record with 50+ clients",
-                        "End-to-end implementation support",
-                        "Measurable ROI within 6 months"
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-steel-400 flex-shrink-0" />
-                          <span className="text-sm text-offwhite-300">{item}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
-                  
-                  <div className="relative">
-                    <div className="bg-charcoal-900/50 rounded-xl p-6 border border-warm-700/20">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-steel-400 mb-1">98%</div>
-                        <div className="text-sm text-offwhite-500 mb-4">Success Rate</div>
-                        
-                        <div className="text-2xl font-bold text-warm-400 mb-1">6 months</div>
-                        <div className="text-sm text-offwhite-500 mb-4">Average ROI Timeline</div>
-                        
-                        <div className="text-2xl font-bold text-steel-300 mb-1">50+</div>
-                        <div className="text-sm text-offwhite-500">Enterprise Clients</div>
+                  <div className="space-y-3">
+                    {[
+                      "Enterprise-grade security & compliance",
+                      "Proven track record with 50+ clients",
+                      "End-to-end implementation support",
+                      "Measurable ROI within 6 months",
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-steel-400 flex-shrink-0" />
+                        <span className="text-sm text-offwhite-300">
+                          {item}
+                        </span>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>

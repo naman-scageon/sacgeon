@@ -6,7 +6,6 @@ import {
   Brain,
   Rocket,
   CheckCircle,
-  Target,
   Zap,
   BarChart3,
   Calendar,
@@ -296,22 +295,6 @@ export function ServicesSection() {
               <Play className="w-4 h-4 mr-2" />
               View Success Stories
             </Button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mt-8 pt-6 border-t border-warm-700/30 text-offwhite-500 text-sm">
-            <div className="flex items-center gap-2">
-              <Target className="w-4 h-4" />
-              <span>98% Success Rate</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-steel-400" />
-              <span>50+ Enterprise Clients</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <BarChart3 className="w-4 h-4" />
-              <span>300%+ Average ROI</span>
-            </div>
           </div>
         </motion.div>
       </div>

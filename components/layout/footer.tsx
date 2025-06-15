@@ -59,44 +59,6 @@ export function Footer() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Newsletter Section */}
-        <div className="py-16 border-b border-slate-700/50">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
-              Ready to Transform Your Business with AI?
-            </h2>
-            <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
-              Join industry leaders who trust us to deliver measurable results.
-              Get insights, case studies, and AI implementation strategies
-              delivered monthly.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-8">
-              <input
-                type="email"
-                placeholder="Enter your business email"
-                className="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
-                Get Started
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-
-            {/* Social Proof */}
-            <div className="flex items-center justify-center gap-6 text-sm text-slate-400">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>No spam, unsubscribe anytime</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-500" />
-                <span>Trusted by 200+ companies</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">

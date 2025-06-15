@@ -100,14 +100,14 @@ export function CasesSection({ className }: CasesSectionProps) {
       id="cases"
       data-section="cases"
       className={cn(
-        "py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden",
+        "py-20 bg-black relative overflow-hidden",
         className
       )}
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-r from-emerald-100 to-cyan-100 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -119,18 +119,18 @@ export function CasesSection({ className }: CasesSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full text-sm text-emerald-700 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-emerald-400 mb-6">
             <Target className="w-4 h-4" />
             Success Stories
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
             Transforming businesses with
-            <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
               {" "}
               measurable impact
             </span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-400 max-w-3xl mx-auto">
             Real projects, quantifiable outcomes. See how we&apos;ve helped
             industry leaders achieve breakthrough results through strategic
             implementation.
@@ -149,19 +149,19 @@ export function CasesSection({ className }: CasesSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="bg-slate-900/40 border border-slate-700/50 overflow-hidden hover:bg-slate-800/40 hover:border-slate-600/50 transition-all duration-300"
               >
                 {/* Header */}
-                <div className="p-6 border-b border-slate-100">
+                <div className="p-6 border-b border-slate-700/50">
                   <div className="flex items-start gap-4">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-r ${caseStudy.color} flex items-center justify-center flex-shrink-0`}
+                      className={`w-12 h-12 rounded-lg bg-gradient-to-r ${caseStudy.color} flex items-center justify-center flex-shrink-0`}
                     >
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-medium px-2 py-1 bg-slate-100 text-slate-600 rounded-full">
+                        <span className="text-xs font-medium px-2 py-1 bg-slate-700/50 text-slate-300 rounded-full">
                           {caseStudy.industry}
                         </span>
                         <span className="text-xs text-slate-500">•</span>
@@ -169,10 +169,10 @@ export function CasesSection({ className }: CasesSectionProps) {
                           {caseStudy.timeline}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-1">
+                      <h3 className="text-xl font-semibold text-white mb-1">
                         {caseStudy.title}
                       </h3>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-slate-400">
                         {caseStudy.client}
                       </p>
                     </div>
@@ -181,27 +181,27 @@ export function CasesSection({ className }: CasesSectionProps) {
 
                 {/* Content */}
                 <div className="p-6">
-                  <p className="text-slate-600 mb-6 leading-relaxed">
+                  <p className="text-slate-400 mb-6 leading-relaxed">
                     {caseStudy.overview}
                   </p>
 
                   {/* Challenge & Solution */}
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    <div className="bg-red-50 rounded-lg p-4 border border-red-100">
-                      <h4 className="text-sm font-semibold text-red-700 mb-2 flex items-center gap-2">
+                    <div className="bg-red-500/10 border border-red-500/20 p-4">
+                      <h4 className="text-sm font-semibold text-red-400 mb-2 flex items-center gap-2">
                         <Target className="w-4 h-4" />
                         Challenge
                       </h4>
-                      <p className="text-sm text-red-600 leading-relaxed">
+                      <p className="text-sm text-red-300 leading-relaxed">
                         {caseStudy.challenge}
                       </p>
                     </div>
-                    <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-100">
-                      <h4 className="text-sm font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                    <div className="bg-emerald-500/10 border border-emerald-500/20 p-4">
+                      <h4 className="text-sm font-semibold text-emerald-400 mb-2 flex items-center gap-2">
                         <CheckCircle className="w-4 h-4" />
                         Solution
                       </h4>
-                      <p className="text-sm text-emerald-600 leading-relaxed">
+                      <p className="text-sm text-emerald-300 leading-relaxed">
                         {caseStudy.solution}
                       </p>
                     </div>
@@ -209,25 +209,25 @@ export function CasesSection({ className }: CasesSectionProps) {
 
                   {/* Results */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-blue-600" />
+                    <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-blue-400" />
                       Key Results
                     </h4>
                     <div className="space-y-3">
                       {caseStudy.results.map((result, rIndex) => (
                         <div
                           key={rIndex}
-                          className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100"
+                          className="flex items-start gap-3 p-3 bg-blue-500/10 border border-blue-500/20"
                         >
                           <div className="flex-shrink-0">
-                            <div className="text-lg font-bold text-blue-700">
+                            <div className="text-lg font-bold text-blue-400">
                               {result.value}
                             </div>
-                            <div className="text-xs text-blue-600">
+                            <div className="text-xs text-blue-300">
                               {result.metric}
                             </div>
                           </div>
-                          <div className="text-sm text-blue-600">
+                          <div className="text-sm text-blue-300">
                             {result.description}
                           </div>
                         </div>
@@ -237,14 +237,14 @@ export function CasesSection({ className }: CasesSectionProps) {
 
                   {/* Technologies */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-slate-900 mb-3">
+                    <h4 className="text-sm font-semibold text-white mb-3">
                       Tech Stack
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.technologies.map((tech, tIndex) => (
                         <span
                           key={tIndex}
-                          className="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded border border-slate-200"
+                          className="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs font-medium border border-slate-600/50"
                         >
                           {tech}
                         </span>
@@ -253,11 +253,12 @@ export function CasesSection({ className }: CasesSectionProps) {
                   </div>
 
                   {/* CTA */}
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-700/50">
                     <Button
                       onClick={handleViewCase}
                       variant="outline"
-                      className="text-sm"
+                      size="sm"
+                      className="text-sm border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white"
                     >
                       View Details
                       <ExternalLink className="w-4 h-4 ml-2" />
@@ -281,7 +282,7 @@ export function CasesSection({ className }: CasesSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700/50 p-8 text-white">
             <h3 className="text-2xl font-semibold mb-4">
               Ready to Write Your Success Story?
             </h3>

@@ -4,7 +4,6 @@ import {
   ServicesSection,
   CasesSection,
   TechStackSection,
-  ClosingSection,
   AboutSection,
   AiConceptDemo,
 } from "@/components/sections";
@@ -18,7 +17,6 @@ export default function Home() {
       <AiConceptDemo />
       <TechStackSection />
       <CasesSection />
-      <ClosingSection />
     </BaseLayout>
   );
 }
