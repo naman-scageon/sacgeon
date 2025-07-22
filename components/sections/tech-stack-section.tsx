@@ -1,138 +1,252 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { Marquee } from "../magicui/marquee";
+import { motion, useInView } from "framer-motion";
+import { useState, useRef } from "react";
+import {
+  Brain,
+  Database,
+  Cloud,
+  Code,
+  ArrowRight,
+  Sparkles,
+  Zap,
+  Shield,
+  Globe,
+  Cpu,
+  Activity,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// Define TypeScript interfaces
-interface Technology {
-  name: string;
-  category: string;
-  svgPath: string;
-}
-
-// Hardcoded tech stack data with SVG paths
-const technologies: Technology[] = [
-  { name: "Anthropic", category: "AI", svgPath: "/tech-stack/anthropic.svg" },
+// Define technology categories with their tools and metadata
+const techCategories = [
   {
-    name: "Apache Airflow",
-    category: "Data Pipeline",
-    svgPath: "/tech-stack/apache-airflow-svgrepo-com.svg",
+    id: "ai-ml",
+    title: "AI & Machine Learning",
+    description:
+      "Advanced AI models and ML frameworks for intelligent solutions",
+    icon: Brain,
+    color: "from-steel-500 to-steel-400",
+    bgColor: "bg-steel-500/10",
+    borderColor: "border-steel-500/20",
+    technologies: [
+      { name: "OpenAI GPT", tier: "Production" },
+      { name: "Claude", tier: "Enterprise" },
+      { name: "LangChain", tier: "Production" },
+      { name: "TensorFlow", tier: "Production" },
+      { name: "PyTorch", tier: "Production" },
+      { name: "Hugging Face", tier: "Development" },
+    ],
   },
   {
-    name: "Apache Flink",
-    category: "Stream Processing",
-    svgPath: "/tech-stack/apache-flink-svgrepo-com.svg",
+    id: "data-analytics",
+    title: "Data & Analytics",
+    description: "Scalable data processing and real-time analytics platforms",
+    icon: Database,
+    color: "from-warm-500 to-warm-400",
+    bgColor: "bg-warm-500/10",
+    borderColor: "border-warm-500/20",
+    technologies: [
+      { name: "Apache Spark", tier: "Enterprise" },
+      { name: "Apache Kafka", tier: "Production" },
+      { name: "PostgreSQL", tier: "Production" },
+      { name: "MongoDB", tier: "Production" },
+      { name: "Elasticsearch", tier: "Production" },
+      { name: "Apache Airflow", tier: "Production" },
+    ],
   },
   {
-    name: "Apache Spark",
-    category: "Big Data",
-    svgPath: "/tech-stack/apache-spark-svgrepo-com.svg",
+    id: "cloud-devops",
+    title: "Cloud & DevOps",
+    description: "Modern cloud infrastructure and deployment automation",
+    icon: Cloud,
+    color: "from-steel-600 to-steel-500",
+    bgColor: "bg-steel-600/10",
+    borderColor: "border-steel-600/20",
+    technologies: [
+      { name: "AWS", tier: "Enterprise" },
+      { name: "Docker", tier: "Production" },
+      { name: "Kubernetes", tier: "Enterprise" },
+      { name: "Terraform", tier: "Production" },
+      { name: "GitHub Actions", tier: "Production" },
+      { name: "Prometheus", tier: "Production" },
+    ],
   },
   {
-    name: "Apache",
-    category: "Web Server",
-    svgPath: "/tech-stack/apache-svgrepo-com.svg",
-  },
-  {
-    name: "Atlassian",
-    category: "DevOps",
-    svgPath: "/tech-stack/atlassian-svgrepo-com.svg",
-  },
-  {
-    name: "Docker",
-    category: "Containerization",
-    svgPath: "/tech-stack/docker-svgrepo-com.svg",
-  },
-  {
-    name: "Expo",
-    category: "Mobile Development",
-    svgPath: "/tech-stack/expo-svgrepo-com.svg",
-  },
-  {
-    name: "Firebase",
-    category: "Backend",
-    svgPath: "/tech-stack/firebase-svgrepo-com.svg",
-  },
-  {
-    name: "Flask",
-    category: "Web Framework",
-    svgPath: "/tech-stack/flask-svgrepo-com.svg",
-  },
-  {
-    name: "Flutter",
-    category: "Mobile Development",
-    svgPath: "/tech-stack/flutter-svgrepo-com.svg",
-  },
-  {
-    name: "Git",
-    category: "Version Control",
-    svgPath: "/tech-stack/git-svgrepo-com.svg",
-  },
-  {
-    name: "Go",
-    category: "Programming",
-    svgPath: "/tech-stack/go-svgrepo-com.svg",
-  },
-  {
-    name: "Java",
-    category: "Programming",
-    svgPath: "/tech-stack/java-svgrepo-com.svg",
-  },
-  {
-    name: "JavaScript",
-    category: "Programming",
-    svgPath: "/tech-stack/javascript-svgrepo-com.svg",
-  },
-  {
-    name: "Jest",
-    category: "Testing",
-    svgPath: "/tech-stack/jest-svgrepo-com.svg",
-  },
-  {
-    name: "Langchain",
-    category: "AI/ML",
-    svgPath: "/tech-stack/langchain-text.svg",
-  },
-  {
-    name: "Linux",
-    category: "Operating System",
-    svgPath: "/tech-stack/linux-svgrepo-com.svg",
-  },
-  {
-    name: "MongoDB",
-    category: "Database",
-    svgPath: "/tech-stack/mongodb-svgrepo-com.svg",
-  },
-  { name: "Ollama", category: "AI", svgPath: "/tech-stack/ollama.svg" },
-  { name: "OpenAI", category: "AI", svgPath: "/tech-stack/openai.svg" },
-  {
-    name: "PostgreSQL",
-    category: "Database",
-    svgPath: "/tech-stack/postgresql-svgrepo-com.svg",
-  },
-  {
-    name: "Python",
-    category: "Programming",
-    svgPath: "/tech-stack/python-svgrepo-com.svg",
-  },
-  {
-    name: "React",
-    category: "Frontend",
-    svgPath: "/tech-stack/react-svgrepo-com.svg",
+    id: "programming",
+    title: "Development Stack",
+    description: "Modern programming languages and frameworks",
+    icon: Code,
+    color: "from-warm-600 to-warm-500",
+    bgColor: "bg-warm-600/10",
+    borderColor: "border-warm-600/20",
+    technologies: [
+      { name: "Python", tier: "Production" },
+      { name: "TypeScript", tier: "Production" },
+      { name: "Next.js", tier: "Production" },
+      { name: "FastAPI", tier: "Production" },
+      { name: "Node.js", tier: "Production" },
+      { name: "React", tier: "Production" },
+    ],
   },
 ];
 
-export function TechStackSection() {
-  // Split technologies into three rows for a staggered effect
-  const row1 = technologies.slice(0, 8);
-  const row2 = technologies.slice(8, 16);
+const tierColors = {
+  Enterprise: "bg-warm-500/10 text-warm-400 border-warm-500/20",
+  Production: "bg-steel-500/10 text-steel-400 border-steel-500/20",
+  Development: "bg-charcoal-600/30 text-offwhite-400 border-charcoal-600/40",
+};
+
+const TechCard = ({
+  category,
+  index,
+  isActive,
+  onHover,
+  onLeave,
+}: {
+  category: (typeof techCategories)[0];
+  index: number;
+  isActive: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+}) => {
+  const Icon = category.icon;
 
   return (
-    <section id="tech-stack" className="py-24 relative w-full overflow-hidden">
-      {/* Background effects */}
-      <div className="aurora-container absolute left-0 bottom-0 w-full h-2/3 z-0">
-        <div className="aurora-layer opacity-30"></div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className={`relative group cursor-pointer transition-all duration-300 ${
+        isActive ? "scale-[1.02]" : "hover:scale-[1.01]"
+      }`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
+      {/* Card Background */}
+      <div
+        className={`
+        relative p-6 rounded-xl border backdrop-blur-sm transition-all duration-300
+        ${
+          isActive
+            ? `bg-charcoal-800/50 ${category.borderColor} shadow-lg`
+            : "bg-charcoal-900/30 border-warm-700/30 hover:border-warm-600/40 hover:bg-charcoal-800/40"
+        }
+      `}
+      >
+        {/* Category Header */}
+        <div className="flex items-start gap-4 mb-6">
+          <div
+            className={`
+            w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300
+            ${
+              isActive
+                ? `bg-gradient-to-r ${category.color}`
+                : `${category.bgColor} group-hover:scale-110`
+            }
+          `}
+          >
+            <Icon
+              className={`w-6 h-6 ${
+                isActive ? "text-offwhite-100" : "text-steel-400"
+              }`}
+            />
+          </div>
+
+          <div className="flex-1">
+            <h3
+              className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
+                isActive
+                  ? "text-offwhite-100"
+                  : "text-offwhite-200 group-hover:text-offwhite-100"
+              }`}
+            >
+              {category.title}
+            </h3>
+            <p
+              className={`text-sm leading-relaxed transition-colors duration-300 ${
+                isActive
+                  ? "text-offwhite-400"
+                  : "text-offwhite-500 group-hover:text-offwhite-400"
+              }`}
+            >
+              {category.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Technology Grid */}
+        <div className="grid grid-cols-2 gap-3">
+          {category.technologies.map((tech, techIndex) => (
+            <motion.div
+              key={tech.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 + techIndex * 0.05 }}
+              className={`
+                relative p-3 rounded-lg border transition-all duration-300
+                ${
+                  isActive
+                    ? "bg-charcoal-900/40 border-warm-700/20 hover:bg-charcoal-800/50"
+                    : "bg-charcoal-900/30 border-warm-700/20 hover:bg-charcoal-800/40 hover:border-warm-600/30"
+                }
+              `}
+            >
+              <div className="flex flex-col gap-2">
+                <span
+                  className={`text-sm font-medium transition-colors duration-300 ${
+                    isActive ? "text-offwhite-100" : "text-offwhite-200"
+                  }`}
+                >
+                  {tech.name}
+                </span>
+
+                <span
+                  className={`
+                    text-xs px-2 py-0.5 rounded-full border transition-all duration-300
+                    ${tierColors[tech.tier as keyof typeof tierColors]}
+                  `}
+                >
+                  {tech.tier}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export function TechStackSection() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const handleGetStarted = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleViewWork = () => {
+    const casesSection = document.querySelector("[data-section='cases']");
+    if (casesSection) {
+      casesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section
+      ref={ref}
+      className="py-20 bg-gradient-to-b from-charcoal-900 to-charcoal-950 relative overflow-hidden"
+    >
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-steel-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-warm-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -140,64 +254,122 @@ export function TechStackSection() {
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
         >
-          <div className="inline-block py-1.5 px-6 bg-foreground/10 backdrop-blur-sm rounded-full mb-3">
-            <span className="text-sm font-medium">Tech Stack</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-charcoal-800/40 border border-warm-700/30 rounded-full text-sm text-steel-400 mb-6">
+            <Sparkles className="w-4 h-4" />
+            Technology Stack
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Get to know about the <br />
-            <span className="text-gradient-2">Technology we use</span>
+
+          <h2 className="text-3xl md:text-4xl font-semibold text-offwhite-100 mb-6">
+            Built with{" "}
+            <span className="gradient-text">enterprise-grade technology</span>
           </h2>
+
+          <p className="text-lg text-offwhite-400 max-w-3xl mx-auto">
+            We leverage the latest technologies and proven frameworks to build
+            scalable, secure, and high-performance solutions for enterprise
+            clients.
+          </p>
         </motion.div>
 
-        {/* Tech Stack Marquees - 3 rows with alternating directions */}
-        <div className="space-y-10 pt-12">
-          {/* Row 1: Left to Right */}
-          <Marquee className="py-2 [--duration:16s]" pauseOnHover={true}>
-            {row1.map((tech, index) => (
-              <TechCard key={`row1-${index}`} tech={tech} />
-            ))}
-          </Marquee>
-
-          {/* Row 2: Right to Left */}
-          <Marquee
-            className="py-2 [--duration:16s]"
-            pauseOnHover={true}
-            reverse={true}
-          >
-            {row2.map((tech, index) => (
-              <TechCard key={`row2-${index}`} tech={tech} />
-            ))}
-          </Marquee>
+        {/* Technology Categories Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {techCategories.map((category, index) => (
+            <TechCard
+              key={category.id}
+              category={category}
+              index={index}
+              isActive={activeCategory === category.id}
+              onHover={() => setActiveCategory(category.id)}
+              onLeave={() => setActiveCategory(null)}
+            />
+          ))}
         </div>
+
+        {/* Stats Section */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          {[
+            {
+              icon: Cpu,
+              label: "Technologies",
+              value: "30+",
+              color: "text-steel-400",
+            },
+            {
+              icon: Shield,
+              label: "Enterprise Grade",
+              value: "100%",
+              color: "text-warm-400",
+            },
+            {
+              icon: Activity,
+              label: "Uptime SLA",
+              value: "99.9%",
+              color: "text-steel-300",
+            },
+            // {
+            //   icon: Globe,
+            //   label: "Global Scale",
+            //   value: "15+",
+            //   color: "text-warm-300",
+            // },
+          ].map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={index}
+                className="text-center bg-charcoal-900/30 backdrop-blur-sm rounded-xl p-6 border border-warm-700/30"
+              >
+                <div className="w-12 h-12 bg-charcoal-800/50 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Icon className={`w-6 h-6 ${stat.color}`} />
+                </div>
+                <div className="text-2xl font-bold text-offwhite-100 mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-offwhite-400">{stat.label}</div>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 1, duration: 0.6 }}
+        >
+          <div className="bg-charcoal-900/60 backdrop-blur-xl rounded-2xl p-8 border border-warm-700/20">
+            <div className="max-w-2xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-4 text-offwhite-100">
+                Ready to Build Something Amazing?
+              </h3>
+              <p className="text-offwhite-400 text-lg mb-8">
+                Let&apos;s discuss how these technologies can transform your
+                business and deliver exceptional results for your users.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button onClick={handleGetStarted} className="btn-primary">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Start Your Project
+                </Button>
+                <Button onClick={handleViewWork} className="btn-secondary">
+                  View Our Work
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
-  );
-}
-
-// Tech card component that displays only the SVG image
-function TechCard({ tech }: { tech: Technology }) {
-  return (
-    <motion.div
-      className="mx-4"
-      whileHover={{
-        y: -8,
-        scale: 1.05,
-        transition: { duration: 0.2 },
-      }}
-    >
-      <div className="w-24 h-24 md:w-28 md:h-28 bg-foreground/40 backdrop-blur-2xl rounded-xl flex items-center justify-center p-4 shadow-lg transition-all duration-300 border border-[--color-border] hover:border-[--color-accent-green]">
-        <div className="relative w-full h-full">
-          <Image
-            src={tech.svgPath}
-            alt={tech.category}
-            fill
-            className="object-contain p-1"
-          />
-        </div>
-      </div>
-    </motion.div>
   );
 }

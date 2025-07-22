@@ -1,163 +1,326 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import { SpeakerIcon, ArrowRight } from "lucide-react";
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  Activity,
+  MessageSquare,
+  Users,
+  Target,
+  Shield,
+  ExternalLink,
+} from "lucide-react";
 import { Button } from "../ui/button";
 
 interface CasesSectionProps {
   className?: string;
 }
 
-// Sample data - in production, this would come from your data source
-const casesData = {
-  headline: "Learn how Scageon handles",
-  highlightedHeadline: "Real-world tasks",
-  cases: [
-    {
-      id: "case1",
-      title: "Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/1.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/digital-advertising",
-    },
-    {
-      id: "case2",
-      title: "Healthcare Command Centre Platform for Healthcare Services",
-      description: "Major in Middle East",
-      image: "/cases/2.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/healthcare-command",
-    },
-    {
-      id: "case3",
-      title: "Messaging Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/3.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/messaging-platform",
-    },
-    {
-      id: "case4",
-      title: "Healthcare Command Centre Platform for Healthcare Services",
-      description: "Major in Middle East",
-      image: "/cases/2.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/healthcare-services",
-    },
-    {
-      id: "case5",
-      title: "Messaging Platform for Digital Advertising and Marketing",
-      description: "Major in South-East Asia",
-      image: "/cases/1.svg",
-      icon: <SpeakerIcon className="text-gradient-2" />,
-      ctaText: "View Case Study",
-      ctaLink: "/cases/marketing-platform",
-    },
-  ],
-};
+// Simplified case studies
+const caseStudies = [
+  {
+    id: "healthcare-platform",
+    title: "Healthcare Command Centre",
+    client: "Healthcare Services - Middle East",
+    industry: "Healthcare",
+    timeline: "12 months",
+    category: "Data Intelligence & AI",
+    icon: Activity,
+    color: "from-blue-500 to-cyan-400",
+    overview:
+      "Mission-critical decision support platform optimizing hospital operations across a chain of facilities.",
+    challenge:
+      "Fragmented data across multiple systems causing inefficient resource allocation and suboptimal patient flow.",
+    solution:
+      "Comprehensive healthcare data platform with AI-driven decision management and real-time analytics.",
+    results: [
+      {
+        metric: "Staff Productivity",
+        value: "+20%",
+        description: "Increased efficiency across all departments",
+      },
+      {
+        metric: "Operational Excellence",
+        value: "Multiple Areas",
+        description: "Bed capacity, patient flow, discharge planning optimized",
+      },
+    ],
+    technologies: ["Apache Spark", "MongoDB", "Python", "React", "GCP"],
+  },
+  {
+    id: "messaging-platform",
+    title: "Digital Marketing Platform",
+    client: "Marketing Major - South-East Asia",
+    industry: "Digital Marketing",
+    timeline: "8 months",
+    category: "Cloud Platform & Automation",
+    icon: MessageSquare,
+    color: "from-purple-500 to-pink-400",
+    overview:
+      "Next-generation messaging platform enabling large-scale personalized marketing campaigns.",
+    challenge:
+      "Need for scalable messaging with real-time personalization, compliance, and advanced analytics.",
+    solution:
+      "Cloud-native messaging platform with automated workflows, AI integration, and comprehensive analytics.",
+    results: [
+      {
+        metric: "Platform Availability",
+        value: ">99.5%",
+        description: "Enterprise-grade reliability achieved",
+      },
+      {
+        metric: "Performance",
+        value: "5 TPS → 800 TPS",
+        description: "160x performance enhancement",
+      },
+    ],
+    technologies: ["Kafka", "Python", "Node.js", "AWS", "PostgreSQL"],
+  },
+];
 
 export function CasesSection({ className }: CasesSectionProps) {
-  const { headline, highlightedHeadline, cases } = casesData;
+  const handleViewCase = () => {
+    // In a real app, this would navigate to detailed case study
+    console.log("View full case study");
+  };
+
+  const handleGetStarted = () => {
+    const closingSection = document.querySelector("[data-section='closing']");
+    if (closingSection) {
+      closingSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <section className={cn("py-20 text-foreground", className)}>
-      <div className="container mx-auto px-4 relative">
+    <section
+      id="cases"
+      data-section="cases"
+      className={cn("py-20 bg-black relative overflow-hidden", className)}
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
         <motion.div
-          className="text-center mb-12 w-fit mx-auto relative"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Background blur element */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-foreground/10 h-full w-full -z-10 blur-3xl rounded-full" />
-
-          {/* "Select Stories" badge */}
-          <div className="p-2 px-8 rounded-full w-fit mx-auto mb-4 bg-foreground/10 backdrop-blur-sm">
-            <span>Select Stories</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-emerald-400 mb-6">
+            <Target className="w-4 h-4" />
+            Success Stories
           </div>
-
-          {/* Headline */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            {headline} <br />
-            <span className="text-gradient-2">{highlightedHeadline}</span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+            Transforming businesses with
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+              {" "}
+              measurable impact
+            </span>
           </h2>
+          <p className="text-lg text-slate-400 max-w-3xl mx-auto">
+            Real projects, quantifiable outcomes. See how we&apos;ve helped
+            industry leaders achieve breakthrough results through strategic
+            implementation.
+          </p>
         </motion.div>
 
-        {/* Carousel container */}
-        <div className="relative">
-          <Carousel>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-30 lg:-left-12" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-30 lg:-right-12" />
-            <CarouselContent>
-              {cases.map((item, index) => (
-                <CarouselItem
-                  key={item.id}
-                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-2"
-                >
-                  <div className="group h-full aspect-[3/4] relative rounded-3xl overflow-hidden linear-gradient-3 border flex flex-col">
-                    {/* Card Content */}
-                    <div className="p-4 sm:p-6 flex flex-col justify-start items-center flex-grow z-10">
-                      <div className="mb-2">{item.icon}</div>
-                      <h3 className="text-base text-gradient-2 font-semibold mt-3 text-center">
-                        {item.title}
+        {/* Case Studies */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {caseStudies.map((caseStudy, index) => {
+            const Icon = caseStudy.icon;
+
+            return (
+              <motion.div
+                key={caseStudy.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-slate-900/40 border border-slate-700/50 overflow-hidden hover:bg-slate-800/40 hover:border-slate-600/50 transition-all duration-300"
+              >
+                {/* Header */}
+                <div className="p-6 border-b border-slate-700/50">
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`w-12 h-12 rounded-lg bg-gradient-to-r ${caseStudy.color} flex items-center justify-center flex-shrink-0`}
+                    >
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs font-medium px-2 py-1 bg-slate-700/50 text-slate-300 rounded-full">
+                          {caseStudy.industry}
+                        </span>
+                        <span className="text-xs text-slate-500">•</span>
+                        <span className="text-xs text-slate-500">
+                          {caseStudy.timeline}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-1">
+                        {caseStudy.title}
                       </h3>
-                      <p className="text-xs text-center mt-1 text-foreground/80">
-                        {item.description}
+                      <p className="text-sm text-slate-400">
+                        {caseStudy.client}
                       </p>
                     </div>
+                  </div>
+                </div>
 
-                    {/* Image Container with CTA behind it */}
-                    <div className="relative h-1/2 w-full overflow-hidden">
-                      {/* CTA Button (behind the image) */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-start gap-2 z-10 bg-gradient-3 p-4 pt-0">
-                        <Button
-                          className="btn-gradient-1 rounded-xl text-xs"
-                          size={"sm"}
-                        >
-                          {item.ctaText}
-                        </Button>
-                        <p className="text-xs text-center text-foreground/80">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Cum temporibus inventore iusto in similique
-                          adipisci perferendis a sequi eum ipsum beatae ut
-                          repellat ducimus nemo, at velit modi accusantium
-                          nulla.
-                        </p>
-                      </div>
+                {/* Content */}
+                <div className="p-6">
+                  <p className="text-slate-400 mb-6 leading-relaxed">
+                    {caseStudy.overview}
+                  </p>
 
-                      {/* Image that slides down on hover */}
-                      <div className="absolute inset-0 z-20 transform transition-transform duration-500 ease-in-out group-hover:translate-y-3/4">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                          className="object-cover rounded-3xl"
-                          priority={index < 2}
-                          quality={80}
-                        />
-                      </div>
+                  {/* Challenge & Solution */}
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-red-500/10 border border-red-500/20 p-4">
+                      <h4 className="text-sm font-semibold text-red-400 mb-2 flex items-center gap-2">
+                        <Target className="w-4 h-4" />
+                        Challenge
+                      </h4>
+                      <p className="text-sm text-red-300 leading-relaxed">
+                        {caseStudy.challenge}
+                      </p>
+                    </div>
+                    <div className="bg-emerald-500/10 border border-emerald-500/20 p-4">
+                      <h4 className="text-sm font-semibold text-emerald-400 mb-2 flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4" />
+                        Solution
+                      </h4>
+                      <p className="text-sm text-emerald-300 leading-relaxed">
+                        {caseStudy.solution}
+                      </p>
                     </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+
+                  {/* Results */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-blue-400" />
+                      Key Results
+                    </h4>
+                    <div className="space-y-3">
+                      {caseStudy.results.map((result, rIndex) => (
+                        <div
+                          key={rIndex}
+                          className="flex items-start gap-3 p-3 bg-blue-500/10 border border-blue-500/20"
+                        >
+                          <div className="flex-shrink-0">
+                            <div className="text-lg font-bold text-blue-400">
+                              {result.value}
+                            </div>
+                            <div className="text-xs text-blue-300">
+                              {result.metric}
+                            </div>
+                          </div>
+                          <div className="text-sm text-blue-300">
+                            {result.description}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-white mb-3">
+                      Tech Stack
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {caseStudy.technologies.map((tech, tIndex) => (
+                        <span
+                          key={tIndex}
+                          className="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs font-medium border border-slate-600/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  {/* <div className="flex items-center justify-between pt-4 border-t border-slate-700/50">
+                    <Button
+                      onClick={handleViewCase}
+                      variant="outline"
+                      size="sm"
+                      className="text-sm border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white"
+                    >
+                      View Details
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <Clock className="w-4 h-4" />
+                      <span>{caseStudy.timeline}</span>
+                    </div>
+                  </div> */}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Bottom CTA */}
+        {/* <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div className="bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700/50 p-8 text-white">
+            <h3 className="text-2xl font-semibold mb-4">
+              Ready to Write Your Success Story?
+            </h3>
+            <p className="text-slate-300 mb-8 max-w-2xl mx-auto text-lg">
+              Join industry leaders who have transformed their operations with
+              our proven approach. Let&apos;s discuss how we can deliver similar
+              results for your organization.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                onClick={handleGetStarted}
+                className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-3 font-medium"
+              >
+                Start Your Transformation
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              <Button
+                variant="outline"
+                className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white px-8 py-3"
+              >
+                Download Case Studies
+              </Button>
+            </div> */}
+
+        {/* Trust Indicators */}
+        {/* <div className="flex flex-wrap justify-center items-center gap-8 mt-8 pt-6 border-t border-slate-700 text-slate-400 text-sm">
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4" />
+                <span>Enterprise Security Certified</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-emerald-400" />
+                <span>98% Success Rate</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4" />
+                <span>50+ Enterprise Clients</span>
+              </div>
+            </div>
+          </div> 
+         </motion.div> */}
       </div>
     </section>
   );

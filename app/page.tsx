@@ -4,24 +4,19 @@ import {
   ServicesSection,
   CasesSection,
   TechStackSection,
-  TestimonialSection,
-  ArticlesSection,
-  ClosingSection,
+  AboutSection,
+  AiConceptDemo,
 } from "@/components/sections";
-import { Spacer } from "@/components/ui/spacer";
 
 export default function Home() {
   return (
     <BaseLayout>
       <HeroSection />
-      <Spacer height={250} />
-      {/* <PartnersSection /> */}
+      <AboutSection />
       <ServicesSection />
-      <CasesSection />
+      <AiConceptDemo />
       <TechStackSection />
-      {/* <TestimonialSection /> */}
-      <ArticlesSection />
-      <ClosingSection />
+      <CasesSection />
     </BaseLayout>
   );
 }
