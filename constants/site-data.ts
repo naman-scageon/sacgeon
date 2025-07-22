@@ -1,17 +1,32 @@
 export const navItems = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "#products" },
   { label: "Services", href: "#services" },
-  { label: "About Us", href: "#about" },
+  { label: "Success Stories", href: "/#cases" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const heroSection = {
-  title: "Driving Digital",
-  highlightedTitle: ["Transformation", "Innovation", "Design", "Concept"],
+  subtTitle: "DATA-DRIVEN BUSINESS INTELLIGENCE",
+  title: "SCAGEON",
   description:
-    "We're creating the next generation of digital products that businesses need to stay competitive in today's digital landscape. Our team is experienced, knowledgeable, and passionate.",
-  ctaButton: "Get Started",
-  ctaLink: "#contact",
+    "We help enterprises unlock the value of their data through strategic analytics, modern data platforms, and targeted AI solutions that deliver measurable business outcomes.",
+};
+
+export const aboutSection = {
+  getTo: "Get to",
+  knowBetter: "Know Us Better",
+  title:
+    "Specialized data and AI consultancy helping mid-market enterprises modernize their data infrastructure and implement intelligent solutions that drive real business value.",
+  subTitle:
+    "Your trusted partner for data modernization and AI implementation.",
+  description:
+    "We combine deep technical expertise with proven methodologies to deliver data platforms, analytics solutions, and AI implementations that actually work in enterprise environments.",
+  img: [
+    "/partnersImg/Shutterfly.svg",
+    "/partnersImg/Zoom.svg",
+    "/partnersImg/Facebook.svg",
+    "/partnersImg/Google.svg",
+  ],
 };
 
 export const partnersSection = {
@@ -25,80 +40,339 @@ export const partnersSection = {
   ],
 };
 
+// Enhanced service types for dropdown navigation
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+  badge?: string;
+  subServices?: SubService[];
+}
+
+export interface SubService {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon?: string;
+  isNew?: boolean;
+  isPopular?: boolean;
+}
+
+// Comprehensive services data structure
+export const servicesNavigationData: ServiceItem[] = [
+  {
+    id: "data-services",
+    title: "Data Services",
+    description:
+      "Transform your data infrastructure with modern cloud solutions",
+    href: "/services/data-services",
+    icon: "database",
+    badge: "Core",
+    subServices: [
+      {
+        id: "data-strategy",
+        title: "Data Strategy",
+        description:
+          "Optimize data use, align assets with business goals, and build solid AI foundation",
+        href: "/services/data-services/strategy",
+        icon: "target",
+        isPopular: true,
+      },
+      {
+        id: "data-management",
+        title: "Data Management & Engineering",
+        description:
+          "Build scalable data pipelines and optimize data architecture",
+        href: "/services/data-services/management",
+        icon: "settings",
+      },
+      {
+        id: "big-data-implementation",
+        title: "Big Data Implementation",
+        description:
+          "Maximize business insights with effective big data solutions",
+        href: "/services/data-services/big-data",
+        icon: "layers",
+      },
+      {
+        id: "data-integration",
+        title: "Data Integration",
+        description: "Combine data from various sources into unified view",
+        href: "/services/data-services/integration",
+        icon: "shuffle",
+      },
+      {
+        id: "data-warehouse",
+        title: "Data Warehouse",
+        description: "Build solid foundation for data-driven initiatives",
+        href: "/services/data-services/warehouse",
+        icon: "archive",
+      },
+      {
+        id: "cloud-migration",
+        title: "Data Migration - Cloud",
+        description: "Seamlessly migrate to leading cloud platforms",
+        href: "/services/data-services/cloud-migration",
+        icon: "cloud",
+      },
+      {
+        id: "data-modernization",
+        title: "Data Modernization",
+        description: "Simplification, agility, and adoption for legacy systems",
+        href: "/services/data-services/modernization",
+        icon: "refresh-cw",
+      },
+      {
+        id: "data-analytics",
+        title: "Data Analytics",
+        description: "Custom analytics solutions for operational efficiency",
+        href: "/services/data-services/analytics",
+        icon: "bar-chart-3",
+      },
+      {
+        id: "visualizations",
+        title: "Visualizations & Reporting",
+        description:
+          "Intuitive dashboards and visual data interpretation tools",
+        href: "/services/data-services/visualizations",
+        icon: "pie-chart",
+      },
+    ],
+  },
+  {
+    id: "ai-engineering",
+    title: "AI Engineering",
+    description:
+      "Implement intelligent solutions with cutting-edge AI technology",
+    href: "/services/ai-engineering",
+    icon: "brain",
+    badge: "Advanced",
+    subServices: [
+      {
+        id: "ai-consulting",
+        title: "AI Consulting Services",
+        description:
+          "Strategic AI implementation guidance for business transformation",
+        href: "/services/ai-engineering/consulting",
+        icon: "lightbulb",
+        isPopular: true,
+      },
+      {
+        id: "ai-model-development",
+        title: "AI Model Development",
+        description:
+          "Custom AI models for unique business needs and automation",
+        href: "/services/ai-engineering/model-development",
+        icon: "cpu",
+      },
+      {
+        id: "nlp-generative-ai",
+        title: "NLP & Generative AI",
+        description:
+          "Advanced language understanding and generation capabilities",
+        href: "/services/ai-engineering/nlp-generative",
+        icon: "message-circle",
+        isNew: true,
+      },
+      {
+        id: "mlops",
+        title: "MLOps",
+        description: "Seamless model deployment, scaling, and maintenance",
+        href: "/services/ai-engineering/mlops",
+        icon: "git-branch",
+      },
+      {
+        id: "ai-use-case-identification",
+        title: "AI Use Case Identification",
+        description: "Identify high-impact AI opportunities for maximum ROI",
+        href: "/services/ai-engineering/use-cases",
+        icon: "search",
+      },
+      {
+        id: "ai-chatbot-development",
+        title: "AI Chatbot Development",
+        description:
+          "Revolutionary customer engagement through intelligent bots",
+        href: "/services/ai-engineering/chatbots",
+        icon: "bot",
+        isNew: true,
+      },
+    ],
+  },
+  {
+    id: "application-services",
+    title: "Application Services",
+    description: "Modern application development and system modernization",
+    href: "/services/application-services",
+    icon: "code",
+    badge: "Coming Soon",
+    subServices: [
+      {
+        id: "legacy-modernization",
+        title: "Legacy System Modernization",
+        description: "Transform legacy applications with modern architectures",
+        href: "/services/application-services/legacy-modernization",
+        icon: "refresh-cw",
+      },
+      {
+        id: "cloud-native-development",
+        title: "Cloud-Native Development",
+        description: "Build scalable applications designed for the cloud",
+        href: "/services/application-services/cloud-native",
+        icon: "cloud",
+      },
+      {
+        id: "api-integration",
+        title: "API Integration & Development",
+        description: "Seamless system connectivity and integration solutions",
+        href: "/services/application-services/api-integration",
+        icon: "link",
+      },
+      {
+        id: "microservices",
+        title: "Microservices Architecture",
+        description: "Scalable and maintainable distributed system design",
+        href: "/services/application-services/microservices",
+        icon: "grid-3x3",
+      },
+    ],
+  },
+];
+
 export const servicesSection = {
-  headline: "Get your business",
-  highlightedHeadline: "Problem Solved",
+  headline: "Accelerate your business with",
+  highlightedHeadline: "Data & AI Solutions",
   tagline:
-    "Scageon helps you grow your business with AI-driven solutions and methods.",
+    "We deliver practical data platforms, analytics solutions, and AI implementations that drive measurable business outcomes.",
   services: [
     {
-      id: "data-service",
-      title: "Data Service",
+      id: "data-services",
+      title: "Data Services",
       description:
-        "Unlock the potential of your data with our comprehensive data services. We help you collect, process, and analyze data to make informed decisions.",
-      icon: "database",
+        "Modernize your data infrastructure with cloud migration, data warehousing, integration, and advanced analytics platforms that scale with your business.",
+      icon: "/services/dataService.svg",
+      deliverables: [
+        "Data Strategy & Assessment",
+        "Cloud Migration",
+        "Data Warehouse Implementation",
+        "Business Intelligence Dashboards",
+      ],
+      outcomes: [
+        "40% faster reporting",
+        "60% cost reduction",
+        "Single source of truth",
+      ],
     },
     {
-      id: "cloud-services",
-      title: "Cloud Services",
+      id: "ai-engineering",
+      title: "AI Engineering",
       description:
-        "Leverage the power of cloud computing with our scalable and secure cloud services. We help you migrate, optimize, and manage your cloud infrastructure.",
-      icon: "cloud",
-    },
-    {
-      id: "ai-services",
-      title: "AI ML Services",
-      description:
-        "Transform your business with our cutting-edge AI and machine learning solutions. We build custom models that solve your unique business challenges.",
-      icon: "brain",
+        "Implement practical AI solutions including custom models, NLP systems, predictive analytics, and intelligent automation tailored to your industry needs.",
+      icon: "/services/aiMlService.svg",
+      deliverables: [
+        "AI Readiness Assessment",
+        "Custom Model Development",
+        "MLOps Implementation",
+        "AI Chatbot Development",
+      ],
+      outcomes: [
+        "85% accuracy improvement",
+        "50% process automation",
+        "Real-time insights",
+      ],
     },
     {
       id: "application-services",
       title: "Application Services",
       description:
-        "Develop robust and scalable applications with our expert development team. We create custom software solutions tailored to your business needs.",
-      icon: "code",
+        "Modernize legacy systems and build cloud-native applications with robust APIs, microservices architecture, and seamless third-party integrations.",
+      icon: "/services/productService.svg",
+      deliverables: [
+        "Legacy System Assessment",
+        "Cloud-Native Development",
+        "API Integration",
+        "System Modernization",
+      ],
+      outcomes: [
+        "70% performance improvement",
+        "99.9% uptime",
+        "Scalable architecture",
+      ],
     },
   ],
 };
 
 export const casesSection = {
-  headline: "Learn how Scageon handles",
-  highlightedHeadline: "Real-world tasks",
+  headline: "Real Client",
+  highlightedHeadline: "Success Stories",
   cases: [
     {
       id: 1,
-      title: "Intelligent Document Processing",
+      title: "Manufacturing Data Platform",
       description:
-        "Automated extraction and processing of data from various document types using AI",
+        "Implemented a comprehensive data warehouse and analytics platform for a mid-size manufacturer, consolidating production, inventory, and sales data.",
       icon: "file-text",
+      impact: "40% reduction in reporting time",
+      technologies: ["PostgreSQL", "Apache Spark", "Power BI"],
+      client: "Manufacturing Company",
+      timeline: "6 months",
+      challenge: "Siloed data across 15+ systems",
+      solution: "Unified data platform with real-time dashboards",
     },
     {
       id: 2,
-      title: "Healthcare Data Analysis",
+      title: "Healthcare Analytics Implementation",
       description:
-        "Advanced analytics for healthcare providers to improve patient outcomes",
+        "Built a patient data analytics system for a regional healthcare provider, enabling better resource allocation and patient care optimization.",
       icon: "activity",
+      impact: "25% improvement in resource utilization",
+      technologies: ["HIPAA-compliant cloud", "Python", "Tableau"],
+      client: "Regional Healthcare Provider",
+      timeline: "4 months",
+      challenge: "Manual reporting taking 40+ hours weekly",
+      solution: "Automated analytics with predictive insights",
     },
     {
       id: 3,
-      title: "Supply Chain Optimization",
-      description: "AI-driven logistics and inventory management solutions",
+      title: "Financial Services Modernization",
+      description:
+        "Migrated legacy systems to cloud and implemented real-time fraud detection for a financial services company.",
       icon: "truck",
+      impact: "60% faster transaction processing",
+      technologies: ["AWS", "Machine Learning", "API Gateway"],
+      client: "Financial Services Firm",
+      timeline: "8 months",
+      challenge: "Legacy systems causing delays and security risks",
+      solution: "Cloud-native platform with ML-powered fraud detection",
     },
     {
       id: 4,
-      title: "Customer Experience Enhancement",
+      title: "Retail Customer Analytics",
       description:
-        "Personalized customer journeys powered by predictive analytics",
+        "Developed customer behavior analytics and inventory optimization system for a retail chain with 50+ locations.",
       icon: "users",
+      impact: "22% increase in inventory turnover",
+      technologies: ["MongoDB", "Python", "React Dashboard"],
+      client: "Multi-location Retailer",
+      timeline: "5 months",
+      challenge: "Poor inventory management and customer insights",
+      solution: "Integrated analytics platform with predictive inventory",
     },
     {
       id: 5,
-      title: "Financial Risk Assessment",
+      title: "Supply Chain Optimization",
       description:
-        "Machine learning models for accurate financial risk prediction",
+        "Built end-to-end supply chain visibility platform with predictive analytics for a logistics company.",
       icon: "trending-up",
+      impact: "18% reduction in operational costs",
+      technologies: ["Apache Kafka", "Elasticsearch", "Node.js"],
+      client: "Logistics Company",
+      timeline: "7 months",
+      challenge: "Lack of real-time visibility across supply chain",
+      solution: "Real-time tracking with predictive alerts",
     },
   ],
 };
@@ -166,30 +440,59 @@ export const articlesSection = {
 export const closingSection = {
   headline: "Transforming",
   highlightedHeadline: "Data",
-  middleText: "into intelligence—",
-  secondHighlighted: "Engineering",
-  tagline: "the future",
-  finalText: "with AI.",
+  middleText: "into business",
+  middleTextLine: " — ",
+  secondHighlighted: "Value",
+  tagline: "through proven",
+  finalText: "expertise",
 };
 
 export const footerSection = {
   companyName: "SCAGEON",
   tagline: "Lorem ipsum dolor sit amet, consectetur adipiscing",
   socialLinks: [
-    { platform: "Twitter", url: "https://twitter.com", icon: "twitter" },
-    { platform: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
-    { platform: "GitHub", url: "https://github.com", icon: "github" },
+    {
+      platform: "LinkedIn",
+      url: "https://www.linkedin.com/company/scageon",
+      icon: "linkedin",
+    },
   ],
   contactInfo: {
-    email: "info@scageon.com",
-    phone: "+1 (123) 456-7890",
-    address: "42nd Street, New York",
+    email: "connect@scageon.com",
+    phone: ["+91 99569 53666", "+91 80100 39864"],
+    address:
+      "Mantri Commercio Tower-A, Kariyammana Agrahara, Bellandur, Bengaluru, Karnataka 560103",
     description: "Get in Touch to see what Scageon can do for your business.",
   },
-  copyright: "© 2023",
+  copyright: "© 2025",
   links: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Cookie Policy", href: "/cookies" },
   ],
+  // New structure for main footer links, reflecting the image's nested structure
+  mainFooterLinks: {
+    services: [
+      {
+        label: "Data Services",
+        href: "#",
+        subLinks: [
+          { label: "Data Strategy", href: "#" },
+          { label: "Data Management and Engineering", href: "#" },
+          { label: "Data Analytics", href: "#" },
+        ],
+      },
+      {
+        label: "AIML Services",
+        href: "#",
+        subLinks: [
+          { label: "AI Consulting Services", href: "#" },
+          { label: "AI Model Development", href: "#" },
+          { label: "NLP and Generative AI", href: "#" },
+          { label: "MLOps", href: "#" },
+        ],
+      },
+    ],
+    aboutUs: [], // Empty as per the image
+  },
 };
